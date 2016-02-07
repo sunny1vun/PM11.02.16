@@ -235,6 +235,7 @@
     [slider setMaximumValue:(1409.f)/1439];
 //    [slider setMinimumValue:0.f];
     [slider addTarget:self action:@selector(onTopSlide:) forControlEvents:UIControlEventValueChanged];
+    [slider addTarget:self action:@selector(topSliderTouched) forControlEvents:UIControlEventValueChanged];
     
     UIImage *imageForTop= [UIImage imageNamed:@"TimePopup"];
     UIImageView *imageViewFT= [[UIImageView alloc] initWithImage:imageForTop];
@@ -271,6 +272,7 @@
 //    [sliderBot setMaximumValue:1439.f];
     [sliderBot setMinimumValue:(30.f)/1439];
     [sliderBot addTarget:self action:@selector(onBotSlide:) forControlEvents:UIControlEventValueChanged];
+    [sliderBot addTarget:self action:@selector(botSliderTouched) forControlEvents:UIControlEventValueChanged];
     
     UIImage *imageForTop= [UIImage imageNamed:@"TimePopup"];
     //making mirroring frip
@@ -561,7 +563,7 @@
 
 -(void)textFieldDidBeginEditing:(UITextField*)textField{
     [UIView animateWithDuration:0.2f animations:^(void){
-        self.shiningDot.center= (CGPoint){15.f, 141.f};
+        self.shiningDot.center= (CGPoint){15.f, 140.f};
     }];
     
 }
@@ -591,6 +593,7 @@
 //}
 
 -(void)onTopSlide:(UIControlEvents *)event{
+    
     int second=0;
 //    int valueBotSlider= 0;
     UISlider *sliderBot;
@@ -662,6 +665,8 @@
                                 [valueFormatStr appendFormat:@"%02i-%02i",hours, minutes];
                                 [sliderLabel setText:valueFormatStr];
                                 
+                                
+//                                [slider addTarget:self action:@selector(topSliderTouched) forControlEvents:UIControlEventValueChanged];
 //                                break;
                                 
                             }
@@ -695,7 +700,7 @@
                                 if([searchingLabel class]== [UILabel class]){
                                     //
                                     sliderLabel= (UILabel*)searchingLabel;
-                                                                    }
+                                }
                         }
                         fourth++;
                         break;
@@ -741,7 +746,7 @@
                                     }
                                     minutes= (int)(value);
                                     labelBot.text= [[NSMutableString alloc]
-                                                                      initWithFormat:@"%02i-%02i",hours, minutes];
+                                                            initWithFormat:@"%02i-%02i",hours, minutes];
 
                                     
                                 }
@@ -758,6 +763,18 @@
     }
 
 }
+
+- (void) botSliderTouched{
+    [UIView animateWithDuration:0.3f animations:^{
+        self.shiningDot.center = CGPointMake(15.f, 227.f);
+    }];
+}
+- (void) topSliderTouched{
+    [UIView animateWithDuration:0.3f animations:^{
+        self.shiningDot.center = CGPointMake(15.f, 185.5f);
+    }];
+}
+
 #pragma mark- for scrollView and pageControl
 -(void)onPageChanged:(UIControlEvents*)event{
     [UIView animateWithDuration:0.2f animations:^(void){
@@ -839,6 +856,18 @@
     }];
 }
 
+-(void)onSaveClicked:(BOOL)checker{
+    [UIView animateWithDuration:0.2f animations:^(void){
+        self.shiningDot.center= (CGPoint){15.f, 422.f};
+    }];
+}
+
+-(void)onCancelClicked:(BOOL)checker{
+    [UIView animateWithDuration:0.2f animations:^(void){
+        self.shiningDot.center= (CGPoint){15.f, 542.f};
+    }];
+}
+
 #pragma mark- Working with PartyMakerView
 -(void)makeParty{
     
@@ -869,7 +898,7 @@
     [partyMakerVC addSaveButton];
     [partyMakerVC addCancelButton];
     
-//    [partyMakerVC addHidenViews];
+    [partyMakerVC addHidenViews];
     
     [self.navigationController pushViewController:partyMakerVC animated:YES];
 }
