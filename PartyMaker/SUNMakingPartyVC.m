@@ -9,8 +9,11 @@
 #import "SUNMakingPartyVC.h"
 
 @interface SUNMakingPartyVC()
-//@property (nonatomic) UIPageControl *pageControl;
-//@property (nonatomic) UIScrollView *scrollView;
+@property (nonatomic) UIPageControl *pageControl;
+@property (nonatomic) UIScrollView *scrollView;
+@property (nonatomic) UIView *shiningDot;
+@property (nonatomic) UITextView *textView;
+@property (nonatomic) NSString *previousText;
 @property int doneWasPressed;
 
 
@@ -18,32 +21,39 @@
 
 @implementation SUNMakingPartyVC
 
+//-(void)viewDidLoad:(BOOL)animated{
+////    [super viewDidLoad:animated];
+//    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+//}
+
+-(void)viewDidLoad{
+    [super viewDidLoad];
+}
 
 -(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
+    [super viewWillAppear:NO];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     
     if (([self.navigationController.viewControllers count]> 1)== YES) {
         [self.view setBackgroundColor: [[UIColor alloc] initWithRed:46/255.f green:49/255.f blue:56/255.f alpha:1.f]];
         //        self.title= [NSString stringWithFormat:@"Some %i", (int)[self.navigationController.viewControllers count]];
         self.title= @"CREATE PARTY";
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 
     }
     
     
 }
-//
-//-(void)viewDidAppear:(BOOL)animated{
-//    [super viewDidAppear:animated];
-//    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-//}
+
 
 -(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
+    [super viewWillDisappear:YES];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -159,10 +169,16 @@
     }
 }
 
--(void)addLine{
+-(void)addLineAndShiningDot{
+    UIView *round= [[UIView alloc] initWithFrame:CGRectMake(8.5f, 83.f, 13.f, 13.f)];
+    round.backgroundColor = [[UIColor alloc] initWithRed:230/255.f green:224/255.f blue:213/255.f alpha:0.8f];
+    round.layer.cornerRadius= 6.f;
+    self.shiningDot= round;
+    
     UIView *line= [[UIView alloc] initWithFrame:(CGRect){14.5f, 85.f, 1.f, 452.f}];
     line.backgroundColor= [[UIColor alloc] initWithRed:230/255.f green:224/255.f blue:213/255.f alpha:1.f];
     
+    [self.view addSubview:round];
     [self.view addSubview:line];
 }
 
@@ -199,8 +215,7 @@
     textField.leftViewMode = UITextFieldViewModeAlways;
     //    textField.leftView = [[UIImageView alloc] ...];
     textField.returnKeyType = UIReturnKeyDone;
-//    textField.returnKeyType= UIReturnKeyDefault;
-//    textField.delegate = ;
+    textField.delegate = self;
     [textField addTarget:self action:@selector(onTextFieldEditingEnded) forControlEvents:UIControlEventEditingDidEnd];
     [self.view addSubview:textField];
 }
@@ -285,27 +300,28 @@
 -(void)addScrollViewWithPageControl{
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:(CGRect){121, 254, 190, 101}];
     scrollView.pagingEnabled = YES;
-    scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 55, 0);
-    UIImageView *imageView = [[UIImageView alloc] init];
     [scrollView.viewForFirstBaselineLayout setBackgroundColor:[[UIColor alloc] initWithRed:68/255.f green:73/255.f blue:83/255.f alpha:1.f]];
-    [scrollView addSubview:imageView];
-    scrollView.contentSize = imageView.frame.size;
-    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:(CGRect){0, 1284, 750, 50}];
-    pageControl.numberOfPages = 5;
+    int numberOfImages= 6;
+    for(int i = 0; i < numberOfImages; i++){
+        CGFloat x= i*scrollView.frame.size.width;
+        UIImageView* imageView= [[UIImageView alloc] initWithFrame:(CGRect){x, 0, 190, 90}];
+        imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"PartyLogo_Small_%i", i]];
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+        [scrollView addSubview:imageView];
+    }
+    scrollView.contentSize = (CGSize){scrollView.frame.size.width * numberOfImages, scrollView.frame.size.height};
+    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:(CGRect){173, 323, 90, 50}];
+    pageControl.numberOfPages = 6;
     pageControl.currentPage = 0;
-    pageControl.backgroundColor = [UIColor blackColor];
     [pageControl addTarget:self action:@selector(onPageChanged:) forControlEvents:UIControlEventValueChanged];
     
-    //    pageControl.numberOfPages = scrollView.contentSize.width/[UIScreenmainScreen].bounds.size.width;[partyMakerVC.view addSubview:pageControl];
-    //    partyMakerVC.pageControl = pageControl;
-    //    UIView *viewForSliderImages= [[UIView alloc] initWithFrame:(CGRect){121, 229, 190, 101}];
-    //    viewForSliderImages.scrollView = scrollView;
-    //    [viewForSliderImages addSubview:pageControl];
+    self.pageControl = pageControl;
+    self.scrollView = scrollView;
+    scrollView.delegate = self;
+    
     [self.view addSubview:scrollView];
     [self.view addSubview:pageControl];
     
-//    self.pageControl = pageControl;
-//    self.scrollView = scrollView;
 }
 
 -(void)addTextView{
@@ -314,12 +330,27 @@
     textView.font = [UIFont fontWithName:@"Arial-Bold" size:11];
     textView.backgroundColor = [[UIColor alloc] initWithRed:35/255.f green:37/255.f blue:43/255.f alpha:1.f];
     textView.textColor = [UIColor lightGrayColor];
-//    textView.delegate = self;
     UIView *line= [[UIView alloc] initWithFrame:(CGRect){0.f,0.f, 185.f, 6.f}];
     line.backgroundColor= [[UIColor alloc] initWithRed:40/255.f green:132/255.f blue:175/255.f alpha:1.f];
     
     [textView addSubview:line];
     [self.view addSubview:textView];
+    
+    UIToolbar *toolsForTV= [[UIToolbar alloc] initWithFrame:(CGRect){0.f, self.view.frame.size.height, self.view.frame.size.width, 36}];
+    
+    [toolsForTV setBarTintColor:[[UIColor alloc] initWithRed:68/255.f green:73/255.f blue:83/255.f alpha:1.f]];
+    UIBarButtonItem *cancelButton= [[UIBarButtonItem alloc] initWithTitle: @"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(onTextViewCanceled)];
+    [cancelButton setTintColor:[UIColor whiteColor]];
+    UIBarButtonItem *doneButton= [[UIBarButtonItem alloc] initWithTitle: @"Done" style:UIBarButtonItemStyleDone target:self action:@selector(onTextViewDone)];
+    [doneButton setTintColor:[UIColor whiteColor]];
+    UIBarButtonItem *flexaibleSpace= [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    [toolsForTV sizeToFit];
+    
+    [toolsForTV setItems:@[cancelButton, flexaibleSpace, doneButton]];
+    
+    self.textView= textView;
+    textView.inputAccessoryView= toolsForTV;
+    textView.delegate = self;
 }
 
 -(void)addSaveButton{
@@ -345,7 +376,7 @@
     [self.view addSubview:chooseCancel];
 }
 
-#pragma mark- Hided views
+#pragma mark- Hiden views
 
 -(void)addHidenViews{
     UIToolbar *toolsForDatePicker= [[UIToolbar alloc] initWithFrame:(CGRect){0.f, self.view.frame.size.height, self.view.frame.size.width, 36}];
@@ -371,7 +402,7 @@
     [self.view addSubview:datePicker];
 }
 
-#pragma mark- Making Backend
+#pragma mark- Making Events
 
 -(void)onDateClicked:(UIControlEvents *)event{
     
@@ -510,45 +541,58 @@
 
 }
 
--(void)onTextFieldEditingEnded{
-    for (id search in self.view.subviews) {
-        if([search class]== [UITextField class]){
-            UITextField *myTextField= (UITextField*)search;
-            
-            [myTextField resignFirstResponder];
-            NSLog(@"resignFirstResponder");
-            break;
-        }
-    }
+//-(void)onTextFieldEditingEnded{
+//    for (id search in self.view.subviews) {
+//        if([search class]== [UITextField class]){
+//            UITextField *myTextField= (UITextField*)search;
+//            
+//            [myTextField resignFirstResponder];
+//            NSLog(@"resignFirstResponder");
+//            break;
+//        }
+//    }
+//}
+
+-(BOOL)textFieldShouldReturn:(UITextField*)textField{
+    [textField resignFirstResponder];
+    
+    return YES;
 }
 
--(void)keyboardWillShow:(NSNotification*)notification{
-    CGRect keyboardRect= [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    
-    float duration= [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
-    
-    __block __weak SUNMakingPartyVC *weakSelf= self;
-    [UIView animateWithDuration:duration animations:^(void){
-        CGRect viewFrame = weakSelf.view.frame;
-        viewFrame.origin.y-= keyboardRect.size.height;
-        weakSelf.view.frame= viewFrame;
+-(void)textFieldDidBeginEditing:(UITextField*)textField{
+    [UIView animateWithDuration:0.2f animations:^(void){
+        self.shiningDot.center= (CGPoint){15.f, 141.f};
     }];
+    
 }
 
--(void)keyboardWillHide:(NSNotification*)notification{
-    float duration = [[[notification userInfo]  objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
-    
-    __block __weak SUNMakingPartyVC *weakSelf= self;
-    [UIView animateWithDuration:duration animations:^(void){
-        CGRect viewFrame = weakSelf.view.frame;
-        viewFrame.origin.y= 0;
-        weakSelf.view.frame= viewFrame;
-    }];
-}
+//-(void)keyboardWillShow:(NSNotification*)notification{
+//    CGRect keyboardRect= [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+//    
+//    float duration= [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+//    
+//    __block __weak SUNMakingPartyVC *weakSelf= self;
+//    [UIView animateWithDuration:duration animations:^(void){
+//        CGRect viewFrame = weakSelf.view.frame;
+//        viewFrame.origin.y-= keyboardRect.size.height;
+//        weakSelf.view.frame= viewFrame;
+//    }];
+//}
+//
+//-(void)keyboardWillHide:(NSNotification*)notification{
+//    float duration = [[[notification userInfo]  objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+//    
+//    __block __weak SUNMakingPartyVC *weakSelf= self;
+//    [UIView animateWithDuration:duration animations:^(void){
+//        CGRect viewFrame = weakSelf.view.frame;
+//        viewFrame.origin.y= 0;
+//        weakSelf.view.frame= viewFrame;
+//    }];
+//}
 
 -(void)onTopSlide:(UIControlEvents *)event{
     int second=0;
-    int valueBotSlider= 0;
+//    int valueBotSlider= 0;
     UISlider *sliderBot;
     UILabel *labelBot;
     for (id search in self.view.subviews) {
@@ -714,8 +758,86 @@
     }
 
 }
+#pragma mark- for scrollView and pageControl
+-(void)onPageChanged:(UIControlEvents*)event{
+    [UIView animateWithDuration:0.2f animations:^(void){
+        self.shiningDot.center= (CGPoint){15.f, 305.5f};
+    }];
+    
+    CGPoint contentOffset = (CGPoint){self.scrollView.frame.size.width * self.pageControl.currentPage, 0};
+    [self.scrollView setContentOffset:contentOffset];
+    
+}
 
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    [UIView animateWithDuration:0.2f animations:^(void){
+        self.shiningDot.center= (CGPoint){15.f, 305.5f};
+    }];
+    
+    NSInteger currentPage = scrollView.contentOffset.x/self.scrollView.frame.size.width;
+    [self.pageControl setCurrentPage:currentPage];
+}
 
+#pragma mark- for textView
+-(void)onTextViewCanceled{
+    self.textView.text = self.previousText;
+    [self.textView resignFirstResponder];
+}
+
+-(void)onTextViewDone{
+    [self.textView resignFirstResponder];
+}
+
+-(BOOL)textViewShouldBeginEditing:(UITextView*) textView{
+    [UIView animateWithDuration:0.2f animations:^(void){
+        self.shiningDot.center= (CGPoint){15.f, 422.f};
+    }];
+    
+    return YES;
+}
+
+-(BOOL)textViewShouldEndEditing:(UITextView*)textView{
+    self.previousText = self.textView.text;
+    
+    return YES;
+}
+#pragma mark-for keyboard
+-(void)keyboardWillShow:(NSNotification*)notification{
+    if(self.textView.isFirstResponder){
+        CGRect keyboardRect= [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+        
+        float duration= [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+        
+        __block __weak SUNMakingPartyVC *weakSelf= self;
+        [UIView animateWithDuration:duration animations:^(void){
+            CGRect viewFrame = weakSelf.view.frame;
+            viewFrame.origin.y-= keyboardRect.size.height;
+            weakSelf.view.frame= viewFrame;
+        }];
+    }else {
+        CGRect keyboardRect= [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+        
+        float duration= [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+        
+        __block __weak SUNMakingPartyVC *weakSelf= self;
+        [UIView animateWithDuration:duration animations:^(void){
+            CGRect viewFrame = weakSelf.view.frame;
+            viewFrame.origin.y-= keyboardRect.size.height;
+//            weakSelf.view.frame= viewFrame;
+        }];
+    }
+}
+
+-(void)keyboardWillHide:(NSNotification*)notification{
+    float duration = [[[notification userInfo]  objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    
+    __block __weak SUNMakingPartyVC *weakSelf= self;
+    [UIView animateWithDuration:duration animations:^(void){
+        CGRect viewFrame = weakSelf.view.frame;
+        viewFrame.origin.y= 0;
+        weakSelf.view.frame= viewFrame;
+    }];
+}
 
 #pragma mark- Working with PartyMakerView
 -(void)makeParty{
@@ -724,7 +846,7 @@
     partyMakerVC.view = [[UIView alloc] initWithFrame:self.view.frame];
     [partyMakerVC.navigationItem setHidesBackButton:YES];
     
-    [partyMakerVC addLine];
+    [partyMakerVC addLineAndShiningDot];
     [partyMakerVC addRound:@"CHOOSE DAY"];
     [partyMakerVC addDateButton];
     
@@ -747,7 +869,7 @@
     [partyMakerVC addSaveButton];
     [partyMakerVC addCancelButton];
     
-    [partyMakerVC addHidenViews];
+//    [partyMakerVC addHidenViews];
     
     [self.navigationController pushViewController:partyMakerVC animated:YES];
 }
