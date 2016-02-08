@@ -117,8 +117,7 @@
         
         UILabel *labelOfRound= [[UILabel alloc] initWithFrame:CGRectMake(26.f, 84.f, 68.f, 11.f)];        [labelOfRound setText:forLabel];
         [labelOfRound setTextColor:[[UIColor alloc] initWithRed:230/255.f green:224/255.f blue:213/255.f alpha:1.f]];
-        labelOfRound.font = [UIFont fontWithName:@"Helvetica" size:11];
-        labelOfRound.adjustsFontSizeToFitWidth= YES;
+        labelOfRound.font = [UIFont fontWithName:@"MyriadPro-Regular" size:12];        labelOfRound.adjustsFontSizeToFitWidth= YES;
 
         [self.view addSubview: round];
         [self.view addSubview: labelOfRound];
@@ -129,7 +128,7 @@
         
         UILabel *labelOfRound= [[UILabel alloc] initWithFrame:CGRectMake(26.f, 134.f, 68.f, 11.f)];        [labelOfRound setText:forLabel];
         [labelOfRound setTextColor:[[UIColor alloc] initWithRed:230/255.f green:224/255.f blue:213/255.f alpha:1.f]];
-        labelOfRound.font = [UIFont fontWithName:@"Helvetica" size:11];
+        labelOfRound.font = [UIFont fontWithName:@"MyriadPro-Regular" size:12];
         labelOfRound.adjustsFontSizeToFitWidth= YES;
         
         [self.view addSubview: round];
@@ -142,7 +141,7 @@
         UILabel *labelOfRound= [[UILabel alloc] initWithFrame:CGRectMake(26.f, 180.f, 68.f, 11.f)];
         [labelOfRound setText:forLabel];
         [labelOfRound setTextColor:[[UIColor alloc] initWithRed:230/255.f green:224/255.f blue:213/255.f alpha:1.f]];
-        labelOfRound.font = [UIFont fontWithName:@"Helvetica" size:11];
+        labelOfRound.font = [UIFont fontWithName:@"MyriadPro-Regular" size:12];
         labelOfRound.adjustsFontSizeToFitWidth= YES;
         
         [self.view addSubview: round];
@@ -155,8 +154,7 @@
         UILabel *labelOfRound= [[UILabel alloc] initWithFrame:CGRectMake(26.f, 221.f, 68.f, 11.f)];
         [labelOfRound setText:forLabel];
         [labelOfRound setTextColor:[[UIColor alloc] initWithRed:230/255.f green:224/255.f blue:213/255.f alpha:1.f]];
-        labelOfRound.font = [UIFont fontWithName:@"Helvetica" size:11];
-        labelOfRound.adjustsFontSizeToFitWidth= YES;
+        labelOfRound.font = [UIFont fontWithName:@"MyriadPro-Regular" size:12];        labelOfRound.adjustsFontSizeToFitWidth= YES;
         
         [self.view addSubview: round];
         [self.view addSubview: labelOfRound];
@@ -167,7 +165,7 @@
         
         UILabel *labelOfRound= [[UILabel alloc] initWithFrame:CGRectMake(26.f, 299.f, 68.f, 11.f)];        [labelOfRound setText:forLabel];
         [labelOfRound setTextColor:[[UIColor alloc] initWithRed:230/255.f green:224/255.f blue:213/255.f alpha:1.f]];
-        labelOfRound.font = [UIFont fontWithName:@"Helvetica" size:11];
+        labelOfRound.font = [UIFont fontWithName:@"MyriadPro-Regular" size:12];
         labelOfRound.adjustsFontSizeToFitWidth= YES;
         
         [self.view addSubview: round];
@@ -180,7 +178,7 @@
         UILabel *labelOfRound= [[UILabel alloc] initWithFrame:CGRectMake(26.f, 416.f, 68.f, 11.f)];
         [labelOfRound setText:forLabel];
         [labelOfRound setTextColor:[[UIColor alloc] initWithRed:230/255.f green:224/255.f blue:213/255.f alpha:1.f]];
-        labelOfRound.font = [UIFont fontWithName:@"Helvetica" size:11];
+        labelOfRound.font = [UIFont fontWithName:@"MyriadPro-Regular" size:12];
         labelOfRound.adjustsFontSizeToFitWidth= YES;
         
         [self.view addSubview: round];
@@ -193,7 +191,7 @@
         UILabel *labelOfRound= [[UILabel alloc] initWithFrame:CGRectMake(26.f, 536.f, 68.f, 11.f)];
         [labelOfRound setText:forLabel];
         [labelOfRound setTextColor:[[UIColor alloc] initWithRed:230/255.f green:224/255.f blue:213/255.f alpha:1.f]];
-        labelOfRound.font = [UIFont fontWithName:@"Helvetica" size:11];
+        labelOfRound.font = [UIFont fontWithName:@"MyriadPro-Regular" size:12];
         labelOfRound.adjustsFontSizeToFitWidth= YES;
         
         [self.view addSubview: round];
@@ -402,7 +400,7 @@
     textField.attributedPlaceholder = str;
     
     textField.textColor = [UIColor lightGrayColor];
-    textField.font = [UIFont fontWithName:@"Helvetica" size:14];
+    textField.font = [UIFont fontWithName:@"MyriadPro-Regular" size:14];
     textField.backgroundColor = [[UIColor alloc] initWithRed:35/255.f green:37/255.f blue:43/255.f alpha:1.f];
     textField.clearButtonMode = UITextFieldViewModeWhileEditing;
     textField.rightViewMode = UITextFieldViewModeAlways;
@@ -476,7 +474,7 @@
     NSMutableString *labelText= [[NSMutableString alloc] initWithFormat:@"%02i-%02i",hours, minutes];
     [labelForIVFT setText:labelText ];
     [labelForIVFT setTextColor:[UIColor whiteColor]];
-    labelForIVFT.font = [UIFont fontWithName:@"Helvetica" size:11];
+    labelForIVFT.font = [UIFont fontWithName:@"MyriadPro-Regular" size:12];
     labelForIVFT.adjustsFontSizeToFitWidth= YES;
     [imageViewFT addSubview:labelForIVFT];
     
@@ -604,7 +602,7 @@
     
     [labelForIVFT setText:labelText ];
     [labelForIVFT setTextColor:[UIColor whiteColor]];
-    labelForIVFT.font = [UIFont fontWithName:@"Helvetica" size:11];
+    labelForIVFT.font = [UIFont fontWithName:@"MyriadPro-Regular" size:12];
     labelForIVFT.adjustsFontSizeToFitWidth= YES;
     [imageViewFT addSubview:labelForIVFT];
     
