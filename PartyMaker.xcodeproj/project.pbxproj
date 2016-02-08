@@ -47,6 +47,8 @@
 		835BBF181C68B8E600AE844B /* SUNMakingPartyByxibVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SUNMakingPartyByxibVC.xib; sourceTree = "<group>"; };
 		835BBF1D1C68E5F300AE844B /* MyriadProBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MyriadProBold.ttf; path = ../../Downloads/Resources_forHomeWork/MyriadProBold.ttf; sourceTree = "<group>"; };
 		835BBF1E1C68E5F300AE844B /* MyriadProRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MyriadProRegular.ttf; path = ../../Downloads/Resources_forHomeWork/MyriadProRegular.ttf; sourceTree = "<group>"; };
+		835BBF211C68E76300AE844B /* MyriadProBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyriadProBold.ttf; sourceTree = "<group>"; };
+		835BBF221C68E76300AE844B /* MyriadProRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyriadProRegular.ttf; sourceTree = "<group>"; };
 		83EBB4021C6220ED007E3722 /* PartyMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PartyMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83EBB4061C6220ED007E3722 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		83EBB4081C6220ED007E3722 /* SUNAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SUNAppDelegate.h; sourceTree = "<group>"; };
@@ -115,6 +117,8 @@
 		83EBB4041C6220ED007E3722 /* PartyMaker */ = {
 			isa = PBXGroup;
 			children = (
+				835BBF211C68E76300AE844B /* MyriadProBold.ttf */,
+				835BBF221C68E76300AE844B /* MyriadProRegular.ttf */,
 				835BBF1D1C68E5F300AE844B /* MyriadProBold.ttf */,
 				835BBF1E1C68E5F300AE844B /* MyriadProRegular.ttf */,
 				83EBB4081C6220ED007E3722 /* SUNAppDelegate.h */,
