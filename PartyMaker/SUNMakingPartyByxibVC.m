@@ -12,6 +12,7 @@
 
 @property (nonatomic, weak) UIView* shiningDot;
 @property (nonatomic, weak) IBOutlet UIButton *btnDateChoosing;
+@property (nonatomic, weak) IBOutlet UITextField *textField;
 
 @end
 

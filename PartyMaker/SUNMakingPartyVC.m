@@ -8,19 +8,23 @@
 
 #import "SUNMakingPartyVC.h"
 #import "SUNMakingPartyByxibVC.h"
+#import "SUNSaver.h"
 
 @interface SUNMakingPartyVC() <UITextViewDelegate, UITextFieldDelegate>
 
+@property int doneWasPressed;
+
 @property (nonatomic) UIView *shiningDot;
 @property (nonatomic) UIButton *dateButton;
+@property (nonatomic) NSString *dateIsChosen;
 @property (nonatomic) UITextField *textField;
+@property (nonatomic) UISlider *sliderTop;
+@property (nonatomic) UISlider *sliderBot;
 @property (nonatomic) UIPageControl *pageControl;
 @property (nonatomic) UIScrollView *scrollView;
 @property (nonatomic) UITextView *textView;
 @property (nonatomic) NSString *previousText;
-
-@property int doneWasPressed;
-
+@property (nonatomic) NSMutableArray *storedInfo;
 
 @end
 
@@ -63,6 +67,7 @@
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 
 #pragma mark- Working with PartyMakerView
 
@@ -317,7 +322,7 @@
                     
                     UIButton *button= (UIButton*)viewButton;
                     [button setTitle:prettyDate forState:UIControlStateNormal];
-//                    self.dateChosen= prettyDate;
+                    self.dateIsChosen= prettyDate;
                     button.enabled= YES;
                     self.doneWasPressed= 1;
                     break;
@@ -396,7 +401,7 @@
     textField.layer.cornerRadius= 3.f;
     textField.placeholder = @"Your Party Name";
     [textField setTextAlignment: NSTextAlignmentCenter ];
-    NSAttributedString *str = [[NSAttributedString alloc] initWithString:@"Some Text" attributes:@{ NSForegroundColorAttributeName : [[UIColor alloc] initWithRed:76/255.f green:82/255.f blue:92/255.f alpha:1.f] }];
+    NSAttributedString *str = [[NSAttributedString alloc] initWithString:@"Your Party Name" attributes:@{ NSForegroundColorAttributeName : [[UIColor alloc] initWithRed:76/255.f green:82/255.f blue:92/255.f alpha:1.f] }];
     textField.attributedPlaceholder = str;
     
     textField.textColor = [UIColor lightGrayColor];
@@ -465,13 +470,19 @@
     imageViewFT.frame= (CGRect){121.f,173.5f,47.f, 26.f};
     UILabel *labelForIVFT= [[UILabel alloc] initWithFrame:(CGRect){5.f, 8.f, 40.f, 10.f}];
     
-    int value= (int)(slider.value*1439);
+    int value= (slider.value*1439);
     int hours= 0;
-    for(hours; value>= 60; hours++){
-        value-= 60;
+    
+    while (value >= 60) {
+        hours++;
+        value -= 60;
     }
+    
+//    for(hours; value>= 60; hours++){
+//        value-= 60;
+//    }
     int minutes= value;
-    NSMutableString *labelText= [[NSMutableString alloc] initWithFormat:@"%02i-%02i",hours, minutes];
+    NSMutableString *labelText= [[NSMutableString alloc] initWithFormat:@"%02i:%02i",hours, minutes];
     [labelForIVFT setText:labelText ];
     [labelForIVFT setTextColor:[UIColor whiteColor]];
     labelForIVFT.font = [UIFont fontWithName:@"MyriadPro-Regular" size:12];
@@ -481,6 +492,7 @@
     [self.view addSubview:imageViewFT];
     
     [self.view addSubview:slider];
+    self.sliderTop = slider;
 }
 
 
@@ -536,9 +548,14 @@
                                 
                                 int value= (int)(sliderBot.value*1439);
                                 int hours= 0;
-                                for( hours; value>=60 ; hours++){
-                                    value-= 60;
+
+                                while ( value >= 60) {
+                                    value -= 60;
+                                    hours++;
                                 }
+//                                for( hours; value>=60 ; hours++){
+//                                    value-= 60;
+//                                }
                                 int minutes= (int)(value);
                                 if(slider.value*1439>= (sliderBot.value*1439-30)){
                                     sliderBot.value= ((float)(slider.value*1439+30))/1439;
@@ -548,15 +565,20 @@
                                 
                                 
                                 value= (int)(slider.value*1439);
+//                                self.valueOfStartWithoutMultiply1439 = slider.value;
+                                
                                 hours= 0;
-                                for( hours; value>=60 ; hours++){
-                                    value-= 60;
+                                while ( value >= 60) {
+                                    value -= 60;
+                                    hours++;
                                 }
+                                //                                for( hours; value>=60 ; hours++){
+                                //                                    value-= 60;
+                                //                                }
                                 minutes= (int)(value);
                                 NSMutableString *valueFormatStr= [[NSMutableString alloc] init];
                                 [valueFormatStr appendFormat:@"%02i:%02i",hours, minutes];
                                 [sliderLabel setText:valueFormatStr];
-            
                                 
                             }
                     }
@@ -594,11 +616,15 @@
     
     int value= (int)(sliderBot.value*1439);
     int hours= 0;
-    for(hours; value>= 60; hours++){
-        value-= 60;
+    while ( value >= 60) {
+        value -= 60;
+        hours++;
     }
+    //                                for( hours; value>=60 ; hours++){
+    //                                    value-= 60;
+    //                                }
     int minutes= value;
-    NSMutableString *labelText= [[NSMutableString alloc] initWithFormat:@"%02i-%02i",hours, minutes];
+    NSMutableString *labelText= [[NSMutableString alloc] initWithFormat:@"%02i:%02i",hours, minutes];
     
     [labelForIVFT setText:labelText ];
     [labelForIVFT setTextColor:[UIColor whiteColor]];
@@ -608,6 +634,8 @@
     
     [self.view addSubview:imageViewFT];
     [self.view addSubview:sliderBot];
+    
+    self.sliderBot = sliderBot;
 }
 
 
@@ -658,9 +686,13 @@
                                     UILabel *labelBot= (UILabel*)searchingLabel;
                                     int value= (int)(slider.value*1439);
                                     int hours= 0;
-                                    for( hours; value>=60 ; hours++){
-                                        value-= 60;
+                                    while ( value >= 60) {
+                                        value -= 60;
+                                        hours++;
                                     }
+                                    //                                for( hours; value>=60 ; hours++){
+                                    //                                    value-= 60;
+                                    //                                }
                                     int minutes= (int)(value);
                                     if(slider.value*1439>= (sliderBot.value*1439-30)){
                                         slider.value= ((float)(sliderBot.value*1439-30))/1439;
@@ -670,10 +702,15 @@
                                     
                                     
                                     value= (int)(sliderBot.value*1439);
+//                                    self.valueOfEndWithoutMultiply1439 = sliderBot.value;
                                     hours= 0;
-                                    for( hours; value>=60 ; hours++){
-                                        value-= 60;
+                                    while ( value >= 60) {
+                                        value -= 60;
+                                        hours++;
                                     }
+                                    //                                for( hours; value>=60 ; hours++){
+                                    //                                    value-= 60;
+                                    //                                }
                                     minutes= (int)(value);
                                     labelBot.text= [[NSMutableString alloc]
                                                             initWithFormat:@"%02i:%02i",hours, minutes];
@@ -732,6 +769,7 @@
     
     [self.view addSubview:scrollView];
     [self.view addSubview:pageControl];
+    
     
 }
 
@@ -845,6 +883,8 @@
     }];
 }
 
+
+
 #pragma mark- SaveButton
 
 -(void)addSaveButton{
@@ -897,7 +937,105 @@
         
     }else{
         
-        [self.navigationController popToRootViewControllerAnimated:YES];
+      SUNSaver *party = [[SUNSaver alloc]  initWithName:self.textField.text  date:self.dateIsChosen
+    sliderTop: self.sliderTop    sliderBot: self.sliderBot
+    description: self.textView.text    pageControl:self.pageControl];
+        
+    [party save];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+        
+//        //Начало работы с плистом
+//        
+//        NSFileManager *fileManager = [NSFileManager defaultManager];
+//        
+//        NSURL *bundleURL = [[NSBundle mainBundle] bundleURL];
+//        NSURL *myLogsURL = [NSURL URLWithString:@"Application/58542917-CDEC-4C8A-B46F-8B81E6DF22BE/PartyMaker.app/myLogs.plist"];
+//        
+//        NSError *error = nil;
+//        NSArray *contents = [fileManager contentsOfDirectoryAtURL:bundleURL includingPropertiesForKeys:@[] options:NSDirectoryEnumerationSkipsHiddenFiles error:&error];
+//        
+//        if(error){
+//            NSLog(@"%s NSFileManager error: %@", __PRETTY_FUNCTION__, error);
+//        }
+//        
+//        
+//        NSLog(@"All nonhiden content of bundle \n%@", contents);
+//        
+//        //URL для моего плиста в бандле
+//        NSURL *myLogsURL = [NSURL URLWithString:@"Application/58542917-CDEC-4C8A-B46F-8B81E6DF22BE/PartyMaker.app/myLogs.plist"];
+//        
+//        NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)  firstObject];
+//        
+//        //URL для моего плиста в документах
+//        NSString *filePath = [documentsPath stringByAppendingString:@"myLogs.plist"];
+//        
+//        BOOL fileExists = [fileManager fileExistsAtPath:filePath];
+//        
+//        NSLog(@"File myLogs.plist exists or no: %d", fileExists);
+//        
+////        NSFileManager *fileManager = [NSFileManager defaultManager];
+////        NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+////        if ( fileExists == YES ) {
+////            <#statements#>
+////        }
+//        
+////        Path для моего плиста в документах в папке логи
+//        NSString *logsPath = [documentsPath stringByAppendingPathComponent:@"logs"];
+//        
+//        //Если нет такой папки для логов, создаем ее
+//        if (![fileManager fileExistsAtPath:logsPath]) {
+//            NSError *error = nil;
+//            [fileManager createDirectoryAtPath:logsPath withIntermediateDirectories:NO attributes:nil error:&error];
+//            if ( error ) {
+//                NSLog(@"%s NSFileManager error: %@", __PRETTY_FUNCTION__, error);
+//            }
+//        }
+//        
+//        NSLog(@"fileExistsAtPath - %d", [fileManager fileExistsAtPath:logsPath]);
+//
+//        
+//        //Путь к моему файлу логов
+//        NSString *logsFilePath = [logsPath stringByAppendingString:@"myLogs.plist"];
+//
+//        
+//        
+//        //создаем новый плист в документах в логе
+//        if (![fileManager fileExistsAtPath: logsFilePath]) {
+//    
+//            [fileManager createFileAtPath:logsFilePath contents:[NSData data] attributes:nil];
+//            BOOL isDirectory;
+//            NSLog(@"File exists: %d isDirectory:%d", [fileManager fileExistsAtPath:logsFilePath
+//                                                                       isDirectory:&isDirectory], isDirectory);
+//
+//            NSError *error = nil;
+//            
+//            if ( error ) {
+//                
+//                NSLog(@"%s NSFileManager error: %@", __PRETTY_FUNCTION__, error);
+//                
+//            }
+//            
+//        }
+////        NSString *logsFilePath = [documentsPath stringByAppendingPathComponent:@"logs.txt"];
+//        
+//        
+//        
+//        NSData *storingData = [NSKeyedArchiver archivedDataWithRootObject:self];
+//        //need to save storingData to plistDictionary
+//        
+//        
+//        //read plist from disk logsPathFile is empty, needs to store info in custom splist first
+//        //https://habrahabr.ru/post/158727/
+//        
+//        NSDictionary *plistDictionary = [NSKeyedUnarchiver unarchiveObjectWithData: storingData];
+//        
+//        BOOL writtenSuccessfully = [plistDictionary writeToFile:logsFilePath atomically:YES];
+//        
+//        NSLog(@"writtenSuccessfully - %d", writtenSuccessfully);
+////        Uncomment bottom line to make popToRootVC
+////        [self.navigationController popToRootViewControllerAnimated:YES];
+//        
+//        //Конец работы с плистом
         
     }
     
@@ -922,6 +1060,7 @@
     [UIView animateWithDuration:0.2f animations:^(void){
         self.shiningDot.center= (CGPoint){15.f, 541.5f};
     }];
+    
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

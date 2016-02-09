@@ -46,6 +46,7 @@
     [myNavigator.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     
     [self presentViewController:myNavigator animated:NO completion:nil];
+//    self presentViewController:<#(nonnull UIViewController *)#> animated:<#(BOOL)#> completion:<#^(void)completion#>
     
 
 }
