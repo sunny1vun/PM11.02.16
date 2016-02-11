@@ -930,13 +930,15 @@
         
     }else{
         
-      SUNSaver *party = [[SUNSaver alloc]  initWithName:self.textField.text  date:self.dateIsChosen
-    sliderTop: self.sliderTop    sliderBot: self.sliderBot
-    description: self.textView.text    pageControl:self.pageControl];
+        SUNSaver *party = [[SUNSaver alloc]  initWithName:self.textField.text  date:self.dateIsChosen
+                                                sliderTop: self.sliderTop    sliderBot: self.sliderBot
+                                              description: self.textView.text    pageControl:self.pageControl];
         
-    [party save];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-         }
+        [party readFromPlist];
+        [party saveToPlist];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        
+    }
     
 }
 

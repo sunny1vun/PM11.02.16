@@ -113,6 +113,8 @@
 		83D64D4B1C6CCF43000F6321 /* SUNUnusedVC */ = {
 			isa = PBXGroup;
 			children = (
+				83EBB4381C622DA5007E3722 /* SUNMakingPartyVC.h */,
+				83EBB4391C622DA5007E3722 /* SUNMakingPartyVC.m */,
 				83EBB40B1C6220ED007E3722 /* SUNViewController.h */,
 				83EBB40C1C6220ED007E3722 /* SUNViewController.m */,
 			);
@@ -149,14 +151,12 @@
 				83EBB4081C6220ED007E3722 /* SUNAppDelegate.h */,
 				83EBB4091C6220ED007E3722 /* SUNAppDelegate.m */,
 				83D64D4B1C6CCF43000F6321 /* SUNUnusedVC */,
-				83EBB4381C622DA5007E3722 /* SUNMakingPartyVC.h */,
-				83EBB4391C622DA5007E3722 /* SUNMakingPartyVC.m */,
-				835BBF311C69E6AC00AE844B /* SUNSaver.h */,
-				835BBF321C69E6AC00AE844B /* SUNSaver.m */,
 				835BBF161C68B8E600AE844B /* SUNMakingPartyByxibVC.h */,
 				835BBF171C68B8E600AE844B /* SUNMakingPartyByxibVC.m */,
-				83EBB40E1C6220ED007E3722 /* Main.storyboard */,
+				835BBF311C69E6AC00AE844B /* SUNSaver.h */,
+				835BBF321C69E6AC00AE844B /* SUNSaver.m */,
 				83D64D201C6BBB9E000F6321 /* SUNUniversalView */,
+				83EBB40E1C6220ED007E3722 /* Main.storyboard */,
 				83EBB4131C6220ED007E3722 /* LaunchScreen.storyboard */,
 				835BBF2F1C69295B00AE844B /* myLogs.plist */,
 				83EBB4161C6220ED007E3722 /* Info.plist */,
@@ -470,7 +470,6 @@
 		83EBB4301C6220ED007E3722 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = PartyMaker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -483,7 +482,6 @@
 		83EBB4311C6220ED007E3722 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = PartyMaker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

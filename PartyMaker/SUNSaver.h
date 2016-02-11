@@ -11,9 +11,14 @@
 
 @interface SUNSaver : NSObject <NSCoding>
 
+//@property (nonatomic, strong) NSData 
+
 -(instancetype) initWithName:(NSString *)name   date:(NSString *)date
                    sliderTop: (UISlider *)sliderTop     sliderBot:(UISlider *)sliderBot
                  description:(NSString *)description    pageControl:(UIPageControl *)pageControl;
--(void)save;
+
+-(NSMutableArray *)readFromPlist;
+-(BOOL)saveToPlist;
+
 
 @end

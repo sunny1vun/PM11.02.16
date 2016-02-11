@@ -501,9 +501,11 @@
         
         __block __weak SUNMakingPartyByxibVC *weakSelf= self;
         [UIView animateWithDuration:duration animations:^(void){
+            
             CGRect viewFrame = weakSelf.view.frame;
-            viewFrame.origin.y-= keyboardRect.size.height;
+            viewFrame.origin.y -= keyboardRect.size.height - 64;
             weakSelf.view.frame= viewFrame;
+            
         }];
         
     }else {
@@ -517,9 +519,11 @@
     
     __block __weak SUNMakingPartyByxibVC *weakSelf= self;
     [UIView animateWithDuration:duration animations:^(void){
+        
         CGRect viewFrame = weakSelf.view.frame;
-        viewFrame.origin.y= 0;
+        viewFrame.origin.y= 0+ 64;
         weakSelf.view.frame= viewFrame;
+        
     }];
     
 }
@@ -563,8 +567,8 @@
         SUNSaver *party = [[SUNSaver alloc]  initWithName:self.textField.text  date:self.dateIsChosen
                                                 sliderTop: self.sliderTop    sliderBot: self.sliderBot
                                               description: self.textView.text    pageControl:self.pageControl];
-        
-        [party save];
+        [party readFromPlist];
+        [party saveToPlist];
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
     
