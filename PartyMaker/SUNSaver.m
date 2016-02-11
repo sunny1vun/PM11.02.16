@@ -29,6 +29,7 @@
     NSString *partiesFilePathInBundle = [[[NSBundle mainBundle]resourcePath] stringByAppendingString:@"/myLogs.plist"];
     
     if(![filemanager fileExistsAtPath: partiesFilePath]){
+        
         [filemanager createFileAtPath:partiesFilePath contents:[[NSData alloc] init] attributes:nil];
         NSError *error;
         [filemanager copyItemAtPath:partiesFilePathInBundle toPath:partiesFilePath error:&error];

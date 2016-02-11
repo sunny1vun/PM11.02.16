@@ -30,12 +30,6 @@
 
 @implementation SUNMakingPartyVC
 
-//-(void)viewDidLoad:(BOOL)animated{
-////    [super viewDidLoad:animated];
-//    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-//}
 
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -50,11 +44,8 @@
     
     if (([self.navigationController.viewControllers count]> 1)== YES) {
         [self.view setBackgroundColor: [[UIColor alloc] initWithRed:46/255.f green:49/255.f blue:56/255.f alpha:1.f]];
-        //        self.title= [NSString stringWithFormat:@"Some %i", (int)[self.navigationController.viewControllers count]];
         self.title= @"CREATE PARTY";
         
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 
     }
     
@@ -101,13 +92,15 @@
     [partyMakerVC addCancelButton];
     
     [partyMakerVC addHidenViews];
+
     
-    [self.navigationController pushViewController:partyMakerVC animated:YES];
+//  For usage HomeTask of lecture 8 comment next 3 lines, uncomment \/
+//    [self.navigationController pushViewController:partyMakerVC animated:YES];
     
     //for HomeTask of lecture 9
-    //    SUNMakingPartyByxibVC *myVC = [[SUNMakingPartyByxibVC alloc] initWithNibName:@"SUNMakingPartyByxibVC" bundle:nil];
-    //
-    //    [self.navigationController pushViewController:myVC animated:YES];
+    SUNMakingPartyByxibVC *myVC = [[SUNMakingPartyByxibVC alloc] initWithNibName:@"SUNMakingPartyByxibVC" bundle:nil];
+    
+    [self.navigationController pushViewController:myVC animated:YES];
 
 }
 
@@ -139,7 +132,7 @@
         [self.view addSubview: round];
         [self.view addSubview: labelOfRound];
     }else if ([forLabel isEqualToString:@"START"]) {
-        UIView *round= [[UIView alloc] initWithFrame:CGRectMake(10.f, 180.5f, 10.f, 10.f)];
+            UIView *round= [[UIView alloc] initWithFrame:CGRectMake(10.f, 180.5f, 10.f, 10.f)];
         round.backgroundColor = [[UIColor alloc] initWithRed:230/255.f green:224/255.f blue:213/255.f alpha:1.f];
         round.layer.cornerRadius= 5.f;
         
@@ -943,101 +936,7 @@
         
     [party save];
     [self.navigationController popToRootViewControllerAnimated:YES];
-        
-//        //Начало работы с плистом
-//        
-//        NSFileManager *fileManager = [NSFileManager defaultManager];
-//        
-//        NSURL *bundleURL = [[NSBundle mainBundle] bundleURL];
-//        NSURL *myLogsURL = [NSURL URLWithString:@"Application/58542917-CDEC-4C8A-B46F-8B81E6DF22BE/PartyMaker.app/myLogs.plist"];
-//        
-//        NSError *error = nil;
-//        NSArray *contents = [fileManager contentsOfDirectoryAtURL:bundleURL includingPropertiesForKeys:@[] options:NSDirectoryEnumerationSkipsHiddenFiles error:&error];
-//        
-//        if(error){
-//            NSLog(@"%s NSFileManager error: %@", __PRETTY_FUNCTION__, error);
-//        }
-//        
-//        
-//        NSLog(@"All nonhiden content of bundle \n%@", contents);
-//        
-//        //URL для моего плиста в бандле
-//        NSURL *myLogsURL = [NSURL URLWithString:@"Application/58542917-CDEC-4C8A-B46F-8B81E6DF22BE/PartyMaker.app/myLogs.plist"];
-//        
-//        NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)  firstObject];
-//        
-//        //URL для моего плиста в документах
-//        NSString *filePath = [documentsPath stringByAppendingString:@"myLogs.plist"];
-//        
-//        BOOL fileExists = [fileManager fileExistsAtPath:filePath];
-//        
-//        NSLog(@"File myLogs.plist exists or no: %d", fileExists);
-//        
-////        NSFileManager *fileManager = [NSFileManager defaultManager];
-////        NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-////        if ( fileExists == YES ) {
-////            <#statements#>
-////        }
-//        
-////        Path для моего плиста в документах в папке логи
-//        NSString *logsPath = [documentsPath stringByAppendingPathComponent:@"logs"];
-//        
-//        //Если нет такой папки для логов, создаем ее
-//        if (![fileManager fileExistsAtPath:logsPath]) {
-//            NSError *error = nil;
-//            [fileManager createDirectoryAtPath:logsPath withIntermediateDirectories:NO attributes:nil error:&error];
-//            if ( error ) {
-//                NSLog(@"%s NSFileManager error: %@", __PRETTY_FUNCTION__, error);
-//            }
-//        }
-//        
-//        NSLog(@"fileExistsAtPath - %d", [fileManager fileExistsAtPath:logsPath]);
-//
-//        
-//        //Путь к моему файлу логов
-//        NSString *logsFilePath = [logsPath stringByAppendingString:@"myLogs.plist"];
-//
-//        
-//        
-//        //создаем новый плист в документах в логе
-//        if (![fileManager fileExistsAtPath: logsFilePath]) {
-//    
-//            [fileManager createFileAtPath:logsFilePath contents:[NSData data] attributes:nil];
-//            BOOL isDirectory;
-//            NSLog(@"File exists: %d isDirectory:%d", [fileManager fileExistsAtPath:logsFilePath
-//                                                                       isDirectory:&isDirectory], isDirectory);
-//
-//            NSError *error = nil;
-//            
-//            if ( error ) {
-//                
-//                NSLog(@"%s NSFileManager error: %@", __PRETTY_FUNCTION__, error);
-//                
-//            }
-//            
-//        }
-////        NSString *logsFilePath = [documentsPath stringByAppendingPathComponent:@"logs.txt"];
-//        
-//        
-//        
-//        NSData *storingData = [NSKeyedArchiver archivedDataWithRootObject:self];
-//        //need to save storingData to plistDictionary
-//        
-//        
-//        //read plist from disk logsPathFile is empty, needs to store info in custom splist first
-//        //https://habrahabr.ru/post/158727/
-//        
-//        NSDictionary *plistDictionary = [NSKeyedUnarchiver unarchiveObjectWithData: storingData];
-//        
-//        BOOL writtenSuccessfully = [plistDictionary writeToFile:logsFilePath atomically:YES];
-//        
-//        NSLog(@"writtenSuccessfully - %d", writtenSuccessfully);
-////        Uncomment bottom line to make popToRootVC
-////        [self.navigationController popToRootViewControllerAnimated:YES];
-//        
-//        //Конец работы с плистом
-        
-    }
+         }
     
 }
 

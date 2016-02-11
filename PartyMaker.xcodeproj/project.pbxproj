@@ -8,17 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		835BBF191C68B8E600AE844B /* SUNMakingPartyByxibVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 835BBF171C68B8E600AE844B /* SUNMakingPartyByxibVC.m */; };
-		835BBF1A1C68B8E600AE844B /* SUNMakingPartyByxibVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 835BBF181C68B8E600AE844B /* SUNMakingPartyByxibVC.xib */; };
 		835BBF251C68E83100AE844B /* MyriadProBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 835BBF231C68E83100AE844B /* MyriadProBold.ttf */; };
 		835BBF261C68E83100AE844B /* MyriadProRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 835BBF241C68E83100AE844B /* MyriadProRegular.ttf */; };
 		835BBF2C1C68EBBE00AE844B /* AssetDataBase.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 835BBF2B1C68EBBE00AE844B /* AssetDataBase.xcassets */; };
 		835BBF301C69295B00AE844B /* myLogs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 835BBF2F1C69295B00AE844B /* myLogs.plist */; };
 		835BBF331C69E6AC00AE844B /* SUNSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = 835BBF321C69E6AC00AE844B /* SUNSaver.m */; };
+		83D64D1D1C6BBB5F000F6321 /* SUNUniversalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D64D1C1C6BBB5F000F6321 /* SUNUniversalView.m */; };
+		83D64D1F1C6BBB8F000F6321 /* SUNUniversalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D64D1E1C6BBB8F000F6321 /* SUNUniversalView.xib */; };
+		83DA9A941C6A7D6900AF9570 /* Asset Catalog.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83DA9A931C6A7D6900AF9570 /* Asset Catalog.xcassets */; };
 		83EBB4071C6220ED007E3722 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EBB4061C6220ED007E3722 /* main.m */; };
 		83EBB40A1C6220ED007E3722 /* SUNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EBB4091C6220ED007E3722 /* SUNAppDelegate.m */; };
 		83EBB40D1C6220ED007E3722 /* SUNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EBB40C1C6220ED007E3722 /* SUNViewController.m */; };
 		83EBB4101C6220ED007E3722 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83EBB40E1C6220ED007E3722 /* Main.storyboard */; };
-		83EBB4121C6220ED007E3722 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83EBB4111C6220ED007E3722 /* Assets.xcassets */; };
 		83EBB4151C6220ED007E3722 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83EBB4131C6220ED007E3722 /* LaunchScreen.storyboard */; };
 		83EBB4201C6220ED007E3722 /* PartyMakerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EBB41F1C6220ED007E3722 /* PartyMakerTests.m */; };
 		83EBB42B1C6220ED007E3722 /* PartyMakerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EBB42A1C6220ED007E3722 /* PartyMakerUITests.m */; };
@@ -45,13 +46,16 @@
 /* Begin PBXFileReference section */
 		835BBF161C68B8E600AE844B /* SUNMakingPartyByxibVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUNMakingPartyByxibVC.h; sourceTree = "<group>"; };
 		835BBF171C68B8E600AE844B /* SUNMakingPartyByxibVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUNMakingPartyByxibVC.m; sourceTree = "<group>"; };
-		835BBF181C68B8E600AE844B /* SUNMakingPartyByxibVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SUNMakingPartyByxibVC.xib; sourceTree = "<group>"; };
 		835BBF231C68E83100AE844B /* MyriadProBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyriadProBold.ttf; sourceTree = "<group>"; };
 		835BBF241C68E83100AE844B /* MyriadProRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyriadProRegular.ttf; sourceTree = "<group>"; };
 		835BBF2B1C68EBBE00AE844B /* AssetDataBase.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AssetDataBase.xcassets; sourceTree = "<group>"; };
 		835BBF2F1C69295B00AE844B /* myLogs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = myLogs.plist; sourceTree = "<group>"; };
 		835BBF311C69E6AC00AE844B /* SUNSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUNSaver.h; sourceTree = "<group>"; };
 		835BBF321C69E6AC00AE844B /* SUNSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUNSaver.m; sourceTree = "<group>"; };
+		83D64D1B1C6BBB5F000F6321 /* SUNUniversalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUNUniversalView.h; sourceTree = "<group>"; };
+		83D64D1C1C6BBB5F000F6321 /* SUNUniversalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUNUniversalView.m; sourceTree = "<group>"; };
+		83D64D1E1C6BBB8F000F6321 /* SUNUniversalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SUNUniversalView.xib; sourceTree = "<group>"; };
+		83DA9A931C6A7D6900AF9570 /* Asset Catalog.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Asset Catalog.xcassets"; path = "../Asset Catalog.xcassets"; sourceTree = "<group>"; };
 		83EBB4021C6220ED007E3722 /* PartyMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PartyMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83EBB4061C6220ED007E3722 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		83EBB4081C6220ED007E3722 /* SUNAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SUNAppDelegate.h; sourceTree = "<group>"; };
@@ -59,7 +63,6 @@
 		83EBB40B1C6220ED007E3722 /* SUNViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SUNViewController.h; sourceTree = "<group>"; };
 		83EBB40C1C6220ED007E3722 /* SUNViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SUNViewController.m; sourceTree = "<group>"; };
 		83EBB40F1C6220ED007E3722 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		83EBB4111C6220ED007E3722 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83EBB4141C6220ED007E3722 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		83EBB4161C6220ED007E3722 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83EBB41B1C6220ED007E3722 /* PartyMakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PartyMakerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +100,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		83D64D201C6BBB9E000F6321 /* SUNUniversalView */ = {
+			isa = PBXGroup;
+			children = (
+				83D64D1B1C6BBB5F000F6321 /* SUNUniversalView.h */,
+				83D64D1C1C6BBB5F000F6321 /* SUNUniversalView.m */,
+				83D64D1E1C6BBB8F000F6321 /* SUNUniversalView.xib */,
+			);
+			name = SUNUniversalView;
+			sourceTree = "<group>";
+		};
 		83EBB3F91C6220ED007E3722 = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				835BBF2B1C68EBBE00AE844B /* AssetDataBase.xcassets */,
+				83DA9A931C6A7D6900AF9570 /* Asset Catalog.xcassets */,
 				835BBF231C68E83100AE844B /* MyriadProBold.ttf */,
 				835BBF241C68E83100AE844B /* MyriadProRegular.ttf */,
 				83EBB4081C6220ED007E3722 /* SUNAppDelegate.h */,
@@ -133,12 +147,11 @@
 				835BBF321C69E6AC00AE844B /* SUNSaver.m */,
 				835BBF161C68B8E600AE844B /* SUNMakingPartyByxibVC.h */,
 				835BBF171C68B8E600AE844B /* SUNMakingPartyByxibVC.m */,
-				835BBF181C68B8E600AE844B /* SUNMakingPartyByxibVC.xib */,
 				83EBB40E1C6220ED007E3722 /* Main.storyboard */,
-				83EBB4111C6220ED007E3722 /* Assets.xcassets */,
+				83D64D201C6BBB9E000F6321 /* SUNUniversalView */,
 				83EBB4131C6220ED007E3722 /* LaunchScreen.storyboard */,
-				83EBB4161C6220ED007E3722 /* Info.plist */,
 				835BBF2F1C69295B00AE844B /* myLogs.plist */,
+				83EBB4161C6220ED007E3722 /* Info.plist */,
 				83EBB4051C6220ED007E3722 /* Supporting Files */,
 			);
 			path = PartyMaker;
@@ -275,12 +288,12 @@
 			files = (
 				83EBB4151C6220ED007E3722 /* LaunchScreen.storyboard in Resources */,
 				835BBF301C69295B00AE844B /* myLogs.plist in Resources */,
-				83EBB4121C6220ED007E3722 /* Assets.xcassets in Resources */,
+				83DA9A941C6A7D6900AF9570 /* Asset Catalog.xcassets in Resources */,
 				835BBF261C68E83100AE844B /* MyriadProRegular.ttf in Resources */,
 				83EBB4101C6220ED007E3722 /* Main.storyboard in Resources */,
-				835BBF1A1C68B8E600AE844B /* SUNMakingPartyByxibVC.xib in Resources */,
 				835BBF251C68E83100AE844B /* MyriadProBold.ttf in Resources */,
 				835BBF2C1C68EBBE00AE844B /* AssetDataBase.xcassets in Resources */,
+				83D64D1F1C6BBB8F000F6321 /* SUNUniversalView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83D64D1D1C6BBB5F000F6321 /* SUNUniversalView.m in Sources */,
 				835BBF331C69E6AC00AE844B /* SUNSaver.m in Sources */,
 				83EBB40D1C6220ED007E3722 /* SUNViewController.m in Sources */,
 				83EBB40A1C6220ED007E3722 /* SUNAppDelegate.m in Sources */,
