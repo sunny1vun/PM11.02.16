@@ -21,12 +21,6 @@
 @property (nonatomic, weak) IBOutlet UISlider *sliderTop;
 @property (nonatomic, weak) IBOutlet UISlider *sliderBot;
 @property (nonatomic, weak) IBOutlet UIPageControl *pageControl;
-//@property (nonatomic, weak) IBOutlet UIImageView *imageView1;
-//@property (nonatomic, weak) IBOutlet UIImageView *imageView2;
-//@property (nonatomic, weak) IBOutlet UIImageView *imageView3;
-//@property (nonatomic, weak) IBOutlet UIImageView *imageView4;
-//@property (nonatomic, weak) IBOutlet UIImageView *imageView5;
-//@property (nonatomic, weak) IBOutlet UIImageView *imageView6;
 @property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, weak) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnCancel;
@@ -141,39 +135,35 @@
     self.dot6.center = (CGPoint){self.dot1.center.x , self.textView.center.y};
     self.dot7.center = (CGPoint){self.dot1.center.x , self.btnLocation.center.y};
     
-
     self.line.center = (CGPoint){self.dot1.center.x , self.line.center.y};
 
-
-
-    
 }
 
 #pragma mark - btnChooseDate
 
--(void)onDateClicked:(UIControlEvents *)event{
-    
-    NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([SUNUniversalView class]) owner:nil options:nil];
-    
-    SUNUniversalView *pickerViewAndTools = nibContents[0];
-    pickerViewAndTools.delegate = self;
-    
-    
-    pickerViewAndTools.frame = (CGRect){0 , self.view.frame.size.height , self.view.frame.size.width , self.view.frame.size.height/2};
-    
-    [self.view addSubview:pickerViewAndTools];
-
-    [UIView animateWithDuration:0.3f delay:0.05f options:UIViewAnimationOptionCurveLinear animations:^(void){
-        
-        CGRect frameForDatePicker = self.pickerViewAndTools.frame;
-        frameForDatePicker.origin.y= self.view.frame.size.height/2;
-        self.pickerViewAndTools.frame= frameForDatePicker;
-        
-    }   completion:nil];
-    
-    self.btnDateChoosing.enabled = NO;
-    
-}
+//-(void)onDateClicked:(UIControlEvents *)event{
+//    
+//    NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([SUNUniversalView class]) owner:nil options:nil];
+//    
+//    SUNUniversalView *pickerViewAndTools = nibContents[0];
+//    pickerViewAndTools.delegate = self;
+//    
+//    
+//    pickerViewAndTools.frame = (CGRect){0 , self.view.frame.size.height , self.view.frame.size.width , self.view.frame.size.height/2};
+//    
+//    [self.view addSubview:pickerViewAndTools];
+//
+//    [UIView animateWithDuration:0.3f delay:0.05f options:UIViewAnimationOptionCurveLinear animations:^(void){
+//        
+//        CGRect frameForDatePicker = self.pickerViewAndTools.frame;
+//        frameForDatePicker.origin.y= self.view.frame.size.height/2;
+//        self.pickerViewAndTools.frame= frameForDatePicker;
+//        
+//    }   completion:nil];
+//    
+//    self.btnDateChoosing.enabled = NO;
+//    
+//}
 
 - (IBAction)dateBtnWasClicked:(id)sender {
     
