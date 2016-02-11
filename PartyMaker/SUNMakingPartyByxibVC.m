@@ -70,16 +70,17 @@
     
     [self.navigationController.navigationBar setTitleTextAttributes: @{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName: [UIFont fontWithName:@"MyriadPro-Bold" size: 15] }];
     
-    NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([SUNUniversalView class]) owner:nil options:nil];
-//    SUNUniversalView *pickerViewAndTools = [nibContents lastObject];
-    SUNUniversalView *pickerViewAndTools = nibContents[0];
-   pickerViewAndTools.delegate = self;
-
+//    NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([SUNUniversalView class]) owner:nil options:nil];
+////    SUNUniversalView *pickerViewAndTools = [nibContents lastObject];
+//    SUNUniversalView *pickerViewAndTools = nibContents[0];
+//   pickerViewAndTools.delegate = self;
+//
+//    
+//    pickerViewAndTools.frame = (CGRect){0 , self.view.frame.size.height , self.view.frame.size.width , self.view.frame.size.height/2};
+//    
+//    [self.view addSubview:pickerViewAndTools];
+//    self.pickerViewAndTools = (UIDatePicker*)pickerViewAndTools;
     
-    pickerViewAndTools.frame = (CGRect){0 , self.view.frame.size.height , self.view.frame.size.width , self.view.frame.size.height/2};
-    
-    [self.view addSubview:pickerViewAndTools];
-    self.pickerViewAndTools = (UIDatePicker*)pickerViewAndTools;
     self.shiningDot.center = (CGPoint)(self.dot1.center);
     self.shiningDot.layer.cornerRadius = 6.5f;
     
@@ -168,9 +169,20 @@
 - (IBAction)dateBtnWasClicked:(id)sender {
     
     NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([SUNUniversalView class]) owner:nil options:nil];
-    
+    //    SUNUniversalView *pickerViewAndTools = [nibContents lastObject];
     SUNUniversalView *pickerViewAndTools = nibContents[0];
     pickerViewAndTools.delegate = self;
+    
+
+    pickerViewAndTools.frame = (CGRect){0 , self.view.frame.size.height , self.view.frame.size.width , self.view.frame.size.height/2};
+    
+    [self.view addSubview:pickerViewAndTools];
+    self.pickerViewAndTools = (UIDatePicker*)pickerViewAndTools;
+    
+//    NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([SUNUniversalView class]) owner:nil options:nil];
+//    
+//    SUNUniversalView *pickerViewAndTools = nibContents[0];
+//    pickerViewAndTools.delegate = self;
     
     
     pickerViewAndTools.frame = (CGRect){0 , self.view.frame.size.height , self.view.frame.size.width , self.view.frame.size.height/2};
@@ -199,7 +211,10 @@
         frameForDatePicker.origin.y= self.view.frame.size.height;
         self.pickerViewAndTools.frame= frameForDatePicker;
         
-    }   completion:nil];
+    }   completion:^(BOOL finished){
+        [datePickerView removeFromSuperview];
+
+    }];
     
     self.btnDateChoosing.enabled = YES;
     
@@ -229,13 +244,18 @@
         
         CGRect frameForDatePicker = self.pickerViewAndTools.frame;
         frameForDatePicker.origin.y= self.view.frame.size.height;
-        self.pickerViewAndTools.frame= frameForDatePicker;
+        datePickerView.frame= frameForDatePicker;
         
-    }   completion:nil];
+    }   completion:^(BOOL finished){
+        [datePickerView removeFromSuperview];
+
+    }];
     
     self.btnDateChoosing.enabled = YES;
     self.doneWasPressed= 0;
     
+    
+
 }
 
 #pragma mark- textField

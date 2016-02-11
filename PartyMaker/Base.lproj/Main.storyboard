@@ -361,7 +361,7 @@
                     <tabBarItem key="tabBarItem" title="Settings" image="Settings.png" id="SpI-dZ-8tb"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qpj-Pt-NKr">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Qpj-Pt-NKr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.20392156859999999" green="0.21960784310000001" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -389,7 +389,7 @@
             <objects>
                 <viewController id="Evs-oL-BtD" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uvn-Db-YqU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.1803921568627451" green="0.19215686274509802" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
