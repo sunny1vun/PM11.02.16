@@ -110,6 +110,15 @@
 			name = SUNUniversalView;
 			sourceTree = "<group>";
 		};
+		83D64D4B1C6CCF43000F6321 /* SUNUnusedVC */ = {
+			isa = PBXGroup;
+			children = (
+				83EBB40B1C6220ED007E3722 /* SUNViewController.h */,
+				83EBB40C1C6220ED007E3722 /* SUNViewController.m */,
+			);
+			name = SUNUnusedVC;
+			sourceTree = "<group>";
+		};
 		83EBB3F91C6220ED007E3722 = {
 			isa = PBXGroup;
 			children = (
@@ -139,8 +148,7 @@
 				835BBF241C68E83100AE844B /* MyriadProRegular.ttf */,
 				83EBB4081C6220ED007E3722 /* SUNAppDelegate.h */,
 				83EBB4091C6220ED007E3722 /* SUNAppDelegate.m */,
-				83EBB40B1C6220ED007E3722 /* SUNViewController.h */,
-				83EBB40C1C6220ED007E3722 /* SUNViewController.m */,
+				83D64D4B1C6CCF43000F6321 /* SUNUnusedVC */,
 				83EBB4381C622DA5007E3722 /* SUNMakingPartyVC.h */,
 				83EBB4391C622DA5007E3722 /* SUNMakingPartyVC.m */,
 				835BBF311C69E6AC00AE844B /* SUNSaver.h */,
