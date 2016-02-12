@@ -38,7 +38,7 @@
         dataFromFile = [NSMutableArray arrayWithContentsOfFile:partiesFilePathInDocuments];
         
     }else {
-        NSLog(@"File is not exist at path: %@", partiesFilePathInDocuments);
+        //NSLog(@"File is not exist at path: %@", partiesFilePathInDocuments);
     }
 
     return dataFromFile;
@@ -53,7 +53,7 @@
     
     NSString *partiesFilePathInDocuments = [documentPath stringByAppendingPathComponent:@"logs/myLogs.plist"];
     NSString *partiesFilePathInBundle = [[[NSBundle mainBundle]resourcePath] stringByAppendingString:@"/myLogs.plist"];
-    NSLog(@"%@",partiesFilePathInDocuments);
+//    NSLog(@"%@",partiesFilePathInDocuments);
     NSMutableArray *dataFromFile = [[NSMutableArray alloc] init];
     
     if(![filemanager fileExistsAtPath: partiesFilePathInDocuments]){
