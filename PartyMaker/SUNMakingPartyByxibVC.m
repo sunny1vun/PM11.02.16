@@ -320,7 +320,7 @@
 
 -(void)addAttributeScrollViewPageControl{
     
-    for(CGFloat i = 0; i < self.pageControl.numberOfPages; i++){
+    /*for(CGFloat i = 0; i < self.pageControl.numberOfPages; i++){
         
         CGFloat x= i*self.scrollView.frame.size.width;
         UIImageView* imageView= [[UIImageView alloc] initWithFrame:(CGRect){x + 64, 22, 64, 62}];
@@ -330,7 +330,7 @@
         
     }
     
-    self.scrollView.contentSize = (CGSize){self.scrollView.frame.size.width * 6, self.scrollView.frame.size.height};
+    self.scrollView.contentSize = (CGSize){self.scrollView.frame.size.width * 6, self.scrollView.frame.size.height};*/
     
     [self.pageControl addTarget:self action:@selector(onPageChanged:) forControlEvents:UIControlEventValueChanged];
     self.scrollView.layer.cornerRadius = 2.f;
