@@ -15,7 +15,8 @@
 
 //clickable
 @property (nonatomic, weak) IBOutlet UIView* shiningDot;
-@property (nonatomic, weak) IBOutlet UIButton *btnDateChoosing;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *constraintShiningDot;
+@property (nonatomic, weak) IBOutlet UIButton *buttonDateChoosing;
 @property (nonatomic) NSString *dateIsChosen;
 @property (nonatomic, weak) IBOutlet UITextField *textField;
 @property (nonatomic, weak) IBOutlet UISlider *sliderTop;
@@ -23,18 +24,18 @@
 @property (nonatomic, weak) IBOutlet UIPageControl *pageControl;
 @property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, weak) IBOutlet UITextView *textView;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnCancel;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnSave;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonCancel;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonSave;
 @property (nonatomic) NSString *previousText;
 
 //noneditable
-@property (nonatomic, weak) IBOutlet UILabel *labelOfTS;
-@property (nonatomic, weak) IBOutlet UILabel *labelOfBS;
+@property (nonatomic, weak) IBOutlet UILabel *labelOfTopSlider;
+@property (nonatomic, weak) IBOutlet UILabel *labelOfBottomSlider;
 
 ////nonclickable
 @property (weak, nonatomic) IBOutlet UIView *line;
-@property (nonatomic, weak) IBOutlet UIImageView *imageViewTS;
-@property (nonatomic, weak) IBOutlet UIImageView *imageViewBS;
+@property (nonatomic, weak) IBOutlet UIImageView *imageViewTopSlider;
+@property (nonatomic, weak) IBOutlet UIImageView *imageViewBotSlider;
 @property (nonatomic, weak) IBOutlet UIView *dot1;
 @property (nonatomic, weak) IBOutlet UIView *dot2;
 @property (nonatomic, weak) IBOutlet UIView *dot3;
@@ -42,7 +43,7 @@
 @property (nonatomic, weak) IBOutlet UIView *dot5;
 @property (nonatomic, weak) IBOutlet UIView *dot6;
 @property (weak, nonatomic) IBOutlet UIView *dot7;
-@property (weak, nonatomic) IBOutlet UIButton *btnLocation;
+@property (weak, nonatomic) IBOutlet UIButton *buttonLocation;
 
 @property (nonatomic) UIDatePicker *pickerViewAndTools;
 @property BOOL doneWasPressed;
@@ -52,7 +53,7 @@
 @implementation SUNMakingPartyByxibVC
 
 - (void)viewDidLoad {
-    [super viewDidLoad]; 
+    [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -64,28 +65,19 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:NO];
     
+    [self.view layoutIfNeeded];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     
     
     [self.navigationController.navigationBar setTitleTextAttributes: @{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName: [UIFont fontWithName:@"MyriadPro-Bold" size: 15] }];
     
-//    NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([SUNUniversalView class]) owner:nil options:nil];
-////    SUNUniversalView *pickerViewAndTools = [nibContents lastObject];
-//    SUNUniversalView *pickerViewAndTools = nibContents[0];
-//   pickerViewAndTools.delegate = self;
-//
-//    
-//    pickerViewAndTools.frame = (CGRect){0 , self.view.frame.size.height , self.view.frame.size.width , self.view.frame.size.height/2};
-//    
-//    [self.view addSubview:pickerViewAndTools];
-//    self.pickerViewAndTools = (UIDatePicker*)pickerViewAndTools;
-    
     self.shiningDot.center = (CGPoint)(self.dot1.center);
     self.shiningDot.layer.cornerRadius = 6.5f;
     
-    self.btnDateChoosing.layer.cornerRadius =
-    self.btnLocation.layer.cornerRadius = 5.f;
+    self.buttonDateChoosing.layer.cornerRadius =
+    self.buttonLocation.layer.cornerRadius = 5.f;
     
     [self addAttributDotsAndLines];
     [self addAttributTextField];
@@ -112,8 +104,12 @@
 
 -(void)dotTo:(CGPoint)pointTo{
     
+    [self.constraintShiningDot setConstant:(pointTo.y - 34)];
+
     [UIView animateWithDuration:0.2f animations:^(void){
-        self.shiningDot.center= (CGPoint){self.dot1.center.x, pointTo.y};
+        
+        [self.view updateConstraints];
+        
     }];
     
 }
@@ -127,46 +123,12 @@
     self.dot5.layer.cornerRadius =
     self.dot6.layer.cornerRadius =
     self.dot7.layer.cornerRadius = 5.f;
-    
-    self.dot1.center = (CGPoint){self.dot1.center.x , self.btnDateChoosing.center.y};
-    self.dot2.center = (CGPoint){self.dot1.center.x , self.textField.center.y};
-    self.dot3.center = (CGPoint){self.dot1.center.x , self.sliderTop.center.y};
-    self.dot4.center = (CGPoint){self.dot1.center.x , self.sliderBot.center.y};
-    self.dot5.center = (CGPoint){self.dot1.center.x , self.scrollView.center.y};
-    self.dot6.center = (CGPoint){self.dot1.center.x , self.textView.center.y};
-    self.dot7.center = (CGPoint){self.dot1.center.x , self.btnLocation.center.y};
-    
-    self.line.center = (CGPoint){self.dot1.center.x , self.line.center.y};
 
 }
 
 #pragma mark - btnChooseDate
 
-//-(void)onDateClicked:(UIControlEvents *)event{
-//    
-//    NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([SUNUniversalView class]) owner:nil options:nil];
-//    
-//    SUNUniversalView *pickerViewAndTools = nibContents[0];
-//    pickerViewAndTools.delegate = self;
-//    
-//    
-//    pickerViewAndTools.frame = (CGRect){0 , self.view.frame.size.height , self.view.frame.size.width , self.view.frame.size.height/2};
-//    
-//    [self.view addSubview:pickerViewAndTools];
-//
-//    [UIView animateWithDuration:0.3f delay:0.05f options:UIViewAnimationOptionCurveLinear animations:^(void){
-//        
-//        CGRect frameForDatePicker = self.pickerViewAndTools.frame;
-//        frameForDatePicker.origin.y= self.view.frame.size.height/2;
-//        self.pickerViewAndTools.frame= frameForDatePicker;
-//        
-//    }   completion:nil];
-//    
-//    self.btnDateChoosing.enabled = NO;
-//    
-//}
-
-- (IBAction)dateBtnWasClicked:(id)sender {
+- (IBAction)dateButtonWasClicked:(id)sender {
     
     NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([SUNUniversalView class]) owner:nil options:nil];
     //    SUNUniversalView *pickerViewAndTools = [nibContents lastObject];
@@ -174,30 +136,27 @@
     pickerViewAndTools.delegate = self;
     
 
-    pickerViewAndTools.frame = (CGRect){0 , self.view.frame.size.height , self.view.frame.size.width , self.view.frame.size.height/2};
+    pickerViewAndTools.frame = (CGRect){0 , self.view.frame.size.height , self.view.frame.size.width , self.view.frame.size.height/2 + 66};
     
     [self.view addSubview:pickerViewAndTools];
     self.pickerViewAndTools = (UIDatePicker*)pickerViewAndTools;
     
-//    NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([SUNUniversalView class]) owner:nil options:nil];
-//    
-//    SUNUniversalView *pickerViewAndTools = nibContents[0];
-//    pickerViewAndTools.delegate = self;
     
+//    pickerViewAndTools.frame = (CGRect){0 , self.view.frame.size.height , self.view.frame.size.width , self.view.frame.size.height/2};
     
-    pickerViewAndTools.frame = (CGRect){0 , self.view.frame.size.height , self.view.frame.size.width , self.view.frame.size.height/2};
-    
-    [self.view addSubview:pickerViewAndTools];
+//    [self.view addSubview:pickerViewAndTools];
     
     [UIView animateWithDuration:0.3f delay:0.05f options:UIViewAnimationOptionCurveLinear animations:^(void){
         
         CGRect frameForDatePicker = self.pickerViewAndTools.frame;
-        frameForDatePicker.origin.y= self.view.frame.size.height/2;
-        self.pickerViewAndTools.frame= frameForDatePicker;
+        frameForDatePicker.origin.y = self.view.frame.size.height/2 ; //+66 magic number
+        self.pickerViewAndTools.frame = frameForDatePicker;
         
     }   completion:nil];
     
-    self.btnDateChoosing.enabled = NO;
+    self.buttonDateChoosing.enabled = NO;
+    
+    [self dotTo:self.dot1.center];
     
 }
 
@@ -216,7 +175,7 @@
 
     }];
     
-    self.btnDateChoosing.enabled = YES;
+    self.buttonDateChoosing.enabled = YES;
     
     for(id view in self.pickerViewAndTools.subviews){
         if([view class]== [UIDatePicker class]){
@@ -228,9 +187,9 @@
             NSMutableString *prettyDate = [[NSMutableString alloc] init];
             [prettyDate appendString:[dateFormat stringFromDate:dateOfPicker]];
             
-            [self.btnDateChoosing setTitle:prettyDate forState:UIControlStateNormal];
+            [self.buttonDateChoosing setTitle:prettyDate forState:UIControlStateNormal];
             self.dateIsChosen= prettyDate;
-            self.btnDateChoosing.enabled= YES;
+            self.buttonDateChoosing.enabled= YES;
             self.doneWasPressed= 1;
 
         }
@@ -251,7 +210,7 @@
 
     }];
     
-    self.btnDateChoosing.enabled = YES;
+    self.buttonDateChoosing.enabled = YES;
     self.doneWasPressed= 0;
     
     
@@ -287,34 +246,19 @@
 
 -(void)addAttributSliders{
     
-    self.imageViewBS.image = [UIImage imageWithCGImage:[[UIImage imageNamed:@"TimePopup"] CGImage] scale:1.f orientation:UIImageOrientationUpMirrored];
+    self.imageViewBotSlider.image = [UIImage imageWithCGImage:[[UIImage imageNamed:@"TimePopup"] CGImage] scale:1.f orientation:UIImageOrientationUpMirrored];
     
-
-    int value= (int)(self.sliderTop.value);
+    CGFloat value = self.sliderTop.value;
+    CGFloat hours = (int)value/60;
+    CGFloat minutes = (value - hours * 60);
     
-    int hours= 0;
+    self.labelOfTopSlider.text=[[NSMutableString alloc] initWithFormat:@"%2d:%02d", (int)hours , (int)minutes];
     
-    while ( value >= 60) {
-        value -= 60;
-        hours++;
-    }
+    value = self.sliderBot.value;
+    hours = (int)value/60;
+    minutes = (value - hours * 60);
     
-    int minutes = (int)(value);
-    
-    self.labelOfTS.text=[[NSMutableString alloc] initWithFormat:@"%2i:%02i", hours , minutes];
-    
-    value= (int)(self.sliderBot.value);
-    
-    hours= 0;
-    
-    while ( value >= 60) {
-        value -= 60;
-        hours++;
-    }
-    
-    minutes = (int)(value);
-    
-    self.labelOfBS.text=[[NSMutableString alloc] initWithFormat:@"%2i:%02i", hours , minutes];
+    self.labelOfBottomSlider.text=[[NSMutableString alloc] initWithFormat:@"%2d:%02d", (int)hours , (int)minutes];
 
 
     
@@ -324,37 +268,24 @@
     
     [self dotTo:self.dot3.center];
     
-    int value= (int)(self.sliderBot.value);
-
-    int hours= 0;
-    
-    while ( value >= 60) {
-        value -= 60;
-        hours++;
-    }
-    
-    int minutes = (int)(value);
-    if( self.sliderTop.value >= (self.sliderBot.value-30) ){
+    if( self.sliderTop.value > (self.sliderBot.value - 30) ){
         
-        self.sliderBot.value = ((float)(self.sliderTop.value + 30));
-        self.labelOfBS.text=[[NSMutableString alloc] initWithFormat:@"%2i:%02i", hours , minutes];
+        self.sliderBot.value = self.sliderTop.value + 30;
         
     }
     
-    value = (int)(self.sliderTop.value);
+    CGFloat value = self.sliderTop.value;
+    CGFloat hours = (int)value/60;
+    CGFloat minutes = (value - hours * 60);
+    
+    self.labelOfTopSlider.text= [[NSMutableString alloc] initWithFormat:@"%2d:%02d", (int)hours, (int)minutes];
+    
+    value = self.sliderBot.value;
+    hours = (int)value/60;
+    minutes = (value - hours * 60);
+    
+    self.labelOfBottomSlider.text=[[NSMutableString alloc] initWithFormat:@"%2d:%02d", (int)hours , (int)minutes];
 
-    
-    hours = 0;
-    while ( value >= 60) {
-        value -= 60;
-        hours++;
-    }
-    
-    minutes = (int)(value);
-    
-    NSMutableString *valueFormatStr= [[NSMutableString alloc] init];
-    [valueFormatStr appendFormat:@"%2i:%02i",hours, minutes];
-    [self.labelOfTS setText:valueFormatStr];
     
 }
 
@@ -362,48 +293,38 @@
     
     [self dotTo:self.dot4.center];
     
-    int value= (int)(self.sliderTop.value);
-    
-    int hours= 0;
-    
-    while ( value >= 60) {
-        value -= 60;
-        hours++;
-    }
-    
-    int minutes = (int)(value);
-    if( self.sliderTop.value >= (self.sliderBot.value-30) ){
+
+    if( self.sliderTop.value >= self.sliderBot.value-30 ){
         
-        self.sliderTop.value = ((float)(self.sliderBot.value - 30));
-        self.labelOfTS.text=[[NSMutableString alloc] initWithFormat:@"%2i:%02i", hours , minutes];
+        self.sliderTop.value = self.sliderBot.value - 30;
         
     }
     
-    value = (int)(self.sliderBot.value);
-    
-    hours = 0;
-    while ( value >= 60) {
-        value -= 60;
-        hours++;
-    }
-    
-    minutes = (int)(value);
+    CGFloat value = self.sliderBot.value;
+    CGFloat hours = (int)value/60;
+    CGFloat minutes = (value - hours * 60);
     
     NSMutableString *valueFormatStr= [[NSMutableString alloc] init];
-    [valueFormatStr appendFormat:@"%2i:%02i",hours, minutes];
-    [self.labelOfBS setText:valueFormatStr];
+    [valueFormatStr appendFormat:@"%2d:%02d", (int)hours, (int)minutes];
+    [self.labelOfBottomSlider setText:valueFormatStr];
     
+    value = self.sliderTop.value;
+    hours = (int)value/60;
+    minutes = (value - hours * 60);
+    
+    self.labelOfTopSlider.text=[[NSMutableString alloc] initWithFormat:@"%2d:%02d", (int)hours , (int)minutes];
+
 }
 
 #pragma mark - ScrollView;
 
 -(void)addAttributeScrollViewPageControl{
     
-    for(int i = 0; i < self.pageControl.numberOfPages; i++){
+    for(CGFloat i = 0; i < self.pageControl.numberOfPages; i++){
         
         CGFloat x= i*self.scrollView.frame.size.width;
         UIImageView* imageView= [[UIImageView alloc] initWithFrame:(CGRect){x + 64, 22, 64, 62}];
-        imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"PartyLogo_Small_%i", i]];
+        imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"PartyLogo_Small_%d", (int)i]];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         [self.scrollView addSubview:imageView];
         
@@ -493,11 +414,12 @@
 #pragma mark - keyboard
 
 -(void)keyboardWillShow:(NSNotification*)notification{
+    
     if(self.textView.isFirstResponder){
         
         CGRect keyboardRect= [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
         
-        float duration= [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+        float duration= [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue] + 300;
         
         __block __weak SUNMakingPartyByxibVC *weakSelf= self;
         [UIView animateWithDuration:duration animations:^(void){
@@ -511,11 +433,12 @@
     }else {
         return;
     }
+    
 }
 
 -(void)keyboardWillHide:(NSNotification*)notification{
     
-    float duration = [[[notification userInfo]  objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    float duration = [[[notification userInfo]  objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue] - 300;
     
     __block __weak SUNMakingPartyByxibVC *weakSelf= self;
     [UIView animateWithDuration:duration animations:^(void){

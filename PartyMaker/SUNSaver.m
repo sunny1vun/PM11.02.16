@@ -16,6 +16,7 @@
 @property (nonatomic, strong) UISlider *sliderBot;
 @property (nonatomic, strong) NSString *descriptionOfParty;
 @property (nonatomic, strong) UIPageControl * currentPage;
+//запилить уникальный айди для каждой сохраняемой пати
 @property (nonatomic) int uniqueID;
 
 @end
@@ -30,27 +31,16 @@
     NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)firstObject];
     
     NSString *partiesFilePathInDocuments = [documentPath stringByAppendingPathComponent:@"logs/myLogs.plist"];
-//    NSString *partiesFilePathInBundle = [[[NSBundle mainBundle]resourcePath] stringByAppendingString:@"/myLogs.plist"];
+    
     NSMutableArray *dataFromFile = [[NSMutableArray alloc] init];
     if([filemanager fileExistsAtPath:partiesFilePathInDocuments]){
         
         dataFromFile = [NSMutableArray arrayWithContentsOfFile:partiesFilePathInDocuments];
-//        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
-        
-        
         
     }else {
         NSLog(@"File is not exist at path: %@", partiesFilePathInDocuments);
     }
-//    
-//    if(![filemanager fileExistsAtPath: partiesFilePathInDocuments]){
-//        
-//        [filemanager createFileAtPath:partiesFilePathInDocuments contents:[[NSData alloc] init] attributes:nil];
-//        NSError *error;
-//        [filemanager copyItemAtPath:partiesFilePathInBundle toPath:partiesFilePathInDocuments error:&error];
-//        NSLog(@"%@", error);
-//        
-//    }
+
     return dataFromFile;
 }
 
@@ -98,38 +88,9 @@
         wasSaved = YES;
         
     }
-    
-//    if([filemanager fileExistsAtPath:partiesFilePathInDocuments]){
-//        
-//        NSMutableArray *dataFromFile = [NSMutableArray arrayWithContentsOfFile:partiesFilePathInDocuments];
-//        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
-//        
-//        [dataFromFile addObject:data];
-//        
-//        NSArray *dataToWrite = [NSArray arrayWithArray:dataFromFile];
-//        
-//        [dataToWrite writeToFile:partiesFilePathInDocuments atomically:YES];
-//        
-//    }
+   
     return wasSaved;
-//    if([filemanager fileExistsAtPath:partiesFilePathInDocuments]){
-//        
-//        NSMutableArray *dataFromFile = [NSMutableArray arrayWithContentsOfFile:partiesFilePathInDocuments];
-//        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
-//        
-//        [dataFromFile addObject:data];
-//        
-//        NSArray *dataToWrite = [NSArray arrayWithArray:dataFromFile];
-//        
-//        [dataToWrite writeToFile:partiesFilePathInDocuments atomically:YES];
-//        
-//    }
-//    NSLog(@"Party name: %@\n", self.partyName);
-//    NSLog(@"Date: %@", self.dateIsChosen);
-//    NSLog(@"Start time: %d\n", (int)(self.sliderTop.value * 1439));
-//    NSLog(@"End time: %d", (int)(self.sliderBot.value * 1439));
-//    NSLog(@"Description: %@", self.descriptionOfParty);
-//    NSLog(@"Logo: %ld", (long)self.currentPage.currentPage);
+    
 }
 
 #pragma mark- Coding and Encoding PartyMakerInfo
