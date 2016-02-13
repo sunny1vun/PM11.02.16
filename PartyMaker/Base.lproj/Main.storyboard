@@ -478,6 +478,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -509,22 +510,69 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="242-cR-n0H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1133" y="-151"/>
+            <point key="canvasLocation" x="1083" y="-485"/>
         </scene>
-        <!--Party Maker-->
+        <!--PARTY MAKER-->
         <scene sceneID="UyR-LD-5z6">
             <objects>
-                <viewController id="5iM-nc-awD" sceneMemberID="viewController">
+                <viewController id="5iM-nc-awD" customClass="SUNMenuPatryMakerVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="U66-8G-SLM"/>
                         <viewControllerLayoutGuide type="bottom" id="oMe-ne-Jcf"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="bcE-bw-ITD">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="bcE-bw-ITD">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rrp-ty-Ztu">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" red="0.1803921568627451" green="0.19215686274509802" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SUNTableViewReuseIdentifier" rowHeight="100" id="qAY-5x-AvC" customClass="SUNTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qAY-5x-AvC" id="EX7-dg-I2D">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tNW-1l-2aD">
+                                                    <rect key="frame" x="15" y="8" width="64" height="84"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oli-iq-7R7">
+                                                    <rect key="frame" x="87" y="63" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7pP-pP-Str">
+                                                    <rect key="frame" x="87" y="13" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.2666666667" green="0.28627450980000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="dateAndTimeOfPartyLabel" destination="Oli-iq-7R7" id="fWY-rN-ddG"/>
+                                            <outlet property="logoImageView" destination="tNW-1l-2aD" id="Sj8-5X-8sA"/>
+                                            <outlet property="nameOfPartyLabel" destination="7pP-pP-Str" id="Hrl-Be-xmx"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="0.1803921568627451" green="0.19215686274509802" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Rrp-ty-Ztu" firstAttribute="leading" secondItem="bcE-bw-ITD" secondAttribute="leading" id="O0G-Ow-zk7"/>
+                            <constraint firstAttribute="trailing" secondItem="Rrp-ty-Ztu" secondAttribute="trailing" id="W6X-eV-kNg"/>
+                            <constraint firstItem="Rrp-ty-Ztu" firstAttribute="top" secondItem="U66-8G-SLM" secondAttribute="bottom" id="l8p-Of-LJY"/>
+                            <constraint firstItem="oMe-ne-Jcf" firstAttribute="top" secondItem="Rrp-ty-Ztu" secondAttribute="bottom" id="sKD-pd-TjA"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Party Maker" id="8JO-ZB-6uZ">
+                    <navigationItem key="navigationItem" title="PARTY MAKER" id="8JO-ZB-6uZ">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Z4s-Nv-kLv">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -532,8 +580,12 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="tableView" destination="Rrp-ty-Ztu" id="Mpg-Gt-9o9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tHQ-6d-6Kt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

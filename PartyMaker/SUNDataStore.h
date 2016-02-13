@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SUNSaver.h"
 
-@interface SUNDataStore : NSObject
+@interface SUNDataStore : SUNSaver
+
+-(NSMutableArray *)readFromPlist;
+-(BOOL)saveToPlist;
 
 @end

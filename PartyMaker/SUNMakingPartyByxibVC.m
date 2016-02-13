@@ -8,10 +8,10 @@
 
 #import "SUNMakingPartyByxibVC.h"
 #import "SUNUniversalView.h"
-#import "SUNSaver.h"
+//#import "SUNSaver.h"
+#import "SUNDataStore.h"
 
-
-@interface SUNMakingPartyByxibVC () <UITextViewDelegate, UITextFieldDelegate, UIScrollViewDelegate, SUNUniversalViewDelegate>
+@interface SUNMakingPartyByxibVC () <UITextViewDelegate , UITextFieldDelegate , UIScrollViewDelegate , SUNUniversalViewDelegate>
 
 //clickable
 @property (nonatomic, weak) IBOutlet UIView* shiningDot;
@@ -55,6 +55,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -126,7 +127,7 @@
 
 }
 
-#pragma mark - btnChooseDate
+#pragma mark - button ChooseDate
 
 - (IBAction)dateButtonWasClicked:(id)sender {
     
@@ -489,9 +490,10 @@
         
     }else{
 //        need to perform saver to sunDataStore with 2 methods
-        SUNSaver *party = [[SUNSaver alloc]  initWithName:self.textField.text  date:self.dateIsChosen
-                                                sliderTop: self.sliderTop    sliderBot: self.sliderBot
-                                              description: self.textView.text    pageControl:self.pageControl];
+//        SUNSaver *party = [[SUNSaver alloc]  initWithName:self.textField.text  date:self.dateIsChosen                                                sliderTop: self.sliderTop    sliderBot: self.sliderBot  description: self.textView.text    pageControl:self.pageControl];
+        
+        SUNDataStore *party = [[SUNDataStore alloc]  initWithName:self.textField.text  date:self.dateIsChosen                                                sliderTop: self.sliderTop    sliderBot: self.sliderBot  description: self.textView.text    pageControl:self.pageControl];
+
         [party readFromPlist];
         [party saveToPlist];
         [self.navigationController popToRootViewControllerAnimated:YES];

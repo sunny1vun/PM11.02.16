@@ -16,15 +16,16 @@
 		83D64D1D1C6BBB5F000F6321 /* SUNUniversalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D64D1C1C6BBB5F000F6321 /* SUNUniversalView.m */; };
 		83D64D1F1C6BBB8F000F6321 /* SUNUniversalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D64D1E1C6BBB8F000F6321 /* SUNUniversalView.xib */; };
 		83D64D941C6E307C000F6321 /* SUNDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D64D931C6E307C000F6321 /* SUNDataStore.m */; };
+		83D64D9A1C6F6E97000F6321 /* SUNMenuPatryMakerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D64D991C6F6E97000F6321 /* SUNMenuPatryMakerVC.m */; };
+		83D64D9E1C6F7D71000F6321 /* SUNTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D64D9D1C6F7D71000F6321 /* SUNTableViewCell.m */; };
+		83D64DA11C6FA811000F6321 /* NSDate+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D64DA01C6FA811000F6321 /* NSDate+Utility.m */; };
 		83DA9A941C6A7D6900AF9570 /* Asset Catalog.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83DA9A931C6A7D6900AF9570 /* Asset Catalog.xcassets */; };
 		83EBB4071C6220ED007E3722 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EBB4061C6220ED007E3722 /* main.m */; };
 		83EBB40A1C6220ED007E3722 /* SUNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EBB4091C6220ED007E3722 /* SUNAppDelegate.m */; };
-		83EBB40D1C6220ED007E3722 /* SUNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EBB40C1C6220ED007E3722 /* SUNViewController.m */; };
 		83EBB4101C6220ED007E3722 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83EBB40E1C6220ED007E3722 /* Main.storyboard */; };
 		83EBB4151C6220ED007E3722 /* Launchscreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83EBB4131C6220ED007E3722 /* Launchscreen.storyboard */; };
 		83EBB4201C6220ED007E3722 /* PartyMakerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EBB41F1C6220ED007E3722 /* PartyMakerTests.m */; };
 		83EBB42B1C6220ED007E3722 /* PartyMakerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EBB42A1C6220ED007E3722 /* PartyMakerUITests.m */; };
-		83EBB43A1C622DA5007E3722 /* SUNMakingPartyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EBB4391C622DA5007E3722 /* SUNMakingPartyVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,13 +59,17 @@
 		83D64D1E1C6BBB8F000F6321 /* SUNUniversalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SUNUniversalView.xib; sourceTree = "<group>"; };
 		83D64D921C6E307C000F6321 /* SUNDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUNDataStore.h; sourceTree = "<group>"; };
 		83D64D931C6E307C000F6321 /* SUNDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUNDataStore.m; sourceTree = "<group>"; };
+		83D64D981C6F6E97000F6321 /* SUNMenuPatryMakerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUNMenuPatryMakerVC.h; sourceTree = "<group>"; };
+		83D64D991C6F6E97000F6321 /* SUNMenuPatryMakerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUNMenuPatryMakerVC.m; sourceTree = "<group>"; };
+		83D64D9C1C6F7D71000F6321 /* SUNTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUNTableViewCell.h; sourceTree = "<group>"; };
+		83D64D9D1C6F7D71000F6321 /* SUNTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUNTableViewCell.m; sourceTree = "<group>"; };
+		83D64D9F1C6FA811000F6321 /* NSDate+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utility.h"; sourceTree = "<group>"; };
+		83D64DA01C6FA811000F6321 /* NSDate+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utility.m"; sourceTree = "<group>"; };
 		83DA9A931C6A7D6900AF9570 /* Asset Catalog.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Asset Catalog.xcassets"; path = "../Asset Catalog.xcassets"; sourceTree = "<group>"; };
 		83EBB4021C6220ED007E3722 /* PartyMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PartyMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83EBB4061C6220ED007E3722 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		83EBB4081C6220ED007E3722 /* SUNAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SUNAppDelegate.h; sourceTree = "<group>"; };
 		83EBB4091C6220ED007E3722 /* SUNAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SUNAppDelegate.m; sourceTree = "<group>"; };
-		83EBB40B1C6220ED007E3722 /* SUNViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SUNViewController.h; sourceTree = "<group>"; };
-		83EBB40C1C6220ED007E3722 /* SUNViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SUNViewController.m; sourceTree = "<group>"; };
 		83EBB40F1C6220ED007E3722 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		83EBB4141C6220ED007E3722 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Launchscreen.storyboard; sourceTree = "<group>"; };
 		83EBB4161C6220ED007E3722 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -74,8 +79,6 @@
 		83EBB4261C6220ED007E3722 /* PartyMakerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PartyMakerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83EBB42A1C6220ED007E3722 /* PartyMakerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PartyMakerUITests.m; sourceTree = "<group>"; };
 		83EBB42C1C6220ED007E3722 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		83EBB4381C622DA5007E3722 /* SUNMakingPartyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUNMakingPartyVC.h; sourceTree = "<group>"; };
-		83EBB4391C622DA5007E3722 /* SUNMakingPartyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUNMakingPartyVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,15 +116,35 @@
 			name = SUNUniversalView;
 			sourceTree = "<group>";
 		};
-		83D64D4B1C6CCF43000F6321 /* SUNUnusedVC */ = {
+		83D64D971C6F6AEE000F6321 /* SUNDataBase */ = {
 			isa = PBXGroup;
 			children = (
-				83EBB4381C622DA5007E3722 /* SUNMakingPartyVC.h */,
-				83EBB4391C622DA5007E3722 /* SUNMakingPartyVC.m */,
-				83EBB40B1C6220ED007E3722 /* SUNViewController.h */,
-				83EBB40C1C6220ED007E3722 /* SUNViewController.m */,
+				835BBF311C69E6AC00AE844B /* SUNSaver.h */,
+				835BBF321C69E6AC00AE844B /* SUNSaver.m */,
+				83D64D921C6E307C000F6321 /* SUNDataStore.h */,
+				83D64D931C6E307C000F6321 /* SUNDataStore.m */,
 			);
-			name = SUNUnusedVC;
+			name = SUNDataBase;
+			sourceTree = "<group>";
+		};
+		83D64D9B1C6F7D07000F6321 /* SUNTableView */ = {
+			isa = PBXGroup;
+			children = (
+				83D64D981C6F6E97000F6321 /* SUNMenuPatryMakerVC.h */,
+				83D64D991C6F6E97000F6321 /* SUNMenuPatryMakerVC.m */,
+				83D64D9C1C6F7D71000F6321 /* SUNTableViewCell.h */,
+				83D64D9D1C6F7D71000F6321 /* SUNTableViewCell.m */,
+			);
+			name = SUNTableView;
+			sourceTree = "<group>";
+		};
+		83D64DA21C6FA840000F6321 /* NSDate+Utility */ = {
+			isa = PBXGroup;
+			children = (
+				83D64D9F1C6FA811000F6321 /* NSDate+Utility.h */,
+				83D64DA01C6FA811000F6321 /* NSDate+Utility.m */,
+			);
+			name = "NSDate+Utility";
 			sourceTree = "<group>";
 		};
 		83EBB3F91C6220ED007E3722 = {
@@ -153,16 +176,14 @@
 				835BBF241C68E83100AE844B /* MyriadProRegular.ttf */,
 				83EBB4081C6220ED007E3722 /* SUNAppDelegate.h */,
 				83EBB4091C6220ED007E3722 /* SUNAppDelegate.m */,
-				83D64D4B1C6CCF43000F6321 /* SUNUnusedVC */,
-				835BBF161C68B8E600AE844B /* SUNMakingPartyByxibVC.h */,
-				835BBF171C68B8E600AE844B /* SUNMakingPartyByxibVC.m */,
-				835BBF311C69E6AC00AE844B /* SUNSaver.h */,
-				835BBF321C69E6AC00AE844B /* SUNSaver.m */,
-				83D64D921C6E307C000F6321 /* SUNDataStore.h */,
-				83D64D931C6E307C000F6321 /* SUNDataStore.m */,
-				83D64D201C6BBB9E000F6321 /* SUNUniversalView */,
 				83EBB40E1C6220ED007E3722 /* Main.storyboard */,
 				83EBB4131C6220ED007E3722 /* Launchscreen.storyboard */,
+				83D64D9B1C6F7D07000F6321 /* SUNTableView */,
+				835BBF161C68B8E600AE844B /* SUNMakingPartyByxibVC.h */,
+				835BBF171C68B8E600AE844B /* SUNMakingPartyByxibVC.m */,
+				83D64DA21C6FA840000F6321 /* NSDate+Utility */,
+				83D64D971C6F6AEE000F6321 /* SUNDataBase */,
+				83D64D201C6BBB9E000F6321 /* SUNUniversalView */,
 				835BBF2F1C69295B00AE844B /* myLogs.plist */,
 				83EBB4161C6220ED007E3722 /* Info.plist */,
 				83EBB4051C6220ED007E3722 /* Supporting Files */,
@@ -331,13 +352,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83D64D9A1C6F6E97000F6321 /* SUNMenuPatryMakerVC.m in Sources */,
 				83D64D1D1C6BBB5F000F6321 /* SUNUniversalView.m in Sources */,
 				835BBF331C69E6AC00AE844B /* SUNSaver.m in Sources */,
-				83EBB40D1C6220ED007E3722 /* SUNViewController.m in Sources */,
 				83EBB40A1C6220ED007E3722 /* SUNAppDelegate.m in Sources */,
 				835BBF191C68B8E600AE844B /* SUNMakingPartyByxibVC.m in Sources */,
-				83EBB43A1C622DA5007E3722 /* SUNMakingPartyVC.m in Sources */,
 				83D64D941C6E307C000F6321 /* SUNDataStore.m in Sources */,
+				83D64D9E1C6F7D71000F6321 /* SUNTableViewCell.m in Sources */,
+				83D64DA11C6FA811000F6321 /* NSDate+Utility.m in Sources */,
 				83EBB4071C6220ED007E3722 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
