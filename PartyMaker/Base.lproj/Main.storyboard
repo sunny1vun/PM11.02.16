@@ -136,7 +136,7 @@
                                 <color key="minimumTrackTintColor" red="0.40000000000000002" green="0.61960784313725492" blue="0.070588235294117646" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="maximumTrackTintColor" red="0.086274509803921567" green="0.090196078431372548" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <action selector="valueChangedTopScroll:" destination="7Uq-gj-Vd7" eventType="valueChanged" id="it0-Og-ScN"/>
+                                    <action selector="valueChangedTopSlider:" destination="7Uq-gj-Vd7" eventType="valueChanged" id="Wt0-bi-1WA"/>
                                 </connections>
                             </slider>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D69-xc-W7J">
@@ -235,9 +235,9 @@
                                 </constraints>
                             </view>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" translatesAutoresizingMaskIntoConstraints="NO" id="yz1-e0-VAu">
-                                <rect key="frame" x="173" y="260" width="87" height="37"/>
+                                <rect key="frame" x="173" y="282" width="87" height="15"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="OFa-fw-MBG"/>
+                                    <constraint firstAttribute="height" constant="15" id="OFa-fw-MBG"/>
                                 </constraints>
                                 <connections>
                                     <action selector="onPageScrollTouch:" destination="7Uq-gj-Vd7" eventType="touchUpInside" id="h5G-qB-X8W"/>
@@ -259,7 +259,7 @@
                                 <color key="minimumTrackTintColor" red="0.40000000000000002" green="0.61960784313725492" blue="0.070588235294117646" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="maximumTrackTintColor" red="0.086274509803921567" green="0.090196078431372548" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <action selector="valueChangedBotScroll:" destination="7Uq-gj-Vd7" eventType="valueChanged" id="yTc-fC-LlP"/>
+                                    <action selector="valueChangedBotSliders:" destination="7Uq-gj-Vd7" eventType="valueChanged" id="ADq-RF-8hR"/>
                                 </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLF-po-q2d">

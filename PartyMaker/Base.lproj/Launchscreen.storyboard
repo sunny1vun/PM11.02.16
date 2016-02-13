@@ -13,21 +13,28 @@
                         <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                    <view key="view" contentMode="center" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splash" translatesAutoresizingMaskIntoConstraints="NO" id="uQ1-uR-Pjn">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splash" translatesAutoresizingMaskIntoConstraints="NO" id="uQ1-uR-Pjn">
+                                <rect key="frame" x="0.0" y="50" width="375" height="568"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="uQ1-uR-Pjn" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="F2h-52-kO5"/>
                             <constraint firstAttribute="trailing" secondItem="uQ1-uR-Pjn" secondAttribute="trailing" id="KGy-H7-nVo"/>
                             <constraint firstItem="uQ1-uR-Pjn" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="Tj8-Bf-Rtp"/>
                             <constraint firstItem="uQ1-uR-Pjn" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="k7s-54-OYs"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="uQ1-uR-Pjn" secondAttribute="bottom" id="yCZ-jT-SfG"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Tj8-Bf-Rtp"/>
+                                <exclude reference="yCZ-jT-SfG"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>

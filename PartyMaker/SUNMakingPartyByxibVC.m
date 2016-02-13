@@ -242,7 +242,7 @@
     return YES;
 }
 
-#pragma mark- scrolls
+#pragma mark- sliders
 
 -(void)addAttributSliders{
     
@@ -264,7 +264,7 @@
     
 }
 
--(IBAction)valueChangedTopScroll:(id)sender{
+-(IBAction)valueChangedTopSlider:(id)sender{
     
     [self dotTo:self.dot3.center];
     
@@ -289,7 +289,7 @@
     
 }
 
--(IBAction)valueChangedBotScroll:(id)sender{
+-(IBAction)valueChangedBotSliders:(id)sender{
     
     [self dotTo:self.dot4.center];
     
@@ -340,7 +340,9 @@
 
 -(void)onPageChanged:(UIControlEvents*)event{
     
-    [self dotTo:(CGPoint){self.shiningDot.center.x, self.scrollView.center.y}];
+//    [self dotTo:(CGPoint){self.shiningDot.center.x, self.scrollView.center.y}];
+    
+    [self dotTo:self.dot5.center];
     
     CGPoint contentOffset = (CGPoint){self.scrollView.frame.size.width * self.pageControl.currentPage, 0};
     [self.scrollView setContentOffset:contentOffset];
@@ -358,8 +360,8 @@
 
 - (IBAction)onPageScrollTouch:(id)sender {
     
-    [self dotTo:(CGPoint){self.shiningDot.center.x, self.scrollView.center.y}];
-
+//    [self dotTo:(CGPoint){self.shiningDot.center.x, self.scrollView.center.y}];
+    [self dotTo: self.dot5.center];
     
 }
 
