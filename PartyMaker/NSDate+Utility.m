@@ -20,9 +20,9 @@
     CGFloat hours = (int)value/60;
     CGFloat minutes = (value - hours * 60);
     
-    [formatedString appendFormat:@"%2d:%02d ", (int)hours, (int)minutes];
+    [formatedString appendFormat:@"  %2d:%02d-", (int)hours, (int)minutes];
     
-    value = sliderTop.value;
+    value = sliderBottom.value;
     hours = (int)value/60;
     minutes = (value - hours * 60);
     
