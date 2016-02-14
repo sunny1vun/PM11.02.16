@@ -47,6 +47,7 @@
 
 @property (nonatomic) UIDatePicker *pickerViewAndTools;
 @property BOOL doneWasPressed;
+@property BOOL partyWasEdited;
 
 @end
 
@@ -85,6 +86,34 @@
     [self addAttributSliders];
     [self addAttributeScrollViewPageControl];
     [self addAttributeTextView];
+    self.partyWasEdited = NO;
+    
+    if( self.partyToChange ){
+        
+//        NSLog(@"Here is some party to change %@ %li", self.partyToChange.partyName, self.indexOfPartyToChange);
+        
+        [self.buttonDateChoosing setTitle:self.partyToChange.dateIsChosen forState:UIControlStateNormal];
+        self.dateIsChosen = self.partyToChange.dateIsChosen;
+        
+        [self.textField setText:self.partyToChange.partyName];
+        
+        [self.sliderTop setValue:self.partyToChange.sliderTop.value];
+        [self.labelOfTopSlider setText:[self textFromValueOfSlider:self.sliderTop]];
+        
+        [self.sliderBot setValue:self.partyToChange.sliderBot.value];
+        [self.labelOfBottomSlider setText:[self textFromValueOfSlider:self.sliderBot]];
+        
+        [self.pageControl setCurrentPage:self.partyToChange.currentPage.currentPage];
+        CGPoint contentOffset = (CGPoint){self.scrollView.frame.size.width * self.pageControl.currentPage, 0};
+        [self.scrollView setContentOffset:contentOffset];
+        
+        [self.textView setText:self.partyToChange.descriptionOfParty];
+        
+        self.partyWasEdited = YES;
+    }
+    
+    
+
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -249,17 +278,9 @@
     
     self.imageViewBotSlider.image = [UIImage imageWithCGImage:[[UIImage imageNamed:@"TimePopup"] CGImage] scale:1.f orientation:UIImageOrientationUpMirrored];
     
-    CGFloat value = self.sliderTop.value;
-    CGFloat hours = (int)value/60;
-    CGFloat minutes = (value - hours * 60);
+    self.labelOfTopSlider.text = [self textFromValueOfSlider:self.sliderTop];
     
-    self.labelOfTopSlider.text=[[NSMutableString alloc] initWithFormat:@"%2d:%02d", (int)hours , (int)minutes];
-    
-    value = self.sliderBot.value;
-    hours = (int)value/60;
-    minutes = (value - hours * 60);
-    
-    self.labelOfBottomSlider.text=[[NSMutableString alloc] initWithFormat:@"%2d:%02d", (int)hours , (int)minutes];
+    self.labelOfBottomSlider.text = [self textFromValueOfSlider:self.sliderBot];
 
 
     
@@ -275,19 +296,19 @@
         
     }
     
-    CGFloat value = self.sliderTop.value;
+    self.labelOfTopSlider.text = [self textFromValueOfSlider:self.sliderTop];
+    
+    self.labelOfBottomSlider.text = [self textFromValueOfSlider:self.sliderBot];
+
+    
+}
+
+-(NSString *)textFromValueOfSlider:(UISlider*)slider{
+    CGFloat value = slider.value;
     CGFloat hours = (int)value/60;
     CGFloat minutes = (value - hours * 60);
     
-    self.labelOfTopSlider.text= [[NSMutableString alloc] initWithFormat:@"%2d:%02d", (int)hours, (int)minutes];
-    
-    value = self.sliderBot.value;
-    hours = (int)value/60;
-    minutes = (value - hours * 60);
-    
-    self.labelOfBottomSlider.text=[[NSMutableString alloc] initWithFormat:@"%2d:%02d", (int)hours , (int)minutes];
-
-    
+    return [[NSMutableString alloc] initWithFormat:@"%2d:%02d", (int)hours, (int)minutes];
 }
 
 -(IBAction)valueChangedBotSliders:(id)sender{
@@ -301,19 +322,9 @@
         
     }
     
-    CGFloat value = self.sliderBot.value;
-    CGFloat hours = (int)value/60;
-    CGFloat minutes = (value - hours * 60);
+    self.labelOfTopSlider.text = [self textFromValueOfSlider:self.sliderTop];
     
-    NSMutableString *valueFormatStr= [[NSMutableString alloc] init];
-    [valueFormatStr appendFormat:@"%2d:%02d", (int)hours, (int)minutes];
-    [self.labelOfBottomSlider setText:valueFormatStr];
-    
-    value = self.sliderTop.value;
-    hours = (int)value/60;
-    minutes = (value - hours * 60);
-    
-    self.labelOfTopSlider.text=[[NSMutableString alloc] initWithFormat:@"%2d:%02d", (int)hours , (int)minutes];
+    self.labelOfBottomSlider.text = [self textFromValueOfSlider:self.sliderBot];
 
 }
 
@@ -340,8 +351,6 @@
 }
 
 -(void)onPageChanged:(UIControlEvents*)event{
-    
-//    [self dotTo:(CGPoint){self.shiningDot.center.x, self.scrollView.center.y}];
     
     [self dotTo:self.dot5.center];
     
@@ -457,6 +466,11 @@
 #pragma mark - save button
 
 - (IBAction)onSaveClicked:(id)sender {
+    NSMutableArray *parties = [[NSMutableArray alloc] init];
+    
+    if ( self.partyWasEdited ) {
+        self.doneWasPressed = YES;
+    }
     
     if (self.doneWasPressed != YES){
         
@@ -492,11 +506,47 @@
 //        need to perform saver to sunDataStore with 2 methods
 //        SUNSaver *party = [[SUNSaver alloc]  initWithName:self.textField.text  date:self.dateIsChosen                                                sliderTop: self.sliderTop    sliderBot: self.sliderBot  description: self.textView.text    pageControl:self.pageControl];
         
+//        [self.buttonDateChoosing setTitle:self.partyToChange.dateIsChosen forState:UIControlStateNormal];
+//        self.dateIsChosen = self.partyToChange.dateIsChosen;
+//        
+//        [self.textField setText:self.partyToChange.partyName];
+//        
+//        [self.sliderTop setValue:self.partyToChange.sliderTop.value];
+//        [self.labelOfTopSlider setText:[self textFromValueOfSlider:self.sliderTop]];
+//        
+//        [self.sliderBot setValue:self.partyToChange.sliderBot.value];
+//        [self.labelOfBottomSlider setText:[self textFromValueOfSlider:self.sliderBot]];
+//        
+//        [self.pageControl setCurrentPage:self.partyToChange.currentPage.currentPage];
+//        CGPoint contentOffset = (CGPoint){self.scrollView.frame.size.width * self.pageControl.currentPage, 0};
+//        [self.scrollView setContentOffset:contentOffset];
+//        
+//        [self.textView setText:self.partyToChange.descriptionOfParty];
+//
+
+//        SUNDataStore *party = [[SUNDataStore alloc]  initWithName:@"Lol"  date:self.dateIsChosen                                                sliderTop: self.sliderTop    sliderBot: self.sliderBot  description: @"not a discription"    pageControl:self.pageControl];
+        
         SUNDataStore *party = [[SUNDataStore alloc]  initWithName:self.textField.text  date:self.dateIsChosen                                                sliderTop: self.sliderTop    sliderBot: self.sliderBot  description: self.textView.text    pageControl:self.pageControl];
 
-        [party readFromPlist];
-        [party saveToPlist];
+        if ( self.partyWasEdited ) {
+            parties = [party readFromPlist];
+            //
+            NSData *dataParty = [NSKeyedArchiver archivedDataWithRootObject:party];
+            [parties removeObjectAtIndex:self.indexOfPartyToChange];
+            [parties insertObject:dataParty atIndex:self.indexOfPartyToChange];
+            NSLog(@"data of party was added to parties");
+            
+        }else{
+            parties = [party readFromPlist];
+            NSData *dataParty = [NSKeyedArchiver archivedDataWithRootObject:party];
+            
+            [parties addObject:dataParty];
+        }
+        
+        [SUNDataStore saveToPlist:parties];
+
         [self.navigationController popToRootViewControllerAnimated:YES];
+
     }
     
 }
@@ -508,9 +558,6 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 
 }
-
-
-
 
 /*
 #pragma mark - Navigation

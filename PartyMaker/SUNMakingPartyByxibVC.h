@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SUNPartyInfoVC.h"
 
 @interface SUNMakingPartyByxibVC : UIViewController 
+
+@property (nonatomic, strong) SUNSaver *partyToChange;
+@property (nonatomic) NSInteger indexOfPartyToChange;
 
 @end

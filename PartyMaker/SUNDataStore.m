@@ -31,7 +31,7 @@
     return dataFromFile;
 }
 
--(BOOL)saveToPlist{
++(BOOL)saveToPlist:(NSMutableArray*) dataFromFile{
     
     BOOL wasSaved = NO;
     
@@ -39,17 +39,17 @@
     NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)firstObject];
     
     NSString *partiesFilePathInDocuments = [documentPath stringByAppendingPathComponent:@"myLogs.plist"];
-    NSString *partiesFilePathInBundle = [[[NSBundle mainBundle]resourcePath] stringByAppendingString:@"/myLogs.plist"];
+    NSString *partiesFilePathInBundle = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/myLogs.plist"];
         NSLog(@"%@",partiesFilePathInDocuments);
-    NSMutableArray *dataFromFile = [[NSMutableArray alloc] init];
+//    NSMutableArray *dataFromFile = [[NSMutableArray alloc] init];
     
     if( ![filemanager fileExistsAtPath: partiesFilePathInDocuments] ){
         
         NSError *error;
         [filemanager copyItemAtPath:partiesFilePathInBundle toPath:partiesFilePathInDocuments error:&error];
         
-        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
-        [dataFromFile addObject:data];
+//        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
+//        [dataFromFile addObject:data];
         NSArray *dataToWrite = [NSArray arrayWithArray:dataFromFile];
         [dataToWrite writeToFile:partiesFilePathInDocuments atomically:YES];
         wasSaved =  YES;
@@ -63,10 +63,11 @@
         
     }else {
         
-        dataFromFile = [self readFromPlist];
-        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
-        
-        [dataFromFile addObject:data];
+//        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
+//
+//        //i need checking if i'm storing a new party or i'm storing edited party
+//        [dataFromFile addObject:data];
+//        checking was made on click of save button in my creating\editing view SUNMakingPartyByxibVC
         
         NSArray *dataToWrite = [NSArray arrayWithArray:dataFromFile];
         

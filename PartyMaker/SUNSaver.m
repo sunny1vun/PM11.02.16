@@ -96,6 +96,7 @@
     self.sliderBot = sliderBot;
     self.descriptionOfParty = description;
     self.currentPage = pageControl;
+//    self.uniqueID = 
     
     return self;
 }

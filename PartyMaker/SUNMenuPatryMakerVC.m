@@ -11,12 +11,13 @@
 #import "SUNSaver.h"
 #import "SUNDataStore.h"
 #import "NSDate+Utility.h"
+#import "SUNPartyInfoVC.h"
 
 @interface SUNMenuPatryMakerVC () <UITableViewDataSource , UITableViewDelegate>
 
 //for table
 @property (nonatomic, strong) NSArray *dataArray;
-@property (nonatomic) NSInteger lastChangedCell;
+@property (nonatomic) NSInteger indexOfSelectedCell;
 //@property (nonatomic, strong) UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -52,7 +53,13 @@
 
     self.dataArray = [dataFromLog readFromPlist];
 
-//    [self.tableView reloadData];
+    [self.tableView reloadData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -88,14 +95,42 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-//    [self performSegueWithIdentifier:@"SUNSegueIdentifier" sender:self];
-    
+//    [self performSegueWithIdentifier:@"toPartyInfo" sender:self];
+//    [self.navigationController pushViewController: animated:NO];
     //подгружать контект\изменять контект по последней измененной ячейке | для сохранения так же сделатьы
-    self.lastChangedCell = indexPath.row;
+    
+    //You won't have indexPath.row here cause it's will work's later then prepareForSegue method
+//    self.indexOfSelectedCell = (long)indexPath.row;
     
     NSLog(@"On row %ld was touched", (long)indexPath.row);
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+}
+
+#pragma mark - segues methods
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if( [segue.identifier isEqualToString:@"toPartyInfo"] ){
+        
+        SUNPartyInfoVC *partyInfoVC = segue.destinationViewController;
+        
+//        need to create instance of SUNSaver and then send it to instance of partyInfoVC
+        
+        //in dataArray stored instances of SUNSaver with has all property that i need cause it's model
+        
+        self.indexOfSelectedCell = [self.tableView indexPathForSelectedRow].row;
+        
+        SUNSaver *selectedParty = [NSKeyedUnarchiver unarchiveObjectWithData:self.dataArray[self.indexOfSelectedCell]];
+        partyInfoVC.selectedParty = selectedParty;
+        partyInfoVC.indexOfSelectedParty = self.indexOfSelectedCell;
+        
+        NSLog(@"going to party info %li", self.indexOfSelectedCell);
+//        self.tableView.dataSource
+        
+    }
     
 }
 /*

@@ -13,4 +13,7 @@
 
 +(NSString*)formateToStringDate:(NSString*)dateIsChosen startTime:(UISlider*)sliderTop endTime:(UISlider*)sliderBottom;
 
+//+(NSArray*)unformateString:(NSString*)dateWithTime;
+
+
 @end

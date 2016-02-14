@@ -14,6 +14,7 @@
     
     NSMutableString *formatedString = [[NSMutableString alloc] init];
     
+    //nil вылетает вот здесь
     [formatedString appendString:dateIsChosen];
     
     CGFloat value = sliderTop.value;
@@ -33,5 +34,14 @@
     return formatedString;
     
 }
+
+//+(NSArray*)unformateString:(NSString*)dateWithTime{
+//    
+//    NSMutableArray *arrayDateTime = [[NSMutableArray alloc] init];
+//    
+//    
+//    
+//    return arrayDateTime;
+//}
 
 @end
