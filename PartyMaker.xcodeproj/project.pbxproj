@@ -14,6 +14,7 @@
 		835BBF2C1C68EBBE00AE844B /* AssetDataBase.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 835BBF2B1C68EBBE00AE844B /* AssetDataBase.xcassets */; };
 		835BBF301C69295B00AE844B /* myLogs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 835BBF2F1C69295B00AE844B /* myLogs.plist */; };
 		835BBF331C69E6AC00AE844B /* SUNSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = 835BBF321C69E6AC00AE844B /* SUNSaver.m */; };
+		8391D0AC1C720B82005A21F2 /* SUNLogoImageV.m in Sources */ = {isa = PBXBuildFile; fileRef = 8391D0AB1C720B82005A21F2 /* SUNLogoImageV.m */; };
 		83D64D1D1C6BBB5F000F6321 /* SUNUniversalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D64D1C1C6BBB5F000F6321 /* SUNUniversalView.m */; };
 		83D64D1F1C6BBB8F000F6321 /* SUNUniversalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D64D1E1C6BBB8F000F6321 /* SUNUniversalView.xib */; };
 		83D64D941C6E307C000F6321 /* SUNDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D64D931C6E307C000F6321 /* SUNDataStore.m */; };
@@ -56,6 +57,8 @@
 		835BBF2F1C69295B00AE844B /* myLogs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = myLogs.plist; sourceTree = "<group>"; };
 		835BBF311C69E6AC00AE844B /* SUNSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUNSaver.h; sourceTree = "<group>"; };
 		835BBF321C69E6AC00AE844B /* SUNSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUNSaver.m; sourceTree = "<group>"; };
+		8391D0AA1C720B82005A21F2 /* SUNLogoImageV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUNLogoImageV.h; sourceTree = "<group>"; };
+		8391D0AB1C720B82005A21F2 /* SUNLogoImageV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUNLogoImageV.m; sourceTree = "<group>"; };
 		83D64D1B1C6BBB5F000F6321 /* SUNUniversalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUNUniversalView.h; sourceTree = "<group>"; };
 		83D64D1C1C6BBB5F000F6321 /* SUNUniversalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUNUniversalView.m; sourceTree = "<group>"; };
 		83D64D1E1C6BBB8F000F6321 /* SUNUniversalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SUNUniversalView.xib; sourceTree = "<group>"; };
@@ -109,41 +112,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		83D64D201C6BBB9E000F6321 /* SUNUniversalView */ = {
+		8391D0A91C720ADE005A21F2 /* PartyControls */ = {
+			isa = PBXGroup;
+			children = (
+				83D64D981C6F6E97000F6321 /* SUNMenuPatryMakerVC.h */,
+				83D64D991C6F6E97000F6321 /* SUNMenuPatryMakerVC.m */,
+				83F70DC71C70B41F008BBF94 /* SUNPartyInfoVC.h */,
+				83F70DC81C70B41F008BBF94 /* SUNPartyInfoVC.m */,
+				835BBF161C68B8E600AE844B /* SUNMakingPartyByxibVC.h */,
+				835BBF171C68B8E600AE844B /* SUNMakingPartyByxibVC.m */,
+				83D64D971C6F6AEE000F6321 /* DataStoreControl */,
+			);
+			name = PartyControls;
+			sourceTree = "<group>";
+		};
+		83D64D201C6BBB9E000F6321 /* PartyViews */ = {
 			isa = PBXGroup;
 			children = (
 				83D64D1B1C6BBB5F000F6321 /* SUNUniversalView.h */,
 				83D64D1C1C6BBB5F000F6321 /* SUNUniversalView.m */,
 				83D64D1E1C6BBB8F000F6321 /* SUNUniversalView.xib */,
+				8391D0AA1C720B82005A21F2 /* SUNLogoImageV.h */,
+				8391D0AB1C720B82005A21F2 /* SUNLogoImageV.m */,
 			);
-			name = SUNUniversalView;
+			name = PartyViews;
 			sourceTree = "<group>";
 		};
-		83D64D971C6F6AEE000F6321 /* DataControl */ = {
+		83D64D971C6F6AEE000F6321 /* DataStoreControl */ = {
 			isa = PBXGroup;
 			children = (
 				83D64D921C6E307C000F6321 /* SUNDataStore.h */,
 				83D64D931C6E307C000F6321 /* SUNDataStore.m */,
 			);
-			name = DataControl;
+			name = DataStoreControl;
 			sourceTree = "<group>";
 		};
-		83D64D9B1C6F7D07000F6321 /* SUNTableView */ = {
+		83D64D9B1C6F7D07000F6321 /* SUNTableViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				83D64D9C1C6F7D71000F6321 /* SUNTableViewCell.h */,
 				83D64D9D1C6F7D71000F6321 /* SUNTableViewCell.m */,
 			);
-			name = SUNTableView;
+			name = SUNTableViewModel;
 			sourceTree = "<group>";
 		};
-		83D64DA21C6FA840000F6321 /* NSDate+Utility */ = {
+		83D64DA21C6FA840000F6321 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
 				83D64D9F1C6FA811000F6321 /* NSDate+Utility.h */,
 				83D64DA01C6FA811000F6321 /* NSDate+Utility.m */,
 			);
-			name = "NSDate+Utility";
+			name = Utility;
 			sourceTree = "<group>";
 		};
 		83EBB3F91C6220ED007E3722 = {
@@ -177,17 +196,10 @@
 				83EBB4091C6220ED007E3722 /* SUNAppDelegate.m */,
 				83EBB4131C6220ED007E3722 /* Launchscreen.storyboard */,
 				830A39741C70EB0700753CF1 /* Main.storyboard */,
-				83D64D981C6F6E97000F6321 /* SUNMenuPatryMakerVC.h */,
-				83D64D991C6F6E97000F6321 /* SUNMenuPatryMakerVC.m */,
-				83D64D9B1C6F7D07000F6321 /* SUNTableView */,
-				83F70DC71C70B41F008BBF94 /* SUNPartyInfoVC.h */,
-				83F70DC81C70B41F008BBF94 /* SUNPartyInfoVC.m */,
-				835BBF161C68B8E600AE844B /* SUNMakingPartyByxibVC.h */,
-				835BBF171C68B8E600AE844B /* SUNMakingPartyByxibVC.m */,
-				83F70DCA1C70BD1D008BBF94 /* PartyModel */,
-				83D64D971C6F6AEE000F6321 /* DataControl */,
-				83D64DA21C6FA840000F6321 /* NSDate+Utility */,
-				83D64D201C6BBB9E000F6321 /* SUNUniversalView */,
+				83D64D201C6BBB9E000F6321 /* PartyViews */,
+				8391D0A91C720ADE005A21F2 /* PartyControls */,
+				83F70DCA1C70BD1D008BBF94 /* PartyModels */,
+				83D64DA21C6FA840000F6321 /* Utility */,
 				835BBF2F1C69295B00AE844B /* myLogs.plist */,
 				83EBB4161C6220ED007E3722 /* Info.plist */,
 				83EBB4051C6220ED007E3722 /* Supporting Files */,
@@ -221,13 +233,14 @@
 			path = PartyMakerUITests;
 			sourceTree = "<group>";
 		};
-		83F70DCA1C70BD1D008BBF94 /* PartyModel */ = {
+		83F70DCA1C70BD1D008BBF94 /* PartyModels */ = {
 			isa = PBXGroup;
 			children = (
+				83D64D9B1C6F7D07000F6321 /* SUNTableViewModel */,
 				835BBF311C69E6AC00AE844B /* SUNSaver.h */,
 				835BBF321C69E6AC00AE844B /* SUNSaver.m */,
 			);
-			name = PartyModel;
+			name = PartyModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,6 +381,7 @@
 				83D64D9A1C6F6E97000F6321 /* SUNMenuPatryMakerVC.m in Sources */,
 				83D64D1D1C6BBB5F000F6321 /* SUNUniversalView.m in Sources */,
 				835BBF331C69E6AC00AE844B /* SUNSaver.m in Sources */,
+				8391D0AC1C720B82005A21F2 /* SUNLogoImageV.m in Sources */,
 				83EBB40A1C6220ED007E3722 /* SUNAppDelegate.m in Sources */,
 				83F70DC91C70B41F008BBF94 /* SUNPartyInfoVC.m in Sources */,
 				835BBF191C68B8E600AE844B /* SUNMakingPartyByxibVC.m in Sources */,

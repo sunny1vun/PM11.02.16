@@ -8,9 +8,26 @@
 
 #import "SUNPartyInfoVC.h"
 #import "SUNMakingPartyByxibVC.h"
+#import "SUNDataStore.h"
+#import <UIKit/UIKit.h>
 //#import "SUNSaver.h"
 
 @interface SUNPartyInfoVC ()
+
+//info about party
+@property (weak, nonatomic) IBOutlet UIImageView *logoView;
+@property (weak, nonatomic) IBOutlet UILabel *nameParty;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionParty;
+@property (weak, nonatomic) IBOutlet UILabel *dateParty;
+@property (weak, nonatomic) IBOutlet UILabel *timeStartParty;
+@property (weak, nonatomic) IBOutlet UILabel *timeEndParty;
+@property (weak, nonatomic) IBOutlet UIView *logoContainerView;
+
+//for actions with window
+@property (weak, nonatomic) IBOutlet UIButton *deleteParty;
+@property (weak, nonatomic) IBOutlet UIButton *addPhotoParty;
+@property (weak, nonatomic) IBOutlet UIButton *editParty;
+
 
 @end
 
@@ -21,10 +38,36 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [self.dateParty setText:self.selectedParty.dateIsChosen];
+    [self.nameParty setText:self.selectedParty.partyName];
+    [self.timeStartParty setText:[[SUNMakingPartyByxibVC alloc] textFromValueOfSlider: self.selectedParty.sliderTop]];
+    [self.timeEndParty setText:[[SUNMakingPartyByxibVC alloc] textFromValueOfSlider: self.selectedParty.sliderBot]];
+    [self.descriptionParty setText:self.selectedParty.descriptionOfParty];
+    [self.logoView setImage: [UIImage imageNamed:[NSString stringWithFormat:@"PartyLogo_Small_%ld", (long)self.selectedParty.currentPage.currentPage]]];
+    
+//    self.logoContainerView.layer.cornerRadius = 5.f;
+    self.addPhotoParty.layer.cornerRadius =
+    self.editParty.layer.cornerRadius =
+    self.deleteParty.layer.cornerRadius = 5.f;
+    
 }
+
+#pragma mark - delete party
+
+- (IBAction)deleteParty:(id)sender {
+    
+    self.deleteParty.enabled = NO;
+    NSMutableArray *parties = [SUNDataStore readFromPlist];
+    [parties removeObjectAtIndex:self.indexOfSelectedParty];
+    NSLog(@"data of party was deleted from parties");
+    [SUNDataStore saveToPlist:parties];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+}
+
 
 #pragma mark - Navigation
 
@@ -32,7 +75,7 @@
     
     if( [segue.identifier isEqualToString:@"toEditParty"] ){
         
-        NSLog(@"going to edit party %@ %li", self.selectedParty.partyName, self.indexOfSelectedParty);
+        NSLog(@"going to edit party %@ %li", self.selectedParty.partyName, (long)self.indexOfSelectedParty);
         
         SUNMakingPartyByxibVC *editParty = segue.destinationViewController;
         

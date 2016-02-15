@@ -14,4 +14,6 @@
 @property (nonatomic, strong) SUNSaver *partyToChange;
 @property (nonatomic) NSInteger indexOfPartyToChange;
 
+-(NSString *)textFromValueOfSlider:(UISlider*)slider;
+
 @end

@@ -11,7 +11,7 @@
 
 @interface SUNDataStore : SUNSaver
 
--(NSMutableArray *)readFromPlist;
++(NSMutableArray *)readFromPlist;
 +(BOOL)saveToPlist:(NSMutableArray*)dataFromFile;
 
 @end

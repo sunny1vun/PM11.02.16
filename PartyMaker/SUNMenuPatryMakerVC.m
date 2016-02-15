@@ -18,25 +18,17 @@
 //for table
 @property (nonatomic, strong) NSArray *dataArray;
 @property (nonatomic) NSInteger indexOfSelectedCell;
-//@property (nonatomic, strong) UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 
 @end
 
-//static NSString *CellIdentifier = @"Cell";
-
 @implementation SUNMenuPatryMakerVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
-    //here need to fill my array with info from userDefaults or my plist myLogs.plist
-//    self.dataArray = @[@"one" , @"two" , @"three" , @"four" , @"five"];
-    SUNDataStore *dataFromLog = [[SUNDataStore alloc] init];
-    
-    self.dataArray = [dataFromLog readFromPlist];
+    self.dataArray = [SUNDataStore readFromPlist];
     
 //    Here comes connection of instance of VC and dataSource and delegate of my tableView by code
 //    But i connected them in storyBoard by pressing right btnmouse and throwing it to my VC
@@ -48,10 +40,9 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    //Подгружаются все файлы из таблицы а не один с измененным\добавленным контентом нужно изменить на подгрузку только одного, т.е. обращатся по индексу и не подгружать из файла
-    SUNDataStore *dataFromLog = [[SUNDataStore alloc] init];
+    //Loading all parties from file all times when viewAppears (need to load all files ones and then save and edit only selected party)
 
-    self.dataArray = [dataFromLog readFromPlist];
+    self.dataArray = [SUNDataStore readFromPlist];
 
     [self.tableView reloadData];
 }
@@ -95,14 +86,6 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
-//    [self performSegueWithIdentifier:@"toPartyInfo" sender:self];
-//    [self.navigationController pushViewController: animated:NO];
-    //подгружать контект\изменять контект по последней измененной ячейке | для сохранения так же сделатьы
-    
-    //You won't have indexPath.row here cause it's will work's later then prepareForSegue method
-//    self.indexOfSelectedCell = (long)indexPath.row;
-    
     NSLog(@"On row %ld was touched", (long)indexPath.row);
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -119,7 +102,7 @@
         
 //        need to create instance of SUNSaver and then send it to instance of partyInfoVC
         
-        //in dataArray stored instances of SUNSaver with has all property that i need cause it's model
+//          in dataArray stored instances of SUNSaver with has all property that i need cause it's model
         
         self.indexOfSelectedCell = [self.tableView indexPathForSelectedRow].row;
         
@@ -127,7 +110,7 @@
         partyInfoVC.selectedParty = selectedParty;
         partyInfoVC.indexOfSelectedParty = self.indexOfSelectedCell;
         
-        NSLog(@"going to party info %li", self.indexOfSelectedCell);
+        NSLog(@"going to party info %li", (long)self.indexOfSelectedCell);
 //        self.tableView.dataSource
         
     }

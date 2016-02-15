@@ -12,7 +12,7 @@
 
 #pragma mark - saving reading
 
--(NSMutableArray *)readFromPlist{
++(NSMutableArray *)readFromPlist{
     
     NSFileManager *filemanager = [NSFileManager defaultManager];
     NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)firstObject];

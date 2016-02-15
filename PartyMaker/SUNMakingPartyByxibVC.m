@@ -91,6 +91,7 @@
     if( self.partyToChange ){
         
 //        NSLog(@"Here is some party to change %@ %li", self.partyToChange.partyName, self.indexOfPartyToChange);
+        [self.navigationItem setTitle:@"EDITING PARTY"];
         
         [self.buttonDateChoosing setTitle:self.partyToChange.dateIsChosen forState:UIControlStateNormal];
         self.dateIsChosen = self.partyToChange.dateIsChosen;
@@ -161,7 +162,6 @@
 - (IBAction)dateButtonWasClicked:(id)sender {
     
     NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([SUNUniversalView class]) owner:nil options:nil];
-    //    SUNUniversalView *pickerViewAndTools = [nibContents lastObject];
     SUNUniversalView *pickerViewAndTools = nibContents[0];
     pickerViewAndTools.delegate = self;
     
@@ -170,11 +170,6 @@
     
     [self.view addSubview:pickerViewAndTools];
     self.pickerViewAndTools = (UIDatePicker*)pickerViewAndTools;
-    
-    
-//    pickerViewAndTools.frame = (CGRect){0 , self.view.frame.size.height , self.view.frame.size.width , self.view.frame.size.height/2};
-    
-//    [self.view addSubview:pickerViewAndTools];
     
     [UIView animateWithDuration:0.3f delay:0.05f options:UIViewAnimationOptionCurveLinear animations:^(void){
         
@@ -192,7 +187,8 @@
 
 
 
--(void)doneWasClicked:(SUNUniversalView *) datePickerView{//stores date to normalTitle of CHOOSE DATE button and hides views
+-(void)doneWasClicked:(SUNUniversalView *) datePickerView{
+    //stores date to normalTitle of CHOOSE DATE button and hides views
     
     [UIView animateWithDuration:0.3f delay:0.05f options:UIViewAnimationOptionCurveLinear animations:^(void){
         
@@ -503,33 +499,10 @@
         [self presentViewController:alert animated:YES completion:nil];
         
     }else{
-//        need to perform saver to sunDataStore with 2 methods
-//        SUNSaver *party = [[SUNSaver alloc]  initWithName:self.textField.text  date:self.dateIsChosen                                                sliderTop: self.sliderTop    sliderBot: self.sliderBot  description: self.textView.text    pageControl:self.pageControl];
-        
-//        [self.buttonDateChoosing setTitle:self.partyToChange.dateIsChosen forState:UIControlStateNormal];
-//        self.dateIsChosen = self.partyToChange.dateIsChosen;
-//        
-//        [self.textField setText:self.partyToChange.partyName];
-//        
-//        [self.sliderTop setValue:self.partyToChange.sliderTop.value];
-//        [self.labelOfTopSlider setText:[self textFromValueOfSlider:self.sliderTop]];
-//        
-//        [self.sliderBot setValue:self.partyToChange.sliderBot.value];
-//        [self.labelOfBottomSlider setText:[self textFromValueOfSlider:self.sliderBot]];
-//        
-//        [self.pageControl setCurrentPage:self.partyToChange.currentPage.currentPage];
-//        CGPoint contentOffset = (CGPoint){self.scrollView.frame.size.width * self.pageControl.currentPage, 0};
-//        [self.scrollView setContentOffset:contentOffset];
-//        
-//        [self.textView setText:self.partyToChange.descriptionOfParty];
-//
-
-//        SUNDataStore *party = [[SUNDataStore alloc]  initWithName:@"Lol"  date:self.dateIsChosen                                                sliderTop: self.sliderTop    sliderBot: self.sliderBot  description: @"not a discription"    pageControl:self.pageControl];
-        
         SUNDataStore *party = [[SUNDataStore alloc]  initWithName:self.textField.text  date:self.dateIsChosen                                                sliderTop: self.sliderTop    sliderBot: self.sliderBot  description: self.textView.text    pageControl:self.pageControl];
 
         if ( self.partyWasEdited ) {
-            parties = [party readFromPlist];
+            parties = [SUNDataStore readFromPlist];
             //
             NSData *dataParty = [NSKeyedArchiver archivedDataWithRootObject:party];
             [parties removeObjectAtIndex:self.indexOfPartyToChange];
@@ -537,7 +510,7 @@
             NSLog(@"data of party was added to parties");
             
         }else{
-            parties = [party readFromPlist];
+            parties = [SUNDataStore readFromPlist];
             NSData *dataParty = [NSKeyedArchiver archivedDataWithRootObject:party];
             
             [parties addObject:dataParty];
