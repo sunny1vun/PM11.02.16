@@ -121,7 +121,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Your party Name" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="WMH-T4-W1c">
                                 <rect key="frame" x="121" y="60" width="190" height="36"/>
                                 <color key="backgroundColor" red="0.13725490196078433" green="0.14509803921568626" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="textColor" red="0.29803921568627451" green="0.32156862745098036" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.21176470588235294" green="0.23529411764705882" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="light" returnKeyType="done"/>
                                 <connections>
@@ -395,6 +395,7 @@
                             <constraint firstItem="s4n-wH-Zni" firstAttribute="height" secondItem="HqZ-Lk-BhQ" secondAttribute="height" id="0lt-fB-DgR"/>
                             <constraint firstItem="WMH-T4-W1c" firstAttribute="width" secondItem="gRD-Z2-qHm" secondAttribute="width" id="1lP-Ek-eed"/>
                             <constraint firstItem="HEw-qr-NDm" firstAttribute="leading" secondItem="IOd-BY-BFA" secondAttribute="leading" id="3ap-5S-s7P"/>
+                            <constraint firstItem="gRD-Z2-qHm" firstAttribute="top" secondItem="GSa-lW-dWC" secondAttribute="bottom" constant="12" id="3tl-Ba-0DO"/>
                             <constraint firstAttribute="trailing" secondItem="AZb-Dh-mu4" secondAttribute="trailing" constant="9" id="4Ch-Su-FaL"/>
                             <constraint firstItem="sbM-eA-0Bg" firstAttribute="height" secondItem="HqZ-Lk-BhQ" secondAttribute="height" id="6yk-gm-W3i"/>
                             <constraint firstItem="spj-Pi-6GE" firstAttribute="leading" secondItem="EYS-sF-coG" secondAttribute="trailing" constant="10" id="731-UL-7Mo"/>
@@ -411,7 +412,6 @@
                             <constraint firstItem="KLF-po-q2d" firstAttribute="height" secondItem="gRD-Z2-qHm" secondAttribute="height" id="EBn-mX-NtG"/>
                             <constraint firstAttribute="trailing" secondItem="gRD-Z2-qHm" secondAttribute="trailing" constant="9" id="FAI-BL-OBV"/>
                             <constraint firstItem="ofv-OF-sVw" firstAttribute="top" secondItem="LLC-W9-Nqa" secondAttribute="top" constant="35" id="FTD-f2-FZp"/>
-                            <constraint firstItem="gRD-Z2-qHm" firstAttribute="top" secondItem="GSa-lW-dWC" secondAttribute="bottom" constant="12" id="G0z-12-83a"/>
                             <constraint firstItem="s4n-wH-Zni" firstAttribute="width" secondItem="HqZ-Lk-BhQ" secondAttribute="width" id="JUx-Hu-oOe"/>
                             <constraint firstItem="FUt-Lm-957" firstAttribute="leading" secondItem="S0g-56-1xf" secondAttribute="trailing" constant="16" id="Kbt-8B-qh3"/>
                             <constraint firstItem="EYS-sF-coG" firstAttribute="leading" secondItem="LLC-W9-Nqa" secondAttribute="leading" constant="121" id="Kno-pR-VSK"/>
@@ -455,6 +455,7 @@
                             <constraint firstItem="S0g-56-1xf" firstAttribute="top" secondItem="spj-Pi-6GE" secondAttribute="bottom" constant="12" id="eeS-uY-DxR"/>
                             <constraint firstItem="spj-Pi-6GE" firstAttribute="centerY" secondItem="EYS-sF-coG" secondAttribute="centerY" id="g5W-iS-s5h"/>
                             <constraint firstItem="Pye-2S-ZnE" firstAttribute="leading" secondItem="IOd-BY-BFA" secondAttribute="leading" id="gLC-da-E4J"/>
+                            <constraint firstItem="SbT-dU-JYq" firstAttribute="top" secondItem="KLF-po-q2d" secondAttribute="bottom" constant="12" id="gSa-w5-BnD"/>
                             <constraint firstItem="mSC-Lz-GaD" firstAttribute="leading" secondItem="LLC-W9-Nqa" secondAttribute="leading" constant="121" id="gYQ-fu-1JA"/>
                             <constraint firstItem="0gD-TR-UlF" firstAttribute="leading" secondItem="IOd-BY-BFA" secondAttribute="leading" id="hQd-rr-krL"/>
                             <constraint firstItem="N6g-Mn-9I3" firstAttribute="top" secondItem="yz1-e0-VAu" secondAttribute="bottom" constant="12" id="jDl-BS-NdF"/>
@@ -466,7 +467,6 @@
                             <constraint firstItem="AZb-Dh-mu4" firstAttribute="leading" secondItem="LLC-W9-Nqa" secondAttribute="leading" constant="121" id="q8t-sb-Uaz"/>
                             <constraint firstItem="EYS-sF-coG" firstAttribute="top" secondItem="WMH-T4-W1c" secondAttribute="bottom" constant="12" id="qkK-bg-cRB"/>
                             <constraint firstItem="KLF-po-q2d" firstAttribute="leading" secondItem="LLC-W9-Nqa" secondAttribute="leading" constant="121" id="qz4-Ax-2sL"/>
-                            <constraint firstItem="SbT-dU-JYq" firstAttribute="top" secondItem="KLF-po-q2d" secondAttribute="bottom" constant="12" id="rYH-9X-al5"/>
                             <constraint firstItem="uki-Cc-aMs" firstAttribute="leading" secondItem="HqZ-Lk-BhQ" secondAttribute="leading" id="rrH-aU-Qmc"/>
                             <constraint firstAttribute="trailing" secondItem="spj-Pi-6GE" secondAttribute="trailing" constant="11" id="rt9-nP-eaF"/>
                             <constraint firstItem="WMH-T4-W1c" firstAttribute="height" secondItem="gRD-Z2-qHm" secondAttribute="height" id="sZl-28-2i8"/>
@@ -491,7 +491,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" style="done" id="cGf-Up-pYe">
-                            <color key="tintColor" red="0.13725490196078433" green="0.14509803921568626" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="onSaveClicked:" destination="7Uq-gj-Vd7" id="0gw-eL-Nk2"/>
                             </connections>
@@ -612,7 +612,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="PARTY MAKER" id="8JO-ZB-6uZ">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="Oo0-Rp-y28"/>
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Oo0-Rp-y28">
+                            <color key="tintColor" red="0.082352941176470587" green="0.086274509803921567" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Z4s-Nv-kLv">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -905,7 +907,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="PARTY INFO" id="f27-HC-Y32">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Jda-Vi-dSu">
-                            <color key="tintColor" red="0.078431372549019607" green="0.086274509803921567" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.082352941176470587" green="0.086274509803921567" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -987,7 +989,7 @@
         <image name="TimePopup" width="40" height="31"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1m2-fF-aLg"/>
+        <segue reference="vS5-PK-tg0"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

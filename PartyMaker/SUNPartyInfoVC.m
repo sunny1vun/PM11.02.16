@@ -43,7 +43,6 @@
     [self.descriptionParty setText:self.selectedParty.descriptionOfParty];
     [self.logoView setImage: [UIImage imageNamed:[NSString stringWithFormat:@"PartyLogo_Small_%ld", (long)self.selectedParty.currentPage.currentPage]]];
     
-//    self.logoContainerView.layer.cornerRadius = 5.f;
     self.addPhotoParty.layer.cornerRadius =
     self.editParty.layer.cornerRadius =
     self.deleteParty.layer.cornerRadius = 5.f;
@@ -90,15 +89,5 @@
     }
     
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

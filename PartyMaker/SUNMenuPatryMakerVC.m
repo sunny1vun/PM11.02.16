@@ -101,7 +101,6 @@
         SUNPartyInfoVC *partyInfoVC = segue.destinationViewController;
         
 //        need to create instance of SUNSaver and then send it to instance of partyInfoVC
-        
 //          in dataArray stored instances of SUNSaver with has all property that i need cause it's model
         
         self.indexOfSelectedCell = [self.tableView indexPathForSelectedRow].row;
@@ -111,7 +110,6 @@
         partyInfoVC.indexOfSelectedParty = self.indexOfSelectedCell;
         
         NSLog(@"going to party info %li", (long)self.indexOfSelectedCell);
-//        self.tableView.dataSource
         
     }
     

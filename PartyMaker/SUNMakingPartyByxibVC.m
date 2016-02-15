@@ -48,6 +48,7 @@
 @property (nonatomic) UIDatePicker *pickerViewAndTools;
 @property BOOL doneWasPressed;
 @property BOOL partyWasEdited;
+@property BOOL keyboardWasShown;
 
 @end
 
@@ -366,7 +367,6 @@
 
 - (IBAction)onPageScrollTouch:(id)sender {
     
-//    [self dotTo:(CGPoint){self.shiningDot.center.x, self.scrollView.center.y}];
     [self dotTo: self.dot5.center];
     
 }
@@ -432,7 +432,9 @@
 
 -(void)keyboardWillShow:(NSNotification*)notification{
     
-    if(self.textView.isFirstResponder){
+    if(self.textView.isFirstResponder && (!self.keyboardWasShown)){
+        
+        self.keyboardWasShown = YES;
         
         CGRect keyboardRect= [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
         
@@ -455,7 +457,9 @@
 
 -(void)keyboardWillHide:(NSNotification*)notification{
     
-    float duration = [[[notification userInfo]  objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue] - 300;
+    self.keyboardWasShown = NO;
+    
+    float duration = [[[notification userInfo]  objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
     
     __block __weak SUNMakingPartyByxibVC *weakSelf= self;
     [UIView animateWithDuration:duration animations:^(void){
