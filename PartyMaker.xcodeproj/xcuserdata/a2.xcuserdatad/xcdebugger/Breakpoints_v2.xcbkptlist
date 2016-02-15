@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PartyMaker/SUNMakingPartyByxibVC.m"
-            timestampString = "477234136.368317"
+            timestampString = "477257494.928235"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "466"
-            endingLineNumber = "466"
+            startingLineNumber = "475"
+            endingLineNumber = "475"
             landmarkName = "-onSaveClicked:"
             landmarkType = "5">
          </BreakpointContent>

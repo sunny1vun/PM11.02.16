@@ -131,11 +131,11 @@
     
 }
 
-#pragma mark - points
+#pragma mark - shining dot
 
 -(void)dotTo:(CGPoint)pointTo{
     
-    [self.constraintShiningDot setConstant:(pointTo.y - 34)];
+    [self.constraintShiningDot setConstant:(pointTo.y - 30)];
 
     [UIView animateWithDuration:0.2f animations:^(void){
         
@@ -418,6 +418,15 @@
     
     return YES;
 }
+
+#pragma mark - location
+
+- (IBAction)onLocationWasClicked:(id)sender {
+    
+    [self dotTo:(CGPoint){self.dot1.center.x , self.buttonLocation.center.y}];
+    
+}
+
 
 #pragma mark - keyboard
 

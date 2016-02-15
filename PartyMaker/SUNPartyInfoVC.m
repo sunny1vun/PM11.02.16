@@ -33,11 +33,6 @@
 
 @implementation SUNPartyInfoVC
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
@@ -52,6 +47,15 @@
     self.addPhotoParty.layer.cornerRadius =
     self.editParty.layer.cornerRadius =
     self.deleteParty.layer.cornerRadius = 5.f;
+    [self.navigationItem.backBarButtonItem setTintColor:[[UIColor alloc] initWithRed:21/255.f green:22/255.f blue:26/255.f alpha:1.f]];
+
+    
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    [self.navigationItem.backBarButtonItem setTintColor:[[UIColor alloc] initWithRed:21/255.f green:22/255.f blue:26/255.f alpha:1.f]];
     
 }
 
