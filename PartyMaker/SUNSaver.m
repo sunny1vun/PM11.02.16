@@ -14,77 +14,18 @@
 
 @implementation SUNSaver
 
-//#pragma mark - saving reading
-//
-//-(NSMutableArray *)readFromPlist{
-//    
-//    NSFileManager *filemanager = [NSFileManager defaultManager];
-//    NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)firstObject];
-//    
-//    NSString *partiesFilePathInDocuments = [documentPath stringByAppendingPathComponent:@"logs/myLogs.plist"];
-//    
-//    NSMutableArray *dataFromFile = [[NSMutableArray alloc] init];
-//    if([filemanager fileExistsAtPath:partiesFilePathInDocuments]){
-//        
-//        dataFromFile = [NSMutableArray arrayWithContentsOfFile:partiesFilePathInDocuments];
-//        
-//    }else {
-//        //NSLog(@"File is not exist at path: %@", partiesFilePathInDocuments);
-//    }
-//
-//    return dataFromFile;
-//}
-//
-//-(BOOL)saveToPlist{
-//    
-//    BOOL wasSaved = NO;
-//    
-//    NSFileManager *filemanager = [NSFileManager defaultManager];
-//    NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)firstObject];
-//    
-//    NSString *partiesFilePathInDocuments = [documentPath stringByAppendingPathComponent:@"logs/myLogs.plist"];
-//    NSString *partiesFilePathInBundle = [[[NSBundle mainBundle]resourcePath] stringByAppendingString:@"/myLogs.plist"];
-////    NSLog(@"%@",partiesFilePathInDocuments);
-//    NSMutableArray *dataFromFile = [[NSMutableArray alloc] init];
-//    
-//    if(![filemanager fileExistsAtPath: partiesFilePathInDocuments]){
-//
-//        NSError *error;
-//        [filemanager copyItemAtPath:partiesFilePathInBundle toPath:partiesFilePathInDocuments error:&error];
-//    
-//        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
-//        [dataFromFile addObject:data];
-//        NSArray *dataToWrite = [NSArray arrayWithArray:dataFromFile];
-//        [dataToWrite writeToFile:partiesFilePathInDocuments atomically:YES];
-//        wasSaved =  YES;
-//        
-//        if ( !error ) {
-//            
-//            wasSaved = NO;
-//            NSLog(@"%@", error);
-//            
-//        }
-//
-//    }else {
-//        
-//        dataFromFile = [self readFromPlist];
-//        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
-//        
-//        [dataFromFile addObject:data];
-//        
-//        NSArray *dataToWrite = [NSArray arrayWithArray:dataFromFile];
-//        
-//        [dataToWrite writeToFile:partiesFilePathInDocuments atomically:YES];
-//        
-//        wasSaved = YES;
-//        
-//    }
-//   
-//    return wasSaved;
-//    
-//}
++(SUNSaver*) sharedInstance{
+    
+    static SUNSaver *instance = nil;
+    static dispatch_once_t oncedbExchange;
+    dispatch_once(&oncedbExchange, ^{
+        instance = [[SUNSaver alloc] init];
+    });
+    
+    return instance;
+}
 
-#pragma mark- Coding and Encoding PartyMakerInfo
+#pragma mark- plist
 
 -(instancetype) initWithName:(NSString *)name   date:(NSString *)date
                    sliderTop: (UISlider *)sliderTop     sliderBot:(UISlider *)sliderBot
@@ -129,5 +70,12 @@
 
 }
 
+#pragma mark - CoreData 
+
+-(instancetype) initWithDate:(NSDate *)date   startTime:(NSString *)value
+                   sliderTop: (UISlider *)sliderTop     sliderBot:(UISlider *)sliderBot
+                 description:(NSString *)description    pageControl:(UIPageControl *)pageControl{
+    return [SUNSaver sharedInstance];
+}
 
 @end

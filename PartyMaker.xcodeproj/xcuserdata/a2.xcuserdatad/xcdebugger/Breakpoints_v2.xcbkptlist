@@ -16,15 +16,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PartyMaker/SUNMakingPartyByxibVC.m"
-            timestampString = "477260157.607251"
+            timestampString = "477474227.500488"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "-viewWillAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PartyMaker/SUNMakingPartyByxibVC.m"
-            timestampString = "477260812.118692"
+            timestampString = "477474227.500488"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "479"
-            endingLineNumber = "479"
+            startingLineNumber = "496"
+            endingLineNumber = "496"
             landmarkName = "-onSaveClicked:"
             landmarkType = "5">
          </BreakpointContent>
@@ -48,16 +48,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PartyMaker/SUNMenuPatryMakerVC.m"
-            timestampString = "477243212.090312"
+            filePath = "PartyMaker/SUNMakingPartyByxibVC.m"
+            timestampString = "477474227.500488"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
+            landmarkName = "-doneWasClicked:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PartyMaker/SUNMakingPartyByxibVC.m"
+            timestampString = "477474227.500488"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "-viewWillAppear:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -67,13 +83,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PartyMaker/SUNMakingPartyByxibVC.m"
-            timestampString = "477260157.607251"
+            filePath = "PartyMaker/SUNAuthorizationVC.m"
+            timestampString = "477474227.500488"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "-viewWillAppear:"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "-onSignInTouched:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SUNAuthorizationVC onSignInTouched:]"
+                  moduleName = "PartyMaker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/a2/Documents/Lecture%2011%20Mariya/HomeTask%20PartyMaker/PartyMaker/SUNAuthorizationVC.m"
+                  timestampString = "477478055.97473"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "427">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__38-[SUNAuthorizationVC onSignInTouched:]_block_invoke"
+                  moduleName = "PartyMaker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/a2/Documents/Lecture%2011%20Mariya/HomeTask%20PartyMaker/PartyMaker/SUNAuthorizationVC.m"
+                  timestampString = "477478055.974877"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "82">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PartyMaker/SUNAuthorizationVC.m"
+            timestampString = "477474227.500488"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "-onSignInTouched:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

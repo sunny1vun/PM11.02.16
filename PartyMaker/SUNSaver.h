@@ -26,7 +26,14 @@
                    sliderTop: (UISlider *)sliderTop     sliderBot:(UISlider *)sliderBot
                  description:(NSString *)description    pageControl:(UIPageControl *)pageControl;
 
+@property (nonatomic, strong) NSDate *date;
+//@property (nonatomic, strong)
 
++(SUNSaver *) sharedInstance;
+
+-(instancetype) initWithCreatorId:(NSNumber *)creatorId   startTime:(NSNumber *)startTime
+                          endTime: (NSNumber *)endTime logo:(NSNumber *)currentPage sliderBot:(UISlider *)sliderBot
+                 description:(NSString *)description;
 
 //-(NSMutableArray *)readFromPlist;
 //-(BOOL)saveToPlist;

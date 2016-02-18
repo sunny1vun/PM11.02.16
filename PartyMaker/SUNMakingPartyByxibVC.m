@@ -8,8 +8,8 @@
 
 #import "SUNMakingPartyByxibVC.h"
 #import "SUNUniversalView.h"
-//#import "SUNSaver.h"
 #import "SUNDataStore.h"
+#import "SUNPartyMakerSDK.h"
 
 @interface SUNMakingPartyByxibVC () <UITextViewDelegate , UITextFieldDelegate , UIScrollViewDelegate , SUNUniversalViewDelegate>
 
@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *constraintShiningDot;
 @property (nonatomic, weak) IBOutlet UIButton *buttonDateChoosing;
 @property (nonatomic) NSString *dateIsChosen;
+@property (nonatomic) NSString *fullDateIsChosen;
 @property (nonatomic, weak) IBOutlet UITextField *textField;
 @property (nonatomic, weak) IBOutlet UISlider *sliderTop;
 @property (nonatomic, weak) IBOutlet UISlider *sliderBot;
@@ -114,7 +115,7 @@
         self.partyWasEdited = YES;
     }
     
-    
+    //NSLog(@"value from slider %f", [self valueFromTextOfSlider:@"2:30"]);
 
 }
 
@@ -166,7 +167,6 @@
     SUNUniversalView *pickerViewAndTools = nibContents[0];
     pickerViewAndTools.delegate = self;
     
-
     pickerViewAndTools.frame = (CGRect){0 , self.view.frame.size.height , self.view.frame.size.width , self.view.frame.size.height/2 + 66};
     
     [self.view addSubview:pickerViewAndTools];
@@ -191,6 +191,35 @@
 -(void)doneWasClicked:(SUNUniversalView *) datePickerView{
     //stores date to normalTitle of CHOOSE DATE button and hides views
     
+    self.buttonDateChoosing.enabled = YES;
+    
+    for(id view in self.pickerViewAndTools.subviews){
+        if([view class]== [UIDatePicker class]){
+            UIDatePicker *datePicker= (UIDatePicker*)view;
+            
+//            NSDate *dateOfPicker= datePicker.date;
+            
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            NSTimeZone *tz = [NSTimeZone timeZoneWithName:@"Europe/Kiev"];
+            [dateFormat setTimeZone:tz];
+            
+            [dateFormat setDateFormat:@"dd.MM.yyyy"];
+            NSString *prettyDate = [dateFormat stringFromDate:datePicker.date];
+            [self.buttonDateChoosing setTitle:prettyDate forState:UIControlStateNormal];
+            
+            self.dateIsChosen = prettyDate;
+            self.buttonDateChoosing.enabled = YES;
+            self.doneWasPressed = 1;
+            
+//            preparing full date to sum with startTime and endTime (party is starting and ending in one day)
+//            [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+            [dateFormat setDateFormat:@"yyyy-MM-dd 00:00:00"];
+            
+            self.fullDateIsChosen = [dateFormat stringFromDate:datePicker.date];
+            
+        }
+    }
+    
     [UIView animateWithDuration:0.3f delay:0.05f options:UIViewAnimationOptionCurveLinear animations:^(void){
         
         CGRect frameForDatePicker = self.pickerViewAndTools.frame;
@@ -199,28 +228,8 @@
         
     }   completion:^(BOOL finished){
         [datePickerView removeFromSuperview];
-
+        
     }];
-    
-    self.buttonDateChoosing.enabled = YES;
-    
-    for(id view in self.pickerViewAndTools.subviews){
-        if([view class]== [UIDatePicker class]){
-            UIDatePicker *datePicker= (UIDatePicker*)view;
-            
-            NSDate *dateOfPicker= datePicker.date;
-            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-            [dateFormat setDateFormat:@"dd.MM.yyyy"];
-            NSMutableString *prettyDate = [[NSMutableString alloc] init];
-            [prettyDate appendString:[dateFormat stringFromDate:dateOfPicker]];
-            
-            [self.buttonDateChoosing setTitle:prettyDate forState:UIControlStateNormal];
-            self.dateIsChosen= prettyDate;
-            self.buttonDateChoosing.enabled= YES;
-            self.doneWasPressed= 1;
-
-        }
-    }
     
 }
 
@@ -278,8 +287,6 @@
     self.labelOfTopSlider.text = [self textFromValueOfSlider:self.sliderTop];
     
     self.labelOfBottomSlider.text = [self textFromValueOfSlider:self.sliderBot];
-
-
     
 }
 
@@ -306,6 +313,16 @@
     CGFloat minutes = (value - hours * 60);
     
     return [[NSMutableString alloc] initWithFormat:@"%2d:%02d", (int)hours, (int)minutes];
+}
+
+-(CGFloat)valueFromTextOfSlider:(NSString *) time{
+    
+    NSArray *items = [time componentsSeparatedByString:@":"];
+    NSInteger hours = [[items  objectAtIndex:0] integerValue]*60;
+    NSInteger minutes = [[items objectAtIndex:1] integerValue];
+    hours += minutes;
+    
+    return (CGFloat)hours;
 }
 
 -(IBAction)valueChangedBotSliders:(id)sender{
@@ -512,16 +529,47 @@
         [self presentViewController:alert animated:YES completion:nil];
         
     }else{
+        
         SUNDataStore *party = [[SUNDataStore alloc]  initWithName:self.textField.text  date:self.dateIsChosen                                                sliderTop: self.sliderTop    sliderBot: self.sliderBot  description: self.textView.text    pageControl:self.pageControl];
-
+        
+        
+        
         if ( self.partyWasEdited ) {
             parties = [SUNDataStore readFromPlist];
-            //
+            //working code but with plist
             NSData *dataParty = [NSKeyedArchiver archivedDataWithRootObject:party];
             [parties removeObjectAtIndex:self.indexOfPartyToChange];
             [parties insertObject:dataParty atIndex:self.indexOfPartyToChange];
             NSLog(@"data of party was added to parties");
             
+            
+            //make working by using network
+            
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            [dateFormat setDateFormat:@"yyyy-MM-dd 00:00:00"];
+            
+            //preparing startTime and endTime
+            NSDate *dateOfParty = [dateFormat dateFromString:self.fullDateIsChosen];
+            NSString *timeFromSlider = [self textFromValueOfSlider:self.sliderTop];
+            
+            NSNumber *startTime = [[NSNumber alloc] initWithInteger:[self valueFromTextOfSlider:timeFromSlider] * 60 + [dateOfParty timeIntervalSince1970]];
+            
+            timeFromSlider = [self textFromValueOfSlider: self.sliderBot];
+            
+            NSNumber *endTime = [[NSNumber alloc] initWithInteger:[self valueFromTextOfSlider:timeFromSlider] * 60 + [dateOfParty timeIntervalSince1970]];
+            
+//            __block __weak SUNMakingPartyByxibVC* weakSelf = self;
+////            checking of right symbols of login and password is not need (they are checked in my SDK)
+//            
+//            [[SUNPartyMakerSDK sharedInstance] addPartyWithId:@"id" name: startTime:<#(NSString *)#> endTime:<#(NSString *)#> logoId:<#(NSString *)#> comment:<#(NSString *)#> creatorId:<#(NSString *)#> latitude:<#(NSString *)#> longitude:<#(NSString *)#> callback:<#^(NSDictionary *response, NSError *error)block#>^(NSDictionary *response, NSError *error){
+//                
+//                BOOL authorized = [weakSelf canAuthorise:response];
+//                if ( authorized ) {
+//                    [weakSelf willPassAuthorisation];
+//                }
+//                
+//            }];
+        
         }else{
             parties = [SUNDataStore readFromPlist];
             NSData *dataParty = [NSKeyedArchiver archivedDataWithRootObject:party];
@@ -536,6 +584,75 @@
     }
     
 }
+
+#pragma mark - realisation of login
+
+- (IBAction)onSignInTouched:(id)sender {
+    //    tableView can be reached faster than dataBase will answer, so dont make like below
+    //    [[SUNPartyMakerSDK sharedInstance] loginWithUser:@"sunnyvun" andPassword:@"sunn1vun" callback:^(NSDictionary *response, NSError *error) {
+    //
+    //        NSLog(@"response was taken in appDelegate %@", [response valueForKey:@"response"]);
+    //        //        NSLog(@"keys of response dictionary %@", response[@"response"]);
+    //        NSLog(@"%@", [response allKeys]);
+    //
+    //    }];
+    
+    //registered user exists by login @"sunnyvun" and pass @"sunn1vun"
+            
+//            __block __weak SUNAuthorizationVC* weakSelf = self;
+            //              checking of right symbols of login and password is not need (they are checked in my SDK)
+            
+            //        [[SUNDataStore sharedInstance] canILoginWithUserName: self.loginTextField.text andPassword:self.passwordTextField.text callback:^(NSDictionary *response, NSError *error){
+            //        BOOL authorized = [weakSelf canAuthorise:response];
+            //            if ( authorized ) {
+            //                [weakSelf willPassAuthorisation];
+            //            }
+            //        }];
+            
+//    [[SUNPartyMakerSDK sharedInstance] loginWithUserName:self.loginTextField.text andPassword:self.passwordTextField.text callback:^(NSDictionary *response, NSError *error) {
+//        
+//        BOOL authorized = [weakSelf canAuthorise:response];
+//        if ( authorized ) {
+//            [weakSelf willPassAuthorisation];
+//        }
+//        
+//    }];
+    
+    
+}
+
+- (void) willPassSaving{
+    
+    //    as was said that graphics should be always painted in mainQueue, calling tabBar initiated like that
+    dispatch_async(dispatch_get_main_queue(),^{
+        UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UITabBarController* tabBar = [ storyboard instantiateViewControllerWithIdentifier:@"SUNTabBar"];
+        [self presentViewController:tabBar animated:YES completion:nil];
+        NSLog(@"Table view wasn't first");
+    });
+    
+}
+
+- (BOOL) canSave: (NSDictionary*) response{
+    
+    NSLog(@"%@",response);
+    NSDictionary* localResponse = [response objectForKey:@"response"];
+    
+    NSLog(@"%@",localResponse[@"msg"]);
+//    if ( [localResponse[@"name"] isEqualToString:self.loginTextField.text] ) {
+//        NSLog(@"was loged");
+//        return YES;
+//    }
+//    else if ([[response objectForKey:@"statusCode"]  isEqual: @400]) {
+//        //here i need insert view that will provide user to know he entered wrong login or password
+//        //as for registration, as for signIn
+//        NSLog(@"statusCode %@", response[@"statusCode"]);
+//        return NO;
+//    }
+    
+    return YES;
+}
+
 
 #pragma mark - cancel button
 

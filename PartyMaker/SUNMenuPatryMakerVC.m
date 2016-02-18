@@ -18,7 +18,6 @@
 //for table
 @property (nonatomic, strong) NSArray *dataArray;
 @property (nonatomic) NSInteger indexOfSelectedCell;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 
 @end
@@ -28,6 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    NSLog(@"TableView was first");
     self.dataArray = [SUNDataStore readFromPlist];
     
 //    Here comes connection of instance of VC and dataSource and delegate of my tableView by code
