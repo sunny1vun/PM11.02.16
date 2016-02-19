@@ -11,6 +11,8 @@
 @interface SUNTableViewCell : UITableViewCell
 
 +(NSString*)reuseIdentifier;
+
 -(void)configureWithName:(NSString *)nameOfParty dateAndTimeOfParty:(NSString *)dateAndTimeOfParty logo:(UIImage*) logo;
+//-(void)configureWithRightName:(NSString *)nameOfParty startTime:(NSString *)startTime endTime:(NSString*)endTime logo:(UIImage*)logo;
 
 @end

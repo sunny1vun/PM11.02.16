@@ -35,6 +35,41 @@
     
 }
 
++(NSString*)formateToStringStartTime:(NSNumber*)startTime endTime:(NSNumber*)endTime{
+    
+    NSMutableString *formatedString = [[NSMutableString alloc] init];
+    
+    //    partId /seconds / minutes / hours / days = years
+    //    1357234941 / 60 / 60 / 24 / 365 = 43.037637652207
+    
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:startTime.doubleValue];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    NSTimeZone *tz = [NSTimeZone timeZoneWithName:@"Europe/Kiev"];
+    [dateFormat setTimeZone:tz];
+    
+    [dateFormat setDateFormat:@"dd.MM.yyyy"];
+    NSString *prettyDate = [dateFormat stringFromDate:date];
+
+    [formatedString appendString:prettyDate];
+    
+    CGFloat value = startTime.doubleValue/ (60*60);
+    CGFloat hours = (int)value/60;
+    CGFloat minutes = (value - hours * 60);
+    
+    [formatedString appendFormat:@"  %2d:%02d-", (int)hours, (int)minutes];
+    
+    value = endTime.doubleValue;
+    hours = (int)value/60;
+    minutes = (value - hours * 60);
+    
+    [formatedString appendFormat:@"%2d:%02d", (int)hours, (int)minutes];
+    
+    
+    
+    return formatedString;
+    
+}
+
 //+(NSArray*)unformateString:(NSString*)dateWithTime{
 //    
 //    NSMutableArray *arrayDateTime = [[NSMutableArray alloc] init];

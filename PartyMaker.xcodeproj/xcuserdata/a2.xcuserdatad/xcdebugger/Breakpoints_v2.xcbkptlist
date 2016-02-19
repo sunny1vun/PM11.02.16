@@ -84,11 +84,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PartyMaker/SUNAuthorizationVC.m"
-            timestampString = "477474227.500488"
+            timestampString = "477481961.924131"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "-onSignInTouched:"
             landmarkType = "5">
             <Locations>
@@ -100,12 +100,12 @@
                   moduleName = "PartyMaker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/a2/Documents/Lecture%2011%20Mariya/HomeTask%20PartyMaker/PartyMaker/SUNAuthorizationVC.m"
-                  timestampString = "477478055.97473"
+                  timestampString = "477542638.395764"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
-                  offsetFromSymbolStart = "427">
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "440">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -115,12 +115,12 @@
                   moduleName = "PartyMaker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/a2/Documents/Lecture%2011%20Mariya/HomeTask%20PartyMaker/PartyMaker/SUNAuthorizationVC.m"
-                  timestampString = "477478055.974877"
+                  timestampString = "477542638.395913"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
-                  offsetFromSymbolStart = "82">
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "67">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -132,11 +132,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PartyMaker/SUNAuthorizationVC.m"
-            timestampString = "477474227.500488"
+            timestampString = "477481961.924131"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "-onSignInTouched:"
             landmarkType = "5">
          </BreakpointContent>

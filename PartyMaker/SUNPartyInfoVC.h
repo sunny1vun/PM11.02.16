@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SUNSaver.h"
+#import "SUNParty.h"
 
 @interface SUNPartyInfoVC : UIViewController
 

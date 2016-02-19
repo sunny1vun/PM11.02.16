@@ -7,9 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
-
-@class SUNParty;
+#import "SUNDataStore.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,7 +19,13 @@ NS_ASSUME_NONNULL_BEGIN
 //@property (nonatomic, strong) NSString *userId;
 //@property (nonatomic, strong) NSString *password;
 
+//@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+//@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
 +(SUNPartyUser*) sharedInstance;
+
+-(void) initWithEmail:(NSString *)email   name:(NSString *)name
+               userId: (NSString *)userId password:(NSString *)password;
 
 @end
 

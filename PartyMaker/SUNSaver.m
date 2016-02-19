@@ -19,7 +19,7 @@
     static SUNSaver *instance = nil;
     static dispatch_once_t oncedbExchange;
     dispatch_once(&oncedbExchange, ^{
-        instance = [[SUNSaver alloc] init];
+        instance = [[self alloc] init];
     });
     
     return instance;
@@ -41,6 +41,8 @@
     
     return self;
 }
+
+
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
@@ -72,10 +74,21 @@
 
 #pragma mark - CoreData 
 
--(instancetype) initWithDate:(NSDate *)date   startTime:(NSString *)value
-                   sliderTop: (UISlider *)sliderTop     sliderBot:(UISlider *)sliderBot
-                 description:(NSString *)description    pageControl:(UIPageControl *)pageControl{
-    return [SUNSaver sharedInstance];
+-(void) initWithCreatorId:(NSNumber *)creatorId   startTime:(NSNumber *)startTime
+                  endTime: (NSNumber *)endTime logo:(NSNumber *)currentPage  partyId:(NSNumber*)partyId latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude description:(NSString *)description partyName:(NSString *)partyName{
+    self.creatorId = creatorId;
+    self.startTime = startTime;
+    self.endTime = endTime;
+    self.logo = currentPage;
+    self.partyId = partyId;
+    self.latitude = latitude;
+    self.longitude = longitude;
+    self.comment = description;
+    self.nameOfParty = partyName;
+    
+    //    self.uniqueID =
 }
+
+
 
 @end

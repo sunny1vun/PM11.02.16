@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
 
 @interface SUNSaver : NSObject <NSCoding>
 
@@ -26,17 +30,31 @@
                    sliderTop: (UISlider *)sliderTop     sliderBot:(UISlider *)sliderBot
                  description:(NSString *)description    pageControl:(UIPageControl *)pageControl;
 
-@property (nonatomic, strong) NSDate *date;
-//@property (nonatomic, strong)
+//@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+//@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+@property (nonatomic) NSNumber *partyId;
+@property (nullable, nonatomic, strong) NSString *nameOfParty;
+@property (nonatomic) NSNumber* startTime;
+@property (nonatomic) NSNumber* endTime;
+@property (nullable, nonatomic, strong) NSString *comment;
+@property (nonatomic) NSNumber* logo;
+@property (nonatomic) NSNumber* creatorId;
+@property (nonatomic) NSNumber* latitude;
+@property (nonatomic) NSNumber* longitude;
 
 +(SUNSaver *) sharedInstance;
 
--(instancetype) initWithCreatorId:(NSNumber *)creatorId   startTime:(NSNumber *)startTime
-                          endTime: (NSNumber *)endTime logo:(NSNumber *)currentPage sliderBot:(UISlider *)sliderBot
-                 description:(NSString *)description;
+//-(instancetype) initWithCreatorId:(NSNumber *)creatorId   startTime:(NSNumber *)startTime
+//                          endTime: (NSNumber *)endTime logo:(NSNumber *)currentPage sliderBot:(UISlider *)sliderBot
+//                 description:(NSString *)description;
+-(void) initWithCreatorId:(NSNumber *)creatorId   startTime:(NSNumber *)startTime
+                  endTime: (NSNumber *)endTime logo:(NSNumber *)currentPage  partyId:(NSNumber*)partyId latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude description:(NSString *)description partyName:(NSString *)partyName;
 
 //-(NSMutableArray *)readFromPlist;
 //-(BOOL)saveToPlist;
 
 
 @end
+
+NS_ASSUME_NONNULL_END

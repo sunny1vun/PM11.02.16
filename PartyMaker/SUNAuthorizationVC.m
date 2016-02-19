@@ -54,7 +54,8 @@
         if( ![self.passwordTextField.text isEqualToString:@""] ){
             
             
-            
+            //этот должен (метод СДК) быть вызван в классе модели юзер
+            //тут я должен вызвать метод (модели) SUNUser и в качестве аргумента передать в этот метод его инстанс
             __block __weak SUNAuthorizationVC* weakSelf = self;
             //              checking of right symbols of login and password is not need (they are checked in my SDK)
             [[SUNPartyMakerSDK sharedInstance] registerWithUserEmail:[NSString stringWithFormat:@"%@@mail.com", self.loginTextField.text] andPassword:self.passwordTextField.text andName:self.loginTextField.text callback:^(NSDictionary *response, NSError *error) {

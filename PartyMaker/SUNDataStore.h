@@ -10,8 +10,10 @@
 #import <CoreData/CoreData.h>
 #import "SUNSaver.h"
 #import "SUNAuthorizationVC.h"
+#import "SUNPartyUser.h"
+#import "SUNParty.h"
 
-@interface SUNDataStore : SUNSaver
+@interface SUNDataStore : SUNSaver <NSFetchedResultsControllerDelegate>
 
 #pragma mark - plist
 +(SUNDataStore*) sharedInstance;
@@ -23,12 +25,25 @@
 #pragma mark - CoreData
 @property (strong, nonatomic) UIWindow *window;
 
-@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
-@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+//change what is abow to what is below
+@property (strong, nonatomic) NSManagedObjectContext *backgroundThreadContext;
+@property (strong, nonatomic) NSManagedObjectContext *mainThreadContext;
 
-- (void)saveContext;
-- (NSURL *)applicationDocumentsDirectory;
+@property (strong, nonatomic) NSManagedObjectModel *managedObjectModel;
+@property (strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
+- (void) performWriteOperation:(void (^)(NSManagedObjectContext*))writeBlock completion:(void(^)())completion;
+
+//-(NSMutableArray *)readOperation;
+
+- (BOOL)saveContext;
+-(NSMutableArray *)fetchContextForParties:(NSManagedObjectContext *) forRead;
+- (void) performFetchOperation:(void (^)(NSManagedObjectContext*))readBlock completion:(void(^)())completion;
+//- (NSMutableArray *)readContext:(NSManagedObjectContext *)forReadOrWrite;
+//- (NSURL *)applicationDocumentsDirectory;
+
+//-(void)initWithParty: (
 
 @end

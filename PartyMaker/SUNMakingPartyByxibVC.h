@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SUNPartyInfoVC.h"
+#import "SUNParty.h"
 
 @interface SUNMakingPartyByxibVC : UIViewController 
 

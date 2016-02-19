@@ -11,22 +11,27 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SUNParty : SUNPartyUser
+@interface SUNParty : NSManagedObject
 
 // Insert code here to declare functionality of your managed object subclass
 
-//@property (nonatomic) NSInteger partyId;
+//use NSNumber for server and CoreData cause its object, and NSInteger its structure
+//@property (nonatomic) NSNumber *partyId;
 //@property (nullable, nonatomic, retain) NSString *partyName;
-//@property (nonatomic) NSInteger startTime;
-//@property (nonatomic) NSInteger endTime;
+//@property (nonatomic) NSNumber* startTime;
+//@property (nonatomic) NSNumber* endTime;
 //@property (nullable, nonatomic, retain) NSString *comment;
-//@property (nonatomic) NSInteger logo;
-//@property (nonatomic) NSInteger creatorId;
-//@property (nonatomic) double latitude;
-//@property (nonatomic) double longitude;
+//@property (nonatomic) NSNumber* logo;
+//@property (nonatomic) NSNumber* creatorId;
+//@property (nonatomic) NSNumber* latitude;
+//@property (nonatomic) NSNumber* longitude;
 
+//check in what type u need to return, in class for +CoreDataProperties
 +(SUNParty*) sharedInstance;
 
+//check if startTime is right from timestamp
+-(void) initWithCreatorId:(NSNumber *)creatorId   startTime:(NSNumber *)startTime
+                          endTime: (NSNumber *)endTime logo:(NSNumber *)currentPage  partyId:(NSNumber*)partyId latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude description:(NSString *)description partyName:(NSString *)partyName;
 
 @end
 

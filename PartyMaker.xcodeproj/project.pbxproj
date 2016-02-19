@@ -17,12 +17,8 @@
 		835BBF331C69E6AC00AE844B /* SUNSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = 835BBF321C69E6AC00AE844B /* SUNSaver.m */; };
 		836064451C72840200B368DB /* SUNAuthorizationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 836064441C72840200B368DB /* SUNAuthorizationVC.m */; };
 		8391D0AC1C720B82005A21F2 /* SUNLogoImageV.m in Sources */ = {isa = PBXBuildFile; fileRef = 8391D0AB1C720B82005A21F2 /* SUNLogoImageV.m */; };
-		83CA66461C74658D00D01B2D /* SUNUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CA66451C74658D00D01B2D /* SUNUser.m */; };
-		83CA66491C74870900D01B2D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 83CA66471C74870900D01B2D /* Model.xcdatamodeld */; };
-		83CA66891C7518E500D01B2D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83CA66881C7518E500D01B2D /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		83CA66921C751D2F00D01B2D /* SUNPartyUser+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CA668B1C751D2F00D01B2D /* SUNPartyUser+CoreDataProperties.m */; };
+		83CA66491C74870900D01B2D /* PartyMaker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 83CA66471C74870900D01B2D /* PartyMaker.xcdatamodeld */; };
 		83CA66931C751D2F00D01B2D /* SUNPartyUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CA668D1C751D2F00D01B2D /* SUNPartyUser.m */; };
-		83CA66941C751D2F00D01B2D /* SUNParty+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CA668F1C751D2F00D01B2D /* SUNParty+CoreDataProperties.m */; };
 		83CA66951C751D2F00D01B2D /* SUNParty.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CA66911C751D2F00D01B2D /* SUNParty.m */; };
 		83D64D1D1C6BBB5F000F6321 /* SUNUniversalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D64D1C1C6BBB5F000F6321 /* SUNUniversalView.m */; };
 		83D64D1F1C6BBB8F000F6321 /* SUNUniversalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D64D1E1C6BBB8F000F6321 /* SUNUniversalView.xib */; };
@@ -30,33 +26,18 @@
 		83D64D9A1C6F6E97000F6321 /* SUNMenuPatryMakerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D64D991C6F6E97000F6321 /* SUNMenuPatryMakerVC.m */; };
 		83D64D9E1C6F7D71000F6321 /* SUNTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D64D9D1C6F7D71000F6321 /* SUNTableViewCell.m */; };
 		83D64DA11C6FA811000F6321 /* NSDate+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D64DA01C6FA811000F6321 /* NSDate+Utility.m */; };
+		83D65E3F1C75EAE300666D2F /* SUNPartyUser+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D65E3C1C75EAE300666D2F /* SUNPartyUser+CoreDataProperties.m */; };
+		83D65E401C75EAE300666D2F /* SUNParty+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D65E3E1C75EAE300666D2F /* SUNParty+CoreDataProperties.m */; };
 		83DA9A941C6A7D6900AF9570 /* Asset Catalog.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83DA9A931C6A7D6900AF9570 /* Asset Catalog.xcassets */; };
 		83EBB4071C6220ED007E3722 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EBB4061C6220ED007E3722 /* main.m */; };
 		83EBB40A1C6220ED007E3722 /* SUNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EBB4091C6220ED007E3722 /* SUNAppDelegate.m */; };
 		83EBB4151C6220ED007E3722 /* Launchscreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83EBB4131C6220ED007E3722 /* Launchscreen.storyboard */; };
-		83EBB4201C6220ED007E3722 /* PartyMakerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EBB41F1C6220ED007E3722 /* PartyMakerTests.m */; };
-		83EBB42B1C6220ED007E3722 /* PartyMakerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EBB42A1C6220ED007E3722 /* PartyMakerUITests.m */; };
 		83F70DC91C70B41F008BBF94 /* SUNPartyInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F70DC81C70B41F008BBF94 /* SUNPartyInfoVC.m */; };
+		8BD3626C5FFF676ACAAAF913 /* libPods-PartyMaker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8667852EE5A4638B6E10506F /* libPods-PartyMaker.a */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		83EBB41C1C6220ED007E3722 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 83EBB3FA1C6220ED007E3722 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 83EBB4011C6220ED007E3722;
-			remoteInfo = PartyMaker;
-		};
-		83EBB4271C6220ED007E3722 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 83EBB3FA1C6220ED007E3722 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 83EBB4011C6220ED007E3722;
-			remoteInfo = PartyMaker;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		2778AB9D78B521B692CBEA84 /* Pods-PartyMaker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PartyMaker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PartyMaker/Pods-PartyMaker.debug.xcconfig"; sourceTree = "<group>"; };
 		830A39741C70EB0700753CF1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8355922E1C733109005CD18C /* SUNPartyMakerSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUNPartyMakerSDK.h; sourceTree = "<group>"; };
 		8355922F1C733109005CD18C /* SUNPartyMakerSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUNPartyMakerSDK.m; sourceTree = "<group>"; };
@@ -72,16 +53,9 @@
 		836064441C72840200B368DB /* SUNAuthorizationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUNAuthorizationVC.m; sourceTree = "<group>"; };
 		8391D0AA1C720B82005A21F2 /* SUNLogoImageV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUNLogoImageV.h; sourceTree = "<group>"; };
 		8391D0AB1C720B82005A21F2 /* SUNLogoImageV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUNLogoImageV.m; sourceTree = "<group>"; };
-		83CA66441C74658D00D01B2D /* SUNUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUNUser.h; sourceTree = "<group>"; };
-		83CA66451C74658D00D01B2D /* SUNUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUNUser.m; sourceTree = "<group>"; };
-		83CA66481C74870900D01B2D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		83CA66881C7518E500D01B2D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		83CA668A1C751D2F00D01B2D /* SUNPartyUser+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SUNPartyUser+CoreDataProperties.h"; path = "../SUNPartyUser+CoreDataProperties.h"; sourceTree = "<group>"; };
-		83CA668B1C751D2F00D01B2D /* SUNPartyUser+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SUNPartyUser+CoreDataProperties.m"; path = "../SUNPartyUser+CoreDataProperties.m"; sourceTree = "<group>"; };
+		83CA66481C74870900D01B2D /* PartyMaker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PartyMaker.xcdatamodel; sourceTree = "<group>"; };
 		83CA668C1C751D2F00D01B2D /* SUNPartyUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUNPartyUser.h; path = ../SUNPartyUser.h; sourceTree = "<group>"; };
 		83CA668D1C751D2F00D01B2D /* SUNPartyUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUNPartyUser.m; path = ../SUNPartyUser.m; sourceTree = "<group>"; };
-		83CA668E1C751D2F00D01B2D /* SUNParty+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SUNParty+CoreDataProperties.h"; path = "../SUNParty+CoreDataProperties.h"; sourceTree = "<group>"; };
-		83CA668F1C751D2F00D01B2D /* SUNParty+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SUNParty+CoreDataProperties.m"; path = "../SUNParty+CoreDataProperties.m"; sourceTree = "<group>"; };
 		83CA66901C751D2F00D01B2D /* SUNParty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUNParty.h; path = ../SUNParty.h; sourceTree = "<group>"; };
 		83CA66911C751D2F00D01B2D /* SUNParty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUNParty.m; path = ../SUNParty.m; sourceTree = "<group>"; };
 		83D64D1B1C6BBB5F000F6321 /* SUNUniversalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUNUniversalView.h; sourceTree = "<group>"; };
@@ -95,6 +69,10 @@
 		83D64D9D1C6F7D71000F6321 /* SUNTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUNTableViewCell.m; sourceTree = "<group>"; };
 		83D64D9F1C6FA811000F6321 /* NSDate+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utility.h"; sourceTree = "<group>"; };
 		83D64DA01C6FA811000F6321 /* NSDate+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utility.m"; sourceTree = "<group>"; };
+		83D65E3B1C75EAE300666D2F /* SUNPartyUser+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SUNPartyUser+CoreDataProperties.h"; sourceTree = "<group>"; };
+		83D65E3C1C75EAE300666D2F /* SUNPartyUser+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SUNPartyUser+CoreDataProperties.m"; sourceTree = "<group>"; };
+		83D65E3D1C75EAE300666D2F /* SUNParty+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SUNParty+CoreDataProperties.h"; sourceTree = "<group>"; };
+		83D65E3E1C75EAE300666D2F /* SUNParty+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SUNParty+CoreDataProperties.m"; sourceTree = "<group>"; };
 		83DA9A931C6A7D6900AF9570 /* Asset Catalog.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Asset Catalog.xcassets"; path = "../Asset Catalog.xcassets"; sourceTree = "<group>"; };
 		83EBB4021C6220ED007E3722 /* PartyMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PartyMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83EBB4061C6220ED007E3722 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -102,14 +80,10 @@
 		83EBB4091C6220ED007E3722 /* SUNAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SUNAppDelegate.m; sourceTree = "<group>"; };
 		83EBB4141C6220ED007E3722 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Launchscreen.storyboard; sourceTree = "<group>"; };
 		83EBB4161C6220ED007E3722 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		83EBB41B1C6220ED007E3722 /* PartyMakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PartyMakerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		83EBB41F1C6220ED007E3722 /* PartyMakerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PartyMakerTests.m; sourceTree = "<group>"; };
-		83EBB4211C6220ED007E3722 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		83EBB4261C6220ED007E3722 /* PartyMakerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PartyMakerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		83EBB42A1C6220ED007E3722 /* PartyMakerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PartyMakerUITests.m; sourceTree = "<group>"; };
-		83EBB42C1C6220ED007E3722 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83F70DC71C70B41F008BBF94 /* SUNPartyInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUNPartyInfoVC.h; sourceTree = "<group>"; };
 		83F70DC81C70B41F008BBF94 /* SUNPartyInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUNPartyInfoVC.m; sourceTree = "<group>"; };
+		8667852EE5A4638B6E10506F /* libPods-PartyMaker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PartyMaker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAA375648BA8546EBA308213 /* Pods-PartyMaker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PartyMaker.release.xcconfig"; path = "Pods/Target Support Files/Pods-PartyMaker/Pods-PartyMaker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,27 +91,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83CA66891C7518E500D01B2D /* CoreData.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		83EBB4181C6220ED007E3722 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		83EBB4231C6220ED007E3722 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				8BD3626C5FFF676ACAAAF913 /* libPods-PartyMaker.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		240F6B3656355739ABA888B3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8667852EE5A4638B6E10506F /* libPods-PartyMaker.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8391D0A91C720ADE005A21F2 /* PartyControls */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,7 +157,7 @@
 			children = (
 				83D64D981C6F6E97000F6321 /* SUNMenuPatryMakerVC.h */,
 				83D64D991C6F6E97000F6321 /* SUNMenuPatryMakerVC.m */,
-				83D64D9B1C6F7D07000F6321 /* SUNTableViewModel */,
+				83D64D9B1C6F7D07000F6321 /* SUNTableViewCell */,
 			);
 			name = TableMenuVC;
 			sourceTree = "<group>";
@@ -197,8 +165,6 @@
 		83CA66961C751DC000D01B2D /* SavingByPlist */ = {
 			isa = PBXGroup;
 			children = (
-				83CA66441C74658D00D01B2D /* SUNUser.h */,
-				83CA66451C74658D00D01B2D /* SUNUser.m */,
 				835BBF311C69E6AC00AE844B /* SUNSaver.h */,
 				835BBF321C69E6AC00AE844B /* SUNSaver.m */,
 			);
@@ -212,6 +178,15 @@
 				836064441C72840200B368DB /* SUNAuthorizationVC.m */,
 			);
 			name = AuthorizationVC;
+			sourceTree = "<group>";
+		};
+		83CA66C11C75C54500D01B2D /* NetworkingControl */ = {
+			isa = PBXGroup;
+			children = (
+				8355922E1C733109005CD18C /* SUNPartyMakerSDK.h */,
+				8355922F1C733109005CD18C /* SUNPartyMakerSDK.m */,
+			);
+			name = NetworkingControl;
 			sourceTree = "<group>";
 		};
 		83D64D201C6BBB9E000F6321 /* PartyViews */ = {
@@ -229,19 +204,23 @@
 		83D64D971C6F6AEE000F6321 /* DataStoreControl */ = {
 			isa = PBXGroup;
 			children = (
+				83D65E3B1C75EAE300666D2F /* SUNPartyUser+CoreDataProperties.h */,
+				83D65E3C1C75EAE300666D2F /* SUNPartyUser+CoreDataProperties.m */,
+				83D65E3D1C75EAE300666D2F /* SUNParty+CoreDataProperties.h */,
+				83D65E3E1C75EAE300666D2F /* SUNParty+CoreDataProperties.m */,
 				83D64D921C6E307C000F6321 /* SUNDataStore.h */,
 				83D64D931C6E307C000F6321 /* SUNDataStore.m */,
 			);
 			name = DataStoreControl;
 			sourceTree = "<group>";
 		};
-		83D64D9B1C6F7D07000F6321 /* SUNTableViewModel */ = {
+		83D64D9B1C6F7D07000F6321 /* SUNTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				83D64D9C1C6F7D71000F6321 /* SUNTableViewCell.h */,
 				83D64D9D1C6F7D71000F6321 /* SUNTableViewCell.m */,
 			);
-			name = SUNTableViewModel;
+			name = SUNTableViewCell;
 			sourceTree = "<group>";
 		};
 		83D64DA21C6FA840000F6321 /* Utility */ = {
@@ -256,11 +235,10 @@
 		83EBB3F91C6220ED007E3722 = {
 			isa = PBXGroup;
 			children = (
-				83CA66881C7518E500D01B2D /* CoreData.framework */,
 				83EBB4041C6220ED007E3722 /* PartyMaker */,
-				83EBB41E1C6220ED007E3722 /* PartyMakerTests */,
-				83EBB4291C6220ED007E3722 /* PartyMakerUITests */,
 				83EBB4031C6220ED007E3722 /* Products */,
+				FFE041A9A0585A02E06F5CF0 /* Pods */,
+				240F6B3656355739ABA888B3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -268,8 +246,6 @@
 			isa = PBXGroup;
 			children = (
 				83EBB4021C6220ED007E3722 /* PartyMaker.app */,
-				83EBB41B1C6220ED007E3722 /* PartyMakerTests.xctest */,
-				83EBB4261C6220ED007E3722 /* PartyMakerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -285,8 +261,7 @@
 				83D64D201C6BBB9E000F6321 /* PartyViews */,
 				8391D0A91C720ADE005A21F2 /* PartyControls */,
 				83F70DCA1C70BD1D008BBF94 /* PartyModels */,
-				8355922E1C733109005CD18C /* SUNPartyMakerSDK.h */,
-				8355922F1C733109005CD18C /* SUNPartyMakerSDK.m */,
+				83CA66C11C75C54500D01B2D /* NetworkingControl */,
 				83D64D971C6F6AEE000F6321 /* DataStoreControl */,
 				83CA66961C751DC000D01B2D /* SavingByPlist */,
 				83EBB4051C6220ED007E3722 /* Supporting Files */,
@@ -298,7 +273,7 @@
 		83EBB4051C6220ED007E3722 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				83CA66471C74870900D01B2D /* Model.xcdatamodeld */,
+				83CA66471C74870900D01B2D /* PartyMaker.xcdatamodeld */,
 				83EBB4131C6220ED007E3722 /* Launchscreen.storyboard */,
 				830A39741C70EB0700753CF1 /* Main.storyboard */,
 				835BBF2F1C69295B00AE844B /* myLogs.plist */,
@@ -308,37 +283,24 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		83EBB41E1C6220ED007E3722 /* PartyMakerTests */ = {
-			isa = PBXGroup;
-			children = (
-				83EBB41F1C6220ED007E3722 /* PartyMakerTests.m */,
-				83EBB4211C6220ED007E3722 /* Info.plist */,
-			);
-			path = PartyMakerTests;
-			sourceTree = "<group>";
-		};
-		83EBB4291C6220ED007E3722 /* PartyMakerUITests */ = {
-			isa = PBXGroup;
-			children = (
-				83EBB42A1C6220ED007E3722 /* PartyMakerUITests.m */,
-				83EBB42C1C6220ED007E3722 /* Info.plist */,
-			);
-			path = PartyMakerUITests;
-			sourceTree = "<group>";
-		};
 		83F70DCA1C70BD1D008BBF94 /* PartyModels */ = {
 			isa = PBXGroup;
 			children = (
-				83CA668A1C751D2F00D01B2D /* SUNPartyUser+CoreDataProperties.h */,
-				83CA668B1C751D2F00D01B2D /* SUNPartyUser+CoreDataProperties.m */,
 				83CA668C1C751D2F00D01B2D /* SUNPartyUser.h */,
 				83CA668D1C751D2F00D01B2D /* SUNPartyUser.m */,
-				83CA668E1C751D2F00D01B2D /* SUNParty+CoreDataProperties.h */,
-				83CA668F1C751D2F00D01B2D /* SUNParty+CoreDataProperties.m */,
 				83CA66901C751D2F00D01B2D /* SUNParty.h */,
 				83CA66911C751D2F00D01B2D /* SUNParty.m */,
 			);
 			name = PartyModels;
+			sourceTree = "<group>";
+		};
+		FFE041A9A0585A02E06F5CF0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2778AB9D78B521B692CBEA84 /* Pods-PartyMaker.debug.xcconfig */,
+				DAA375648BA8546EBA308213 /* Pods-PartyMaker.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,9 +310,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 83EBB42F1C6220ED007E3722 /* Build configuration list for PBXNativeTarget "PartyMaker" */;
 			buildPhases = (
+				12AA34DA743D5A52B8ED930F /* Check Pods Manifest.lock */,
 				83EBB3FE1C6220ED007E3722 /* Sources */,
 				83EBB3FF1C6220ED007E3722 /* Frameworks */,
 				83EBB4001C6220ED007E3722 /* Resources */,
+				BB190688EC55F9FB68B6432D /* Embed Pods Frameworks */,
+				E689BEBAB156CFD439B9A8C8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -360,42 +325,6 @@
 			productName = PartyMaker;
 			productReference = 83EBB4021C6220ED007E3722 /* PartyMaker.app */;
 			productType = "com.apple.product-type.application";
-		};
-		83EBB41A1C6220ED007E3722 /* PartyMakerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 83EBB4321C6220ED007E3722 /* Build configuration list for PBXNativeTarget "PartyMakerTests" */;
-			buildPhases = (
-				83EBB4171C6220ED007E3722 /* Sources */,
-				83EBB4181C6220ED007E3722 /* Frameworks */,
-				83EBB4191C6220ED007E3722 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				83EBB41D1C6220ED007E3722 /* PBXTargetDependency */,
-			);
-			name = PartyMakerTests;
-			productName = PartyMakerTests;
-			productReference = 83EBB41B1C6220ED007E3722 /* PartyMakerTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		83EBB4251C6220ED007E3722 /* PartyMakerUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 83EBB4351C6220ED007E3722 /* Build configuration list for PBXNativeTarget "PartyMakerUITests" */;
-			buildPhases = (
-				83EBB4221C6220ED007E3722 /* Sources */,
-				83EBB4231C6220ED007E3722 /* Frameworks */,
-				83EBB4241C6220ED007E3722 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				83EBB4281C6220ED007E3722 /* PBXTargetDependency */,
-			);
-			name = PartyMakerUITests;
-			productName = PartyMakerUITests;
-			productReference = 83EBB4261C6220ED007E3722 /* PartyMakerUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -408,14 +337,6 @@
 				TargetAttributes = {
 					83EBB4011C6220ED007E3722 = {
 						CreatedOnToolsVersion = 7.2;
-					};
-					83EBB41A1C6220ED007E3722 = {
-						CreatedOnToolsVersion = 7.2;
-						TestTargetID = 83EBB4011C6220ED007E3722;
-					};
-					83EBB4251C6220ED007E3722 = {
-						CreatedOnToolsVersion = 7.2;
-						TestTargetID = 83EBB4011C6220ED007E3722;
 					};
 				};
 			};
@@ -433,8 +354,6 @@
 			projectRoot = "";
 			targets = (
 				83EBB4011C6220ED007E3722 /* PartyMaker */,
-				83EBB41A1C6220ED007E3722 /* PartyMakerTests */,
-				83EBB4251C6220ED007E3722 /* PartyMakerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -455,21 +374,55 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		83EBB4191C6220ED007E3722 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		83EBB4241C6220ED007E3722 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		12AA34DA743D5A52B8ED930F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BB190688EC55F9FB68B6432D /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PartyMaker/Pods-PartyMaker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E689BEBAB156CFD439B9A8C8 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PartyMaker/Pods-PartyMaker-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		83EBB3FE1C6220ED007E3722 /* Sources */ = {
@@ -477,11 +430,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				83D64D9A1C6F6E97000F6321 /* SUNMenuPatryMakerVC.m in Sources */,
+				83D65E3F1C75EAE300666D2F /* SUNPartyUser+CoreDataProperties.m in Sources */,
 				83D64D1D1C6BBB5F000F6321 /* SUNUniversalView.m in Sources */,
-				83CA66491C74870900D01B2D /* Model.xcdatamodeld in Sources */,
+				83CA66491C74870900D01B2D /* PartyMaker.xcdatamodeld in Sources */,
 				835BBF331C69E6AC00AE844B /* SUNSaver.m in Sources */,
-				83CA66921C751D2F00D01B2D /* SUNPartyUser+CoreDataProperties.m in Sources */,
-				83CA66461C74658D00D01B2D /* SUNUser.m in Sources */,
 				836064451C72840200B368DB /* SUNAuthorizationVC.m in Sources */,
 				8391D0AC1C720B82005A21F2 /* SUNLogoImageV.m in Sources */,
 				83CA66931C751D2F00D01B2D /* SUNPartyUser.m in Sources */,
@@ -490,7 +442,7 @@
 				83CA66951C751D2F00D01B2D /* SUNParty.m in Sources */,
 				835BBF191C68B8E600AE844B /* SUNMakingPartyByxibVC.m in Sources */,
 				83D64D941C6E307C000F6321 /* SUNDataStore.m in Sources */,
-				83CA66941C751D2F00D01B2D /* SUNParty+CoreDataProperties.m in Sources */,
+				83D65E401C75EAE300666D2F /* SUNParty+CoreDataProperties.m in Sources */,
 				83D64D9E1C6F7D71000F6321 /* SUNTableViewCell.m in Sources */,
 				835592301C733109005CD18C /* SUNPartyMakerSDK.m in Sources */,
 				83D64DA11C6FA811000F6321 /* NSDate+Utility.m in Sources */,
@@ -498,36 +450,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		83EBB4171C6220ED007E3722 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				83EBB4201C6220ED007E3722 /* PartyMakerTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		83EBB4221C6220ED007E3722 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				83EBB42B1C6220ED007E3722 /* PartyMakerUITests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		83EBB41D1C6220ED007E3722 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 83EBB4011C6220ED007E3722 /* PartyMaker */;
-			targetProxy = 83EBB41C1C6220ED007E3722 /* PBXContainerItemProxy */;
-		};
-		83EBB4281C6220ED007E3722 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 83EBB4011C6220ED007E3722 /* PartyMaker */;
-			targetProxy = 83EBB4271C6220ED007E3722 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		83EBB4131C6220ED007E3722 /* Launchscreen.storyboard */ = {
@@ -623,9 +546,11 @@
 		};
 		83EBB4301C6220ED007E3722 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2778AB9D78B521B692CBEA84 /* Pods-PartyMaker.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = PartyMaker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TS.PartyMaker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -635,61 +560,15 @@
 		};
 		83EBB4311C6220ED007E3722 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DAA375648BA8546EBA308213 /* Pods-PartyMaker.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = PartyMaker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TS.PartyMaker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
-		83EBB4331C6220ED007E3722 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = PartyMakerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = TS.PartyMakerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PartyMaker.app/PartyMaker";
-			};
-			name = Debug;
-		};
-		83EBB4341C6220ED007E3722 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = PartyMakerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = TS.PartyMakerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PartyMaker.app/PartyMaker";
-			};
-			name = Release;
-		};
-		83EBB4361C6220ED007E3722 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = PartyMakerUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = TS.PartyMakerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = PartyMaker;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		83EBB4371C6220ED007E3722 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = PartyMakerUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = TS.PartyMakerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = PartyMaker;
-				USES_XCTRUNNER = YES;
 			};
 			name = Release;
 		};
@@ -714,34 +593,16 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83EBB4321C6220ED007E3722 /* Build configuration list for PBXNativeTarget "PartyMakerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				83EBB4331C6220ED007E3722 /* Debug */,
-				83EBB4341C6220ED007E3722 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		83EBB4351C6220ED007E3722 /* Build configuration list for PBXNativeTarget "PartyMakerUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				83EBB4361C6220ED007E3722 /* Debug */,
-				83EBB4371C6220ED007E3722 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		83CA66471C74870900D01B2D /* Model.xcdatamodeld */ = {
+		83CA66471C74870900D01B2D /* PartyMaker.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				83CA66481C74870900D01B2D /* Model.xcdatamodel */,
+				83CA66481C74870900D01B2D /* PartyMaker.xcdatamodel */,
 			);
-			currentVersion = 83CA66481C74870900D01B2D /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
+			currentVersion = 83CA66481C74870900D01B2D /* PartyMaker.xcdatamodel */;
+			path = PartyMaker.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

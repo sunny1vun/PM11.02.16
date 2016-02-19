@@ -8,6 +8,7 @@
 
 #import "SUNAppDelegate.h"
 #import "SUNPartyMakerSDK.h"
+#import "SUNDataStore.h"
 
 @interface SUNAppDelegate ()
 
@@ -19,6 +20,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+//    [[SUNDataStore sharedInstance] ]
     
     return YES;
 }
@@ -43,6 +45,25 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    
+//    NSManagedObjectContext *context = //Get it from DataStore
+//    
+//    NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"MUSTHAFA"];
+//    
+//    NSError *error = nil;
+//    
+//    NSArray *results = [managedObjectContext executeFetchRequest:request error:&error];
+//    
+//    if (error != nil) {
+//        
+//        //Deal with failure
+//    }
+//    else {
+//        
+//        //Deal with success
+//    }
+//    
+//    [request release];
 }
 
 @end
