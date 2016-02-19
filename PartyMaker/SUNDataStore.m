@@ -32,7 +32,8 @@
     static dispatch_once_t oncedbExchange;
     dispatch_once(&oncedbExchange, ^{
         instance = [[self alloc] init];
-        //call method below to shared instance from SUNMenuMakerVC at the end of setting @syntysyse properties then
+        //call method below only setup instance of datacore (logic like in networkingControl)
+        //it not make any change to plist-Logic
         [instance initializeCoreDataFor];
         NSLog(@"DataStore initialised in singlton");
 

@@ -533,7 +533,6 @@
         SUNDataStore *party = [[SUNDataStore alloc]  initWithName:self.textField.text  date:self.dateIsChosen                                                sliderTop: self.sliderTop    sliderBot: self.sliderBot  description: self.textView.text    pageControl:self.pageControl];
         
         
-        
         if ( self.partyWasEdited ) {
             parties = [SUNDataStore readFromPlist];
             //working code but with plist
@@ -544,19 +543,19 @@
             
             
             //make working by using network
+//            
+//            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+//            [dateFormat setDateFormat:@"yyyy-MM-dd 00:00:00"];
             
-            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-            [dateFormat setDateFormat:@"yyyy-MM-dd 00:00:00"];
-            
-            //preparing startTime and endTime
-            NSDate *dateOfParty = [dateFormat dateFromString:self.fullDateIsChosen];
-            NSString *timeFromSlider = [self textFromValueOfSlider:self.sliderTop];
-            
-            NSNumber *startTime = [[NSNumber alloc] initWithInteger:[self valueFromTextOfSlider:timeFromSlider] * 60 + [dateOfParty timeIntervalSince1970]];
-            
-            timeFromSlider = [self textFromValueOfSlider: self.sliderBot];
-            
-            NSNumber *endTime = [[NSNumber alloc] initWithInteger:[self valueFromTextOfSlider:timeFromSlider] * 60 + [dateOfParty timeIntervalSince1970]];
+//            //preparing startTime and endTime
+//            NSDate *dateOfParty = [dateFormat dateFromString:self.fullDateIsChosen];
+//            NSString *timeFromSlider = [self textFromValueOfSlider:self.sliderTop];
+//            
+//            NSNumber *startTime = [[NSNumber alloc] initWithInteger:[self valueFromTextOfSlider:timeFromSlider] * 60 + [dateOfParty timeIntervalSince1970]];
+//            
+//            timeFromSlider = [self textFromValueOfSlider: self.sliderBot];
+//            
+//            NSNumber *endTime = [[NSNumber alloc] initWithInteger:[self valueFromTextOfSlider:timeFromSlider] * 60 + [dateOfParty timeIntervalSince1970]];
             
 //            __block __weak SUNMakingPartyByxibVC* weakSelf = self;
 ////            checking of right symbols of login and password is not need (they are checked in my SDK)
@@ -569,20 +568,73 @@
 //                }
 //                
 //            }];
+            
+           
         
         }else{
             parties = [SUNDataStore readFromPlist];
+            NSNumber *numberJustForUsage = [[NSNumber alloc] initWithInt:64];
+            
+//             SUNDataStore *party = [[SUNDataStore alloc]  initWithName:self.textField.text  date:self.dateIsChosen                                                sliderTop: self.sliderTop    sliderBot: self.sliderBot  description: self.textView.text    pageControl:self.pageControl];
+            
+            
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            [dateFormat setDateFormat:@"yyyy-MM-dd 00:00:00"];
+            //preparing startTime and endTime
+            NSDate *dateOfParty = [dateFormat dateFromString:self.fullDateIsChosen];
+            NSString *timeFromSlider = [self textFromValueOfSlider:self.sliderTop];
+            
+            NSNumber *startTime = [[NSNumber alloc] initWithInteger:[self valueFromTextOfSlider:timeFromSlider] * 60 + [dateOfParty timeIntervalSince1970]];
+            
+            timeFromSlider = [self textFromValueOfSlider: self.sliderBot];
+            
+            NSNumber *endTime = [[NSNumber alloc] initWithInteger:[self valueFromTextOfSlider:timeFromSlider] * 60 + [dateOfParty timeIntervalSince1970]];
+            
+            party = (SUNDataStore *)[[SUNSaver sharedInstance] initWithCreatorId: numberJustForUsage startTime:startTime endTime:endTime logo:[[NSNumber alloc] initWithInteger:self.pageControl.currentPage] partyId:numberJustForUsage latitude:numberJustForUsage longitude:numberJustForUsage description:self.textView.text partyName:self.textField.text];
             NSData *dataParty = [NSKeyedArchiver archivedDataWithRootObject:party];
             
             [parties addObject:dataParty];
         }
         
         [SUNDataStore saveToPlist:parties];
+        
+        __block __weak SUNMakingPartyByxibVC* weakSelf = self;
+        ////            checking of right symbols of login and password is not need (they are checked in my SDK)
+        //
+//        [[SUNPartyMakerSDK sharedInstance] addPartyWithId:@"id" name: startTime:[NSString stringWithFormat:@"",party.startTime] endTime:[NSString stringWithFormat:@"",party.startTime] logoId:[NSString stringWithFormat:@"",party.startTime] comment:[NSString stringWithFormat:@"",party.startTime] creatorId:[NSString stringWithFormat:@"",party.startTime] latitude:[NSString stringWithFormat:@"",party.startTime] longitude:[NSString stringWithFormat:@"",party.startTime] callback:^(NSDictionary *response, NSError *error){
+//            
+//            BOOL authorized = [weakSelf savedOnServer:response];
+//            if ( authorized ) {
+//                NSLog(@"Was saved");
+//            }
+//            
+//        }];
+        
 
         [self.navigationController popToRootViewControllerAnimated:YES];
 
     }
     
+}
+
+- (BOOL) savedOnServer: (NSDictionary*) response{
+    
+    NSLog(@"%@",response);
+    NSDictionary* localResponse = [response objectForKey:@"response"];
+    
+    NSLog(@"%@",localResponse[@"msg"]);
+    if ( [[response objectForKey:@"statusCode"]  isEqual: @200]) {
+        NSLog(@"was saved");
+        return YES;
+    }
+    else if ([[response objectForKey:@"statusCode"]  isEqual: @400]) {
+        //here i need insert view that will provide user to know he entered wrong login or password
+        //as for registration, as for signIn
+        NSLog(@"statusCode %@", response[@"statusCode"]);
+        return NO;
+    }
+    
+    return YES;
 }
 
 #pragma mark - realisation of login

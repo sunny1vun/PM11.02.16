@@ -48,7 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
 //-(instancetype) initWithCreatorId:(NSNumber *)creatorId   startTime:(NSNumber *)startTime
 //                          endTime: (NSNumber *)endTime logo:(NSNumber *)currentPage sliderBot:(UISlider *)sliderBot
 //                 description:(NSString *)description;
--(void) initWithCreatorId:(NSNumber *)creatorId   startTime:(NSNumber *)startTime
+-(instancetype) initWithCreatorId:(NSNumber *)creatorId   startTime:(NSNumber *)startTime
                   endTime: (NSNumber *)endTime logo:(NSNumber *)currentPage  partyId:(NSNumber*)partyId latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude description:(NSString *)description partyName:(NSString *)partyName;
 
 //-(NSMutableArray *)readFromPlist;

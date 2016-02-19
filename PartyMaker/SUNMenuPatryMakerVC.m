@@ -94,6 +94,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - for datacore
 //make from this method readmethod and write method in SUNDataStore
 //- (void)insertNewObject:(id)sender {
 //    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
