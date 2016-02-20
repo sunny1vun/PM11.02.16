@@ -15,8 +15,11 @@
     NSMutableString *formatedString = [[NSMutableString alloc] init];
     
     //nil вылетает вот здесь
-    [formatedString appendString:dateIsChosen];
-    
+    if( ![dateIsChosen isEqualToString:@""] ){
+        
+        [formatedString appendString:dateIsChosen];
+        
+    }
     CGFloat value = sliderTop.value;
     CGFloat hours = (int)value/60;
     CGFloat minutes = (value - hours * 60);
@@ -52,17 +55,23 @@
 
     [formatedString appendString:prettyDate];
     
-    CGFloat value = startTime.doubleValue/ (60*60);
-    CGFloat hours = (int)value/60;
-    CGFloat minutes = (value - hours * 60);
+    [dateFormat setDateFormat:@"  HH:mm-"];
+    [formatedString appendString:[dateFormat stringFromDate:date]];
     
-    [formatedString appendFormat:@"  %2d:%02d-", (int)hours, (int)minutes];
+    date = [NSDate dateWithTimeIntervalSince1970:endTime.doubleValue];
+    [dateFormat setDateFormat:@"HH:mm"];
+    [formatedString appendString:[dateFormat stringFromDate:date]];
+//    CGFloat value = startTime.doubleValue;
+//    CGFloat hours = (int)value/60;
+//    CGFloat minutes = (value - hours * 60);
     
-    value = endTime.doubleValue;
-    hours = (int)value/60;
-    minutes = (value - hours * 60);
+//    [formatedString appendFormat:@"  %2d:%02d-", (int)hours, (int)minutes];
     
-    [formatedString appendFormat:@"%2d:%02d", (int)hours, (int)minutes];
+//    value = endTime.doubleValue;
+//    hours = (int)value/60;
+//    minutes = (value - hours * 60);
+//    
+//    [formatedString appendFormat:@"%2d:%02d", (int)hours, (int)minutes];
     
     
     
@@ -70,13 +79,5 @@
     
 }
 
-//+(NSArray*)unformateString:(NSString*)dateWithTime{
-//    
-//    NSMutableArray *arrayDateTime = [[NSMutableArray alloc] init];
-//    
-//    
-//    
-//    return arrayDateTime;
-//}
 
 @end

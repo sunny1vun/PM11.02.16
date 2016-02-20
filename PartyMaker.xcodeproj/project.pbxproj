@@ -33,7 +33,7 @@
 		83EBB40A1C6220ED007E3722 /* SUNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EBB4091C6220ED007E3722 /* SUNAppDelegate.m */; };
 		83EBB4151C6220ED007E3722 /* Launchscreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83EBB4131C6220ED007E3722 /* Launchscreen.storyboard */; };
 		83F70DC91C70B41F008BBF94 /* SUNPartyInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F70DC81C70B41F008BBF94 /* SUNPartyInfoVC.m */; };
-		8BD3626C5FFF676ACAAAF913 /* libPods-PartyMaker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8667852EE5A4638B6E10506F /* libPods-PartyMaker.a */; };
+		8BD3626C5FFF676ACAAAF913 /* libPods-PartyMaker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8667852EE5A4638B6E10506F /* libPods-PartyMaker.a */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,12 +106,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8391D0A91C720ADE005A21F2 /* PartyControls */ = {
+		8391D0A91C720ADE005A21F2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				83A35CD21C735AA900CDAE15 /* ViewControllers */,
 			);
-			name = PartyControls;
+			name = Views;
 			sourceTree = "<group>";
 		};
 		83A35CD11C735A9400CDAE15 /* Application */ = {
@@ -129,7 +129,7 @@
 				83CA66C01C75BBB200D01B2D /* AuthorizationVC */,
 				83A35CD51C73A5E100CDAE15 /* TableMenuVC */,
 				83A35CD31C73A59000CDAE15 /* InfoPartyVC */,
-				83A35CD41C73A5A900CDAE15 /* CreatePartyVC */,
+				83A35CD41C73A5A900CDAE15 /* CreateEditPartyVC */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -139,17 +139,19 @@
 			children = (
 				83F70DC71C70B41F008BBF94 /* SUNPartyInfoVC.h */,
 				83F70DC81C70B41F008BBF94 /* SUNPartyInfoVC.m */,
+				83D64D201C6BBB9E000F6321 /* LogoView */,
 			);
 			name = InfoPartyVC;
 			sourceTree = "<group>";
 		};
-		83A35CD41C73A5A900CDAE15 /* CreatePartyVC */ = {
+		83A35CD41C73A5A900CDAE15 /* CreateEditPartyVC */ = {
 			isa = PBXGroup;
 			children = (
 				835BBF161C68B8E600AE844B /* SUNMakingPartyByxibVC.h */,
 				835BBF171C68B8E600AE844B /* SUNMakingPartyByxibVC.m */,
+				83DB9E111C77784200DE200B /* PickerView */,
 			);
-			name = CreatePartyVC;
+			name = CreateEditPartyVC;
 			sourceTree = "<group>";
 		};
 		83A35CD51C73A5E100CDAE15 /* TableMenuVC */ = {
@@ -189,16 +191,13 @@
 			name = NetworkingControl;
 			sourceTree = "<group>";
 		};
-		83D64D201C6BBB9E000F6321 /* PartyViews */ = {
+		83D64D201C6BBB9E000F6321 /* LogoView */ = {
 			isa = PBXGroup;
 			children = (
-				83D64D1B1C6BBB5F000F6321 /* SUNUniversalView.h */,
-				83D64D1C1C6BBB5F000F6321 /* SUNUniversalView.m */,
-				83D64D1E1C6BBB8F000F6321 /* SUNUniversalView.xib */,
 				8391D0AA1C720B82005A21F2 /* SUNLogoImageV.h */,
 				8391D0AB1C720B82005A21F2 /* SUNLogoImageV.m */,
 			);
-			name = PartyViews;
+			name = LogoView;
 			sourceTree = "<group>";
 		};
 		83D64D971C6F6AEE000F6321 /* DataStoreControl */ = {
@@ -232,6 +231,26 @@
 			name = Utility;
 			sourceTree = "<group>";
 		};
+		83DB9E101C7777F900DE200B /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				83CA66C11C75C54500D01B2D /* NetworkingControl */,
+				83D64D971C6F6AEE000F6321 /* DataStoreControl */,
+				83CA66961C751DC000D01B2D /* SavingByPlist */,
+			);
+			name = Controls;
+			sourceTree = "<group>";
+		};
+		83DB9E111C77784200DE200B /* PickerView */ = {
+			isa = PBXGroup;
+			children = (
+				83D64D1B1C6BBB5F000F6321 /* SUNUniversalView.h */,
+				83D64D1C1C6BBB5F000F6321 /* SUNUniversalView.m */,
+				83D64D1E1C6BBB8F000F6321 /* SUNUniversalView.xib */,
+			);
+			name = PickerView;
+			sourceTree = "<group>";
+		};
 		83EBB3F91C6220ED007E3722 = {
 			isa = PBXGroup;
 			children = (
@@ -258,12 +277,9 @@
 				835BBF231C68E83100AE844B /* MyriadProBold.ttf */,
 				835BBF241C68E83100AE844B /* MyriadProRegular.ttf */,
 				83A35CD11C735A9400CDAE15 /* Application */,
-				83D64D201C6BBB9E000F6321 /* PartyViews */,
-				8391D0A91C720ADE005A21F2 /* PartyControls */,
-				83F70DCA1C70BD1D008BBF94 /* PartyModels */,
-				83CA66C11C75C54500D01B2D /* NetworkingControl */,
-				83D64D971C6F6AEE000F6321 /* DataStoreControl */,
-				83CA66961C751DC000D01B2D /* SavingByPlist */,
+				8391D0A91C720ADE005A21F2 /* Views */,
+				83F70DCA1C70BD1D008BBF94 /* Models */,
+				83DB9E101C7777F900DE200B /* Controls */,
 				83EBB4051C6220ED007E3722 /* Supporting Files */,
 				83D64DA21C6FA840000F6321 /* Utility */,
 			);
@@ -283,7 +299,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		83F70DCA1C70BD1D008BBF94 /* PartyModels */ = {
+		83F70DCA1C70BD1D008BBF94 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				83CA668C1C751D2F00D01B2D /* SUNPartyUser.h */,
@@ -291,7 +307,7 @@
 				83CA66901C751D2F00D01B2D /* SUNParty.h */,
 				83CA66911C751D2F00D01B2D /* SUNParty.m */,
 			);
-			name = PartyModels;
+			name = Models;
 			sourceTree = "<group>";
 		};
 		FFE041A9A0585A02E06F5CF0 /* Pods */ = {

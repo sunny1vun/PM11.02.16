@@ -418,6 +418,7 @@
     if([filemanager fileExistsAtPath:partiesFilePathInDocuments]){
         
         dataFromFile = [NSMutableArray arrayWithContentsOfFile:partiesFilePathInDocuments];
+//        NSLog(@"from here was readed: %@", partiesFilePathInDocuments );
         
     }else {
         NSLog(@"File is not exist at path: %@", partiesFilePathInDocuments);

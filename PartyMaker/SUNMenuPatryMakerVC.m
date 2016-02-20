@@ -153,26 +153,29 @@
     //    partId /seconds / minutes / hours / days = years
     //    1357234941 / 60 / 60 / 24 / 365 = 43.037637652207
     
-    SUNParty *partyEntity = self.partiesArray[indexPath.row];
+//    SUNParty *partyEntity = self.partiesArray[indexPath.row];
 //    partyEntity.startTime
     
-    
-    NSString *formatedDateWithTime = [NSDate formateToStringDate:savedParty.dateIsChosen startTime:savedParty.sliderTop endTime:savedParty.sliderBot];
-    
-    //preparing for cell usage
-//     NSString *formatedDateWithTime = [NSDate formateToStringStartTime:[[NSNumber alloc] initWithInteger: partyEntity.startTime] endTime:[[NSNumber alloc] initWithInteger: partyEntity.endTime]];
-    
-    //image from plist
-    NSString *imageName = [[NSString alloc] initWithFormat:@"PartyLogo_Small_%li", (long)savedParty.currentPage.currentPage];
-    //image from datacore
-//    NSString *imageName = [[NSString alloc] initWithFormat:@"PartyLogo_Small_%li", (long)partyEntity.logo];
-    
-    //filling from model from plist my cell
-    [cell configureWithName:savedParty.partyName dateAndTimeOfParty:formatedDateWithTime logo:[UIImage imageNamed: imageName]];
-    
-    //filling from model of dataCore my cell
-//      [cell configureWithName:partyEntity.partyName dateAndTimeOfParty:formatedDateWithTime logo:[UIImage imageNamed: imageName]];
-    
+    NSString *formatedDateWithTime;
+    NSString *imageName;
+    if (savedParty.dateIsChosen!= nil){
+//        formatedDateWithTime = [NSDate formateToStringDate:savedParty.dateIsChosen startTime:savedParty.sliderTop endTime:savedParty.sliderBot];
+//        //image from plist
+//        
+//        imageName = [[NSString alloc] initWithFormat:@"PartyLogo_Small_%li", (long)savedParty.currentPage.currentPage];
+//        //filling from model from plist my cell
+//        [cell configureWithName:savedParty.partyName dateAndTimeOfParty:formatedDateWithTime logo:[UIImage imageNamed: imageName]];
+    }else{
+        //preparing for cell usage
+     formatedDateWithTime = [NSDate formateToStringStartTime:savedParty.startTime endTime:savedParty.endTime];
+        //image from datacore or server
+        imageName = [[NSString alloc] initWithFormat:@"PartyLogo_Small_%li", (long)savedParty.logo.intValue];
+        //filling my cell from model of dataCore or server
+        [cell configureWithName:savedParty.nameOfParty dateAndTimeOfParty:formatedDateWithTime logo:[UIImage imageNamed: imageName]];
+
+        
+    }
+
     
     cell.selectedBackgroundView.backgroundColor = [[UIColor alloc] initWithRed:52/255.f green:56/255.f blue:66/255.f alpha:1.f];
     

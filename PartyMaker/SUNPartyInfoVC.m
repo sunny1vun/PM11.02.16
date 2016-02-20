@@ -36,12 +36,29 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    [self.dateParty setText:self.selectedParty.dateIsChosen];
-    [self.nameParty setText:self.selectedParty.partyName];
-    [self.timeStartParty setText:[[SUNMakingPartyByxibVC alloc] textFromValueOfSlider: self.selectedParty.sliderTop]];
-    [self.timeEndParty setText:[[SUNMakingPartyByxibVC alloc] textFromValueOfSlider: self.selectedParty.sliderBot]];
-    [self.descriptionParty setText:self.selectedParty.descriptionOfParty];
-    [self.logoView setImage: [UIImage imageNamed:[NSString stringWithFormat:@"PartyLogo_Small_%ld", (long)self.selectedParty.currentPage.currentPage]]];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    NSDate *dateOfParty = [NSDate dateWithTimeIntervalSince1970:self.selectedParty.startTime.doubleValue];
+    NSString *dateOfSelectedParty = [dateFormat stringFromDate:dateOfParty];
+    
+    NSString *nameOfSelectedParty = self.selectedParty.nameOfParty;
+    
+    [dateFormat setDateFormat:@"HH:mm"];
+    NSString *startTime = [dateFormat stringFromDate:[NSDate dateWithTimeIntervalSince1970: self.selectedParty.startTime.doubleValue ]];
+    NSString *endTime = [dateFormat stringFromDate:[NSDate dateWithTimeIntervalSince1970:self.selectedParty.endTime.doubleValue]];
+    
+    NSString *comment = self.selectedParty.comment;
+    UIImage *logoImage = [UIImage imageNamed:[NSString stringWithFormat:@"PartyLogo_Small_%d", self.selectedParty.logo.intValue]];
+    
+    //filing UI with new model for coreData and network
+
+    [self.dateParty setText:dateOfSelectedParty];
+    [self.nameParty setText:nameOfSelectedParty];
+    [self.timeStartParty setText:startTime];
+    [self.timeEndParty setText:endTime];
+    [self.descriptionParty setText:comment];
+    [self.logoView setImage: logoImage];
+    
     
     self.addPhotoParty.layer.cornerRadius =
     self.editParty.layer.cornerRadius =
@@ -78,7 +95,7 @@
     
     if( [segue.identifier isEqualToString:@"toEditParty"] ){
         
-        NSLog(@"going to edit party %@ %li", self.selectedParty.partyName, (long)self.indexOfSelectedParty);
+        NSLog(@"going to edit party %@ %li", self.selectedParty.nameOfParty, (long)self.indexOfSelectedParty);
         
         SUNMakingPartyByxibVC *editParty = segue.destinationViewController;
         

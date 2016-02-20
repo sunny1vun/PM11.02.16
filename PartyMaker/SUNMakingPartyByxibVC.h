@@ -16,6 +16,6 @@
 @property (nonatomic) NSInteger indexOfPartyToChange;
 
 -(NSString *)textFromValueOfSlider:(UISlider*)slider;
--(CGFloat)valueFromTextOfSlider:(NSString *) time;
+-(CGFloat)numberOfMinutesInHoursAndMinutes:(NSString *) time;
 
 @end

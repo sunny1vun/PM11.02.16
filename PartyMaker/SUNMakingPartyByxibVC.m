@@ -93,29 +93,46 @@
     if( self.partyToChange ){
         
 //        NSLog(@"Here is some party to change %@ %li", self.partyToChange.partyName, self.indexOfPartyToChange);
+        
         [self.navigationItem setTitle:@"EDITING PARTY"];
         
-        [self.buttonDateChoosing setTitle:self.partyToChange.dateIsChosen forState:UIControlStateNormal];
-        self.dateIsChosen = self.partyToChange.dateIsChosen;
+//        NSNumber *creatorId = [[NSNumber alloc] initWithInt:64];
         
-        [self.textField setText:self.partyToChange.partyName];
+        NSLog(@"partyModel fro dataCore and Networking is reused");
+        //preparing startTime and endTime
+        NSDate *dateOfParty = [NSDate dateWithTimeIntervalSince1970:self.partyToChange.startTime.doubleValue];
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"dd.MM.yyyy"];
         
-        [self.sliderTop setValue:self.partyToChange.sliderTop.value];
+        NSString *dateOfPartyInString = [dateFormat stringFromDate:dateOfParty];
+        NSLog(@"%@", dateOfPartyInString);
+        
+        [self.buttonDateChoosing setTitle:dateOfPartyInString forState:UIControlStateNormal];
+        //it's for all
+        self.dateIsChosen = dateOfPartyInString;
+        
+        [self.textField setText:self.partyToChange.nameOfParty];
+        [dateFormat setDateFormat:@"HH:mm"];
+        dateOfParty = [NSDate dateWithTimeIntervalSince1970:self.partyToChange.startTime.doubleValue];
+        CGFloat minutes = [self numberOfMinutesInHoursAndMinutes:[dateFormat stringFromDate:dateOfParty]];
+        [self.sliderTop setValue:minutes];
         [self.labelOfTopSlider setText:[self textFromValueOfSlider:self.sliderTop]];
         
-        [self.sliderBot setValue:self.partyToChange.sliderBot.value];
+        dateOfParty = [NSDate dateWithTimeIntervalSince1970:self.partyToChange.endTime.doubleValue];
+        minutes = [self numberOfMinutesInHoursAndMinutes:[dateFormat stringFromDate:dateOfParty]];
+        [self.sliderBot setValue:minutes];
         [self.labelOfBottomSlider setText:[self textFromValueOfSlider:self.sliderBot]];
         
-        [self.pageControl setCurrentPage:self.partyToChange.currentPage.currentPage];
+        [self.pageControl setCurrentPage:self.partyToChange.logo.doubleValue];
         CGPoint contentOffset = (CGPoint){self.scrollView.frame.size.width * self.pageControl.currentPage, 0};
         [self.scrollView setContentOffset:contentOffset];
         
-        [self.textView setText:self.partyToChange.descriptionOfParty];
-        
+        [self.textView setText:self.partyToChange.comment];
         self.partyWasEdited = YES;
+        
     }
     
-    //NSLog(@"value from slider %f", [self valueFromTextOfSlider:@"2:30"]);
+    //NSLog(@"value from slider %f", [self numberOfMinutesInHoursAndMinutes:@"2:30"]);
 
 }
 
@@ -206,17 +223,17 @@
             [dateFormat setDateFormat:@"dd.MM.yyyy"];
             NSString *prettyDate = [dateFormat stringFromDate:datePicker.date];
             [self.buttonDateChoosing setTitle:prettyDate forState:UIControlStateNormal];
+            NSLog(@"%@",prettyDate);
             
             self.dateIsChosen = prettyDate;
             self.buttonDateChoosing.enabled = YES;
             self.doneWasPressed = 1;
-            
-//            preparing full date to sum with startTime and endTime (party is starting and ending in one day)
-//            [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-            [dateFormat setDateFormat:@"yyyy-MM-dd 00:00:00"];
-            
-            self.fullDateIsChosen = [dateFormat stringFromDate:datePicker.date];
-            
+            //use it in editing mode and dont change it
+            //party is only in day of "choose day"
+            //current day of party is saved with 00:00:00 for startTime and endTime of model of coredata and server
+//            [dateFormat setDateFormat:@"yyyy.MM.dd"];
+//            self.fullDateIsChosen = [dateFormat stringFromDate:datePicker.date];
+//            NSLog(@"%@",self.fullDateIsChosen);
         }
     }
     
@@ -291,7 +308,7 @@
 }
 
 -(IBAction)valueChangedTopSlider:(id)sender{
-    
+    //value of slider it's minutes form 0-1439
     [self dotTo:self.dot3.center];
     
     if( self.sliderTop.value > (self.sliderBot.value - 30) ){
@@ -315,14 +332,14 @@
     return [[NSMutableString alloc] initWithFormat:@"%2d:%02d", (int)hours, (int)minutes];
 }
 
--(CGFloat)valueFromTextOfSlider:(NSString *) time{
+-(CGFloat)numberOfMinutesInHoursAndMinutes:(NSString *) time{
     
     NSArray *items = [time componentsSeparatedByString:@":"];
     NSInteger hours = [[items  objectAtIndex:0] integerValue]*60;
     NSInteger minutes = [[items objectAtIndex:1] integerValue];
-    hours += minutes;
+    minutes += hours;
     
-    return (CGFloat)hours;
+    return (CGFloat)minutes;
 }
 
 -(IBAction)valueChangedBotSliders:(id)sender{
@@ -530,67 +547,74 @@
         
     }else{
         
-        SUNDataStore *party = [[SUNDataStore alloc]  initWithName:self.textField.text  date:self.dateIsChosen                                                sliderTop: self.sliderTop    sliderBot: self.sliderBot  description: self.textView.text    pageControl:self.pageControl];
+        //old party model for plist
+//        SUNDataStore *party = [[SUNDataStore alloc]  initWithName:self.textField.text  date:self.dateIsChosen                                                sliderTop: self.sliderTop    sliderBot: self.sliderBot  description: self.textView.text    pageControl:self.pageControl];
         
+        
+        //new party Model for coreData and Network
+        NSNumber *numberJustForUsage = [[NSNumber alloc] initWithInt:64];
+    
+        
+        //preparing startTime and endTime in creating mode
+        
+        //it need to be filled in changingMode
+//        [formatedString appendString:self.dateIsChosen];
+    
+//        CGFloat value = self.sliderTop.value;
+//        CGFloat hours = (int)value/60;
+//        CGFloat minutes = (value - hours * 60);
+//        
+//        [formatedString appendFormat:@"  %02d:%02d:00", (int)hours, (int)minutes];
+//        self.dateIsChosen = formatedString;
+        //получает тут ноль
+        
+        NSString *timeInHoursAndMinutes = [self textFromValueOfSlider:self.sliderTop];
+        
+        NSMutableString *formatedString = [[NSMutableString alloc] initWithFormat:@"%@ %@",self.dateIsChosen, timeInHoursAndMinutes];
+        [formatedString appendString:@":00"];
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"dd.MM.yyyy HH:mm:ss"];
+
+        NSDate *dateOfParty = [dateFormat dateFromString:formatedString];
+
+        //из таймстемпа в число получаю ноль, тогда таймстемп в строку а потом в число
+        NSString *transitFromTimeStampToStartTimeInNumber = [[NSString alloc] initWithFormat:@"%f", [dateOfParty timeIntervalSince1970]];
+        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+        f.numberStyle = NSNumberFormatterDecimalStyle;
+        NSNumber *startTime = [f numberFromString:transitFromTimeStampToStartTimeInNumber];
+        NSLog(@"%@", startTime);
+        NSLog(@"%@",formatedString);
+        //need to prepare endTime from sliderBot value and dateIsChosen
+        
+        timeInHoursAndMinutes = [self textFromValueOfSlider:self.sliderBot];
+        
+        formatedString = [[NSMutableString alloc] initWithFormat:@"%@ %@",self.dateIsChosen, timeInHoursAndMinutes];
+        [formatedString appendString:@":00"];
+        dateOfParty = [dateFormat dateFromString:formatedString];
+        NSLog(@"%@",formatedString);
+        NSNumber *endTime = [[NSNumber alloc] initWithFloat:([dateOfParty timeIntervalSince1970])];
+        NSLog(@"was saved in plist serverModel, not from plistModel");
+        
+        //in editing mode i need to fill party by self.partyToChange
+        SUNSaver *party = [[SUNSaver sharedInstance] initWithCreatorId: numberJustForUsage startTime:startTime endTime:endTime logo:[[NSNumber alloc] initWithInteger:self.pageControl.currentPage] partyId:numberJustForUsage latitude:numberJustForUsage longitude:numberJustForUsage description:self.textView.text partyName:self.textField.text];
         
         if ( self.partyWasEdited ) {
             parties = [SUNDataStore readFromPlist];
             //working code but with plist
+            //no its withot plist
+//            party = self.partyToChange;
             NSData *dataParty = [NSKeyedArchiver archivedDataWithRootObject:party];
+            //here i need to check if party in array at indexOfPartyToChange is equal to edtiting party (if it's not equal than ok, save it )
+            //not nessesery
             [parties removeObjectAtIndex:self.indexOfPartyToChange];
             [parties insertObject:dataParty atIndex:self.indexOfPartyToChange];
             NSLog(@"data of party was added to parties");
-            
-            
-            //make working by using network
-//            
-//            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-//            [dateFormat setDateFormat:@"yyyy-MM-dd 00:00:00"];
-            
-//            //preparing startTime and endTime
-//            NSDate *dateOfParty = [dateFormat dateFromString:self.fullDateIsChosen];
-//            NSString *timeFromSlider = [self textFromValueOfSlider:self.sliderTop];
-//            
-//            NSNumber *startTime = [[NSNumber alloc] initWithInteger:[self valueFromTextOfSlider:timeFromSlider] * 60 + [dateOfParty timeIntervalSince1970]];
-//            
-//            timeFromSlider = [self textFromValueOfSlider: self.sliderBot];
-//            
-//            NSNumber *endTime = [[NSNumber alloc] initWithInteger:[self valueFromTextOfSlider:timeFromSlider] * 60 + [dateOfParty timeIntervalSince1970]];
-            
-//            __block __weak SUNMakingPartyByxibVC* weakSelf = self;
-////            checking of right symbols of login and password is not need (they are checked in my SDK)
-//            
-//            [[SUNPartyMakerSDK sharedInstance] addPartyWithId:@"id" name: startTime:<#(NSString *)#> endTime:<#(NSString *)#> logoId:<#(NSString *)#> comment:<#(NSString *)#> creatorId:<#(NSString *)#> latitude:<#(NSString *)#> longitude:<#(NSString *)#> callback:<#^(NSDictionary *response, NSError *error)block#>^(NSDictionary *response, NSError *error){
-//                
-//                BOOL authorized = [weakSelf canAuthorise:response];
-//                if ( authorized ) {
-//                    [weakSelf willPassAuthorisation];
-//                }
-//                
-//            }];
             
            
         
         }else{
             parties = [SUNDataStore readFromPlist];
-            NSNumber *numberJustForUsage = [[NSNumber alloc] initWithInt:64];
             
-//             SUNDataStore *party = [[SUNDataStore alloc]  initWithName:self.textField.text  date:self.dateIsChosen                                                sliderTop: self.sliderTop    sliderBot: self.sliderBot  description: self.textView.text    pageControl:self.pageControl];
-            
-            
-            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-            [dateFormat setDateFormat:@"yyyy-MM-dd 00:00:00"];
-            //preparing startTime and endTime
-            NSDate *dateOfParty = [dateFormat dateFromString:self.fullDateIsChosen];
-            NSString *timeFromSlider = [self textFromValueOfSlider:self.sliderTop];
-            
-            NSNumber *startTime = [[NSNumber alloc] initWithInteger:[self valueFromTextOfSlider:timeFromSlider] * 60 + [dateOfParty timeIntervalSince1970]];
-            
-            timeFromSlider = [self textFromValueOfSlider: self.sliderBot];
-            
-            NSNumber *endTime = [[NSNumber alloc] initWithInteger:[self valueFromTextOfSlider:timeFromSlider] * 60 + [dateOfParty timeIntervalSince1970]];
-            
-            party = (SUNDataStore *)[[SUNSaver sharedInstance] initWithCreatorId: numberJustForUsage startTime:startTime endTime:endTime logo:[[NSNumber alloc] initWithInteger:self.pageControl.currentPage] partyId:numberJustForUsage latitude:numberJustForUsage longitude:numberJustForUsage description:self.textView.text partyName:self.textField.text];
             NSData *dataParty = [NSKeyedArchiver archivedDataWithRootObject:party];
             
             [parties addObject:dataParty];
@@ -601,14 +625,22 @@
         __block __weak SUNMakingPartyByxibVC* weakSelf = self;
         ////            checking of right symbols of login and password is not need (they are checked in my SDK)
         //
-//        [[SUNPartyMakerSDK sharedInstance] addPartyWithId:@"id" name: startTime:[NSString stringWithFormat:@"",party.startTime] endTime:[NSString stringWithFormat:@"",party.startTime] logoId:[NSString stringWithFormat:@"",party.startTime] comment:[NSString stringWithFormat:@"",party.startTime] creatorId:[NSString stringWithFormat:@"",party.startTime] latitude:[NSString stringWithFormat:@"",party.startTime] longitude:[NSString stringWithFormat:@"",party.startTime] callback:^(NSDictionary *response, NSError *error){
-//            
-//            BOOL authorized = [weakSelf savedOnServer:response];
-//            if ( authorized ) {
-//                NSLog(@"Was saved");
-//            }
-//            
-//        }];
+        
+//        [[SUNPartyMakerSDK sharedInstance] addPartyWithId:<#(NSString *)#> name:<#(NSString *)#> startTime:<#(NSString *)#> endTime:<#(NSString *)#> logoId:<#(NSString *)#> comment:<#(NSString *)#> creatorId:<#(NSString *)#> latitude:<#(NSString *)#> longitude:<#(NSString *)#> callback:<#^(NSDictionary *response, NSError *error)block#>]
+
+        //callback - block that is defined here with response and error
+        //but it runs in another class-controller (Controls/Networking/SUNPartyMakerSDK) in runtime (когда оно заапущено короче с симулятора, в данном случае)
+        //in that block class-cotroller transit parameters (*response, *error) which appears phisicly here only when i'm triggering them in class-controller
+        [[SUNPartyMakerSDK sharedInstance] addPartyWithId:@"id" name:party.nameOfParty startTime:party.startTime.stringValue endTime:party.startTime.stringValue logoId:party.startTime.stringValue comment:party.comment creatorId:@"64" latitude:party.startTime.stringValue longitude:party.startTime.stringValue callback:^(NSDictionary *response, NSError *error){
+            
+            BOOL authorized = [weakSelf savedOnServer:response];
+            if ( authorized ) {
+                NSLog(@"good response from server");
+            }else{
+                NSLog(@"bad response from server");
+            }
+            
+        }];
         
 
         [self.navigationController popToRootViewControllerAnimated:YES];
@@ -632,75 +664,11 @@
         //as for registration, as for signIn
         NSLog(@"statusCode %@", response[@"statusCode"]);
         return NO;
-    }
-    
-    return YES;
-}
-
-#pragma mark - realisation of login
-
-- (IBAction)onSignInTouched:(id)sender {
-    //    tableView can be reached faster than dataBase will answer, so dont make like below
-    //    [[SUNPartyMakerSDK sharedInstance] loginWithUser:@"sunnyvun" andPassword:@"sunn1vun" callback:^(NSDictionary *response, NSError *error) {
-    //
-    //        NSLog(@"response was taken in appDelegate %@", [response valueForKey:@"response"]);
-    //        //        NSLog(@"keys of response dictionary %@", response[@"response"]);
-    //        NSLog(@"%@", [response allKeys]);
-    //
-    //    }];
-    
-    //registered user exists by login @"sunnyvun" and pass @"sunn1vun"
-            
-//            __block __weak SUNAuthorizationVC* weakSelf = self;
-            //              checking of right symbols of login and password is not need (they are checked in my SDK)
-            
-            //        [[SUNDataStore sharedInstance] canILoginWithUserName: self.loginTextField.text andPassword:self.passwordTextField.text callback:^(NSDictionary *response, NSError *error){
-            //        BOOL authorized = [weakSelf canAuthorise:response];
-            //            if ( authorized ) {
-            //                [weakSelf willPassAuthorisation];
-            //            }
-            //        }];
-            
-//    [[SUNPartyMakerSDK sharedInstance] loginWithUserName:self.loginTextField.text andPassword:self.passwordTextField.text callback:^(NSDictionary *response, NSError *error) {
-//        
-//        BOOL authorized = [weakSelf canAuthorise:response];
-//        if ( authorized ) {
-//            [weakSelf willPassAuthorisation];
-//        }
-//        
-//    }];
-    
-    
-}
-
-- (void) willPassSaving{
-    
-    //    as was said that graphics should be always painted in mainQueue, calling tabBar initiated like that
-    dispatch_async(dispatch_get_main_queue(),^{
-        UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UITabBarController* tabBar = [ storyboard instantiateViewControllerWithIdentifier:@"SUNTabBar"];
-        [self presentViewController:tabBar animated:YES completion:nil];
-        NSLog(@"Table view wasn't first");
-    });
-    
-}
-
-- (BOOL) canSave: (NSDictionary*) response{
-    
-    NSLog(@"%@",response);
-    NSDictionary* localResponse = [response objectForKey:@"response"];
-    
-    NSLog(@"%@",localResponse[@"msg"]);
-//    if ( [localResponse[@"name"] isEqualToString:self.loginTextField.text] ) {
-//        NSLog(@"was loged");
-//        return YES;
-//    }
-//    else if ([[response objectForKey:@"statusCode"]  isEqual: @400]) {
-//        //here i need insert view that will provide user to know he entered wrong login or password
-//        //as for registration, as for signIn
+    }else{
 //        NSLog(@"statusCode %@", response[@"statusCode"]);
-//        return NO;
-//    }
+        return NO;
+
+    }
     
     return YES;
 }
